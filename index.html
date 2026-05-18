@@ -2607,6 +2607,358 @@
         grid-column: span 1;
       }
     }
+
+    /* ─── STICKY FLOATING ACTIONS & CHATBOT ─── */
+    .floating-actions {
+      position: fixed;
+      right: 2rem;
+      bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      z-index: 999;
+    }
+
+    .floating-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(18, 18, 18, 0.75);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .floating-btn:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 12px 40px rgba(200, 245, 87, 0.25);
+    }
+
+    /* Back to Top specific hidden state */
+    .floating-btn.back-to-top {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.8) translateY(10px);
+    }
+
+    .floating-btn.back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1) translateY(0);
+    }
+
+    /* Hover tooltips */
+    .floating-btn::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      right: 64px;
+      top: 50%;
+      transform: translateY(-50%) scale(0.9);
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius);
+      font-size: 0.75rem;
+      font-family: var(--font-head);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .floating-btn:hover::before {
+      opacity: 1;
+      transform: translateY(-50%) scale(1);
+    }
+
+    /* AI Chatbot Widget Panel */
+    .chat-widget {
+      position: fixed;
+      right: 2rem;
+      bottom: 6rem;
+      width: 360px;
+      height: 480px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(30px) scale(0.95);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .chat-widget.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .chat-header {
+      background: rgba(200, 245, 87, 0.08);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-header-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .chat-bot-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      color: #000;
+      box-shadow: 0 0 10px rgba(200, 245, 87, 0.4);
+    }
+
+    .chat-bot-title {
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .chat-bot-status {
+      font-size: 0.75rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 1px;
+    }
+
+    .chat-bot-status::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 6px var(--accent);
+    }
+
+    .chat-close {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .chat-close:hover {
+      color: var(--text);
+      transform: scale(1.1);
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1.2rem 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      background: rgba(10, 10, 10, 0.2);
+    }
+
+    .chat-msg {
+      max-width: 82%;
+      padding: 0.75rem 1rem;
+      border-radius: 16px;
+      font-size: 0.85rem;
+      line-height: 1.45;
+      animation: msgFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes msgFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .chat-msg.bot {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    .chat-msg.user {
+      background: var(--accent);
+      color: #000;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(200, 245, 87, 0.15);
+    }
+
+    .chat-suggestions-container {
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      padding: 0.75rem 1rem 0.5rem 1rem;
+      background: rgba(10, 10, 10, 0.2);
+    }
+
+    .chat-suggestions-title {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .chat-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .chat-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.35rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .chat-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(200, 245, 87, 0.05);
+      transform: translateY(-1px);
+    }
+
+    .chat-input-area {
+      border-top: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      display: flex;
+      gap: 0.6rem;
+      background: rgba(5, 5, 5, 0.4);
+      align-items: center;
+    }
+
+    .chat-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.65rem 0.8rem;
+      color: var(--text);
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .chat-input:focus {
+      border-color: var(--accent);
+    }
+
+    .chat-send-btn {
+      background: var(--accent);
+      border: none;
+      color: #000;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .chat-send-btn:hover {
+      transform: scale(1.05);
+      background: #b1d94b;
+    }
+
+    /* Typing indicators */
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0.5rem 0.75rem;
+      align-self: flex-start;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      border-bottom-left-radius: 4px;
+    }
+
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--muted);
+      border-radius: 50%;
+      animation: typingBounce 1s infinite alternate;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typingBounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-4px); }
+    }
+
+    /* Responsive Styling overrides */
+    @media (max-width: 500px) {
+      .floating-actions {
+        right: 1.2rem;
+        bottom: 1.2rem;
+        gap: 0.6rem;
+      }
+
+      .floating-btn {
+        width: 46px;
+        height: 46px;
+        font-size: 1.15rem;
+      }
+
+      .floating-btn::before {
+        display: none; /* Hide hover tooltips on mobile to avoid collision */
+      }
+
+      .chat-widget {
+        right: 1rem;
+        bottom: 4.8rem;
+        width: calc(100vw - 2rem);
+        height: 420px;
+      }
+    }
   </style>
 </head>
 
@@ -3714,6 +4066,60 @@
     </div>
   </div>
 
+  <!-- FLOATING ACTIONS & CHATBOT WIDGET -->
+  <div class="floating-actions">
+    <!-- Back to Top Button -->
+    <button class="floating-btn back-to-top" id="backToTopBtn" onclick="scrollToTop()" data-tooltip="Back to Top">
+      ↑
+    </button>
+    <!-- Resume Quick Scroll Button -->
+    <button class="floating-btn" onclick="scrollToResume()" data-tooltip="Interactive Resume">
+      📄
+    </button>
+    <!-- AI Chatbot Toggle Button -->
+    <button class="floating-btn" onclick="toggleChatbot()" data-tooltip="AI Assistant" id="chatbotToggleBtn">
+      🤖
+    </button>
+  </div>
+
+  <!-- AI Chatbot Widget -->
+  <div class="chat-widget" id="aiChatbotWidget">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-bot-avatar">🤖</div>
+        <div>
+          <div class="chat-bot-title">Emon's Assistant</div>
+          <div class="chat-bot-status">Online</div>
+        </div>
+      </div>
+      <button class="chat-close" onclick="toggleChatbot()">×</button>
+    </div>
+    
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">
+        Hi! I'm Emon's AI assistant. Ask me anything about his projects, experience, or skills, and I'll answer using his official CV!
+      </div>
+    </div>
+
+    <!-- Suggestion Chips Container -->
+    <div class="chat-suggestions-container">
+      <div class="chat-suggestions-title">Suggested Topics</div>
+      <div class="chat-suggestions">
+        <div class="chat-chip" onclick="handleSuggestion('Tell me about Emon\'s graduation project (FYDP)')">💡 FYDP Project</div>
+        <div class="chat-chip" onclick="handleSuggestion('What technical skills does he have?')">🛠️ Skills</div>
+        <div class="chat-chip" onclick="handleSuggestion('Where did he study?')">🎓 Education</div>
+        <div class="chat-chip" onclick="handleSuggestion('How can I contact him?')">📧 Contact</div>
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chatInputField" placeholder="Ask Emon's Assistant..." onkeypress="handleChatKeyPress(event)">
+      <button class="chat-send-btn" onclick="submitChatMessage()">
+        <span style="font-size: 1.1rem; font-weight: bold;">→</span>
+      </button>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <p>© 2026 <a href="#">Fayjullah Haque Emon</a> — Built with passion.</p>
@@ -4262,6 +4668,154 @@
           targetPane.classList.add('active');
         }
       };
+
+      // ─── STICKY FLOATING ACTIONS & CHATBOT ENGINE ───
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      const chatbotWidget = document.getElementById('aiChatbotWidget');
+      const chatMessages = document.getElementById('chatMessages');
+      const chatInputField = document.getElementById('chatInputField');
+
+      // Scroll Spy for Back to Top Button visibility
+      window.addEventListener('scroll', () => {
+        // Appears if scrolled past middle (300px)
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+      });
+
+      // 1. Smooth Scroll to Top
+      window.scrollToTop = function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      };
+
+      // 2. Smooth Scroll to Resume
+      window.scrollToResume = function() {
+        const resumeSection = document.getElementById('resume');
+        if (resumeSection) {
+          resumeSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      };
+
+      // 3. Toggle AI Chatbot Drawer
+      window.toggleChatbot = function() {
+        chatbotWidget.classList.toggle('active');
+        if (chatbotWidget.classList.contains('active')) {
+          chatInputField.focus();
+        }
+      };
+
+      // 4. Handle Suggestion Click
+      window.handleSuggestion = function(text) {
+        chatInputField.value = text;
+        window.submitChatMessage();
+      };
+
+      // 5. Chat Enter Key Press
+      window.handleChatKeyPress = function(event) {
+        if (event.key === 'Enter') {
+          window.submitChatMessage();
+        }
+      };
+
+      // 6. Submit User Message and Trigger AI Response
+      window.submitChatMessage = function() {
+        const text = chatInputField.value.trim();
+        if (!text) return;
+
+        // Clear input field
+        chatInputField.value = '';
+
+        // Append User Message to conversation
+        appendMessage(text, 'user');
+
+        // Show AI Typing Indicator
+        const typingIndicator = showTypingIndicator();
+
+        // Simulate AI thinking and reply with stagger
+        setTimeout(() => {
+          // Remove typing indicator
+          typingIndicator.remove();
+
+          // Generate response based on CV content
+          const reply = getAIResponse(text);
+          appendMessage(reply, 'bot');
+        }, 1000);
+      };
+
+      // Helper to append message
+      function appendMessage(text, sender) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `chat-msg ${sender}`;
+        msgDiv.innerHTML = text;
+        chatMessages.appendChild(msgDiv);
+        
+        // Auto scroll to bottom
+        chatMessages.scrollTo({
+          top: chatMessages.scrollHeight,
+          behavior: 'smooth'
+        });
+      }
+
+      // Helper to show typing indicator
+      function showTypingIndicator() {
+        const indicatorDiv = document.createElement('div');
+        indicatorDiv.className = 'typing-indicator';
+        indicatorDiv.innerHTML = `
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+          <div class="typing-dot"></div>
+        `;
+        chatMessages.appendChild(indicatorDiv);
+        chatMessages.scrollTo({
+          top: chatMessages.scrollHeight,
+          behavior: 'smooth'
+        });
+        return indicatorDiv;
+      }
+
+      // AI Response Dispatcher (Loaded with EmonCv details!)
+      function getAIResponse(query) {
+        const q = query.toLowerCase();
+        
+        if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('greet')) {
+          return "Hello! I'm Emon's AI Assistant. Ask me anything about his graduation project, professional internship experience, academic qualifications, or software testing skills!";
+        }
+        
+        if (q.includes('skills') || q.includes('languages') || q.includes('frameworks') || q.includes('technologies')) {
+          return "Emon has a robust tech stack subdivided into:<br><br>• <strong>Languages</strong>: C++, Java, PHP, JavaScript, HTML, CSS<br>• <strong>Frameworks</strong>: Spring Boot, React.js, Laravel, Bootstrap<br>• <strong>Tools & Databases</strong>: PostgreSQL, MySQL, OpenCV, Git/GitHub, Figma, Postman<br>• <strong>QA & SQA</strong>: Automation Testing, Manual Testing, SQA Fundamentals.";
+        }
+        
+        if (q.includes('fydp') || q.includes('graduation') || q.includes('cooling') || q.includes('storage') || q.includes('vegetable')) {
+          return "Emon's Final Year Design Project (FYDP) is the <strong>Smart Cooling Storage System</strong> (awarded 5th Runner Up!):<br><br>• It uses a custom-trained <strong>YOLOv8</strong> deep learning model for real-time vegetable classification.<br>• Features an automated conveyor with a robotic arm for smart physical sorting.<br>• Controlled via ESP32 microcontrollers with real-time temperature sensing, Peltier-thermoelectric cooling cells, and RFID-authenticated user dashboards.";
+        }
+        
+        if (q.includes('education') || q.includes('study') || q.includes('university') || q.includes('bsc') || q.includes('cgpa')) {
+          return "Emon's academic background includes:<br><br>• <strong>B.Sc. in CSE</strong>: Currently pursuing at United International University (UIU), Dhaka, focusing on deep learning research, SQA, and full-stack development.<br>• <strong>HSC</strong>: Science group at Motijheel Boy's Govt. School & College.<br>• <strong>SSC</strong>: Science group at Sher-E-Bangla School.";
+        }
+        
+        if (q.includes('experience') || q.includes('intern') || q.includes('work') || q.includes('study.net')) {
+          return "Emon completed a 3-month internship as a <strong>PHP Developer Intern</strong> at <strong>Study.net</strong>.<br><br>During this period, he gained professional full-stack hands-on experience, wrote secure backend code and relational MySQL database queries, worked in agile teams, and maintained cross-browser interface compatibility.";
+        }
+        
+        if (q.includes('projects') || q.includes('shelftotales') || q.includes('job portal')) {
+          return "Emon has built high-fidelity applications, including:<br><br>1. <strong>Smart Cooling Storage</strong>: An IoT Peltier system with YOLO crop classification.<br>2. <strong>Smart Job Portal</strong>: Relational DB backend with applicant/recruiter dashboards.<br>3. <strong>ShelfToTales</strong>: 3D interactive virtual bookshelf catalog developed with Spring Boot and React.";
+        }
+        
+        if (q.includes('contact') || q.includes('email') || q.includes('hire') || q.includes('linkedin')) {
+          return "You can reach Emon through these official channels:<br><br>📧 <strong>Email</strong>: <a href='mailto:fayjullahhaqueemon@gmail.com' style='color:var(--accent); text-decoration: underline;'>fayjullahhaqueemon@gmail.com</a><br>💼 <strong>LinkedIn</strong>: <a href='https://www.linkedin.com/in/fayjullah-haque-6187a5228/' target='_blank' style='color:var(--accent); text-decoration: underline;'>Fayjullah Haque Emon</a><br>📍 <strong>Location</strong>: Dhaka, Bangladesh";
+        }
+        
+        // Default generic smart reply
+        return "That's an interesting question! Emon is a skilled CSE developer specializing in <strong>Java / Spring Boot</strong>, <strong>React.js</strong>, <strong>PHP / Laravel</strong>, and <strong>SQA Automation Testing</strong>. Feel free to explore his resume details on this page or email him directly at <strong>fayjullahhaqueemon@gmail.com</strong>!";
+      }
 
       // Fetch on load
       fetchGitHubContributions();
