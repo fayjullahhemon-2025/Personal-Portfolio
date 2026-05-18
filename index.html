@@ -513,22 +513,155 @@
     .skills-central-axis {
       position: absolute;
       left: 50%;
-      top: 250px;
-      bottom: 80px;
+      top: 0;
+      bottom: 0;
       width: 2px;
       transform: translateX(-50%);
-      background: linear-gradient(to bottom, transparent, var(--accent) 15%, var(--accent) 85%, transparent);
+      background: rgba(255, 255, 255, 0.08); /* faint background track */
       z-index: 1;
-      opacity: 0.8;
+    }
+
+    .skills-progress-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0%; /* updated dynamically by JS */
+      background: var(--accent); /* glowing accent line */
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+      transition: height 0.1s ease;
     }
 
     .skills-tree-nodes {
       position: relative;
-      margin-top: 4rem;
+      margin-top: 2rem;
       display: flex;
       flex-direction: column;
       gap: 80px;
       z-index: 2;
+      width: 100%;
+    }
+
+    /* Scrollable Timeline Box */
+    .skills-scroll-container {
+      position: relative;
+      max-height: 600px; /* smaller section height like other sections */
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      border: none;
+      background: transparent;
+      backdrop-filter: none;
+      /* Hide standard scrollbars completely */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+    }
+
+    @media (min-width: 991px) {
+      .skills-scroll-container {
+        padding: 40px 180px; /* Symmetrical desktop padding to give tool badges full expansion room */
+        margin-left: -180px; /* Shifts the clipping box boundaries 180px to the left */
+        margin-right: -180px; /* Shifts the clipping box boundaries 180px to the right */
+      }
+    }
+
+    @media (max-width: 990px) {
+      .skills-scroll-container {
+        max-height: 550px;
+        padding: 20px 15px; /* mobile-friendly padding */
+      }
+    }
+
+    /* Hide Webkit Scrollbars (Chrome, Safari, Edge, Opera) */
+    .skills-scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* ─── NEW SPLIT HEADER & BUTTONS LAYOUT ─── */
+    .skills-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+      margin-bottom: 3rem;
+      width: 100%;
+    }
+
+    .skills-header-left {
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .skills-header-right {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      max-width: 550px;
+    }
+
+    .skills-nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .skills-nav-btn::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #475569;
+      transition: all 0.3s ease;
+    }
+
+    .skills-nav-btn:hover {
+      background: rgba(200, 245, 87, 0.05);
+      border-color: rgba(200, 245, 87, 0.4);
+      color: #fff;
+    }
+
+    .skills-nav-btn:hover::before {
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .skills-nav-btn.active {
+      background: rgba(200, 245, 87, 0.1);
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+      box-shadow: 0 0 12px rgba(200, 245, 87, 0.15);
+    }
+
+    .skills-nav-btn.active::before {
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    @media (max-width: 990px) {
+      .skills-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 2rem;
+      }
+
+      .skills-header-right {
+        justify-content: flex-start;
+        max-width: 100%;
+      }
     }
 
     .domain-node {
@@ -840,6 +973,10 @@
 
     .w-12 {
       width: 3.8rem;
+    }
+
+    #skills {
+      overflow: hidden;
     }
 
     /* Responsive adjustments */
@@ -1945,21 +2082,34 @@
   <!-- SKILLS -->
   <section id="skills">
     <div class="container">
-      <div class="fade-in" style="text-align: center; margin-bottom: 4rem;">
-        <span class="section-label" style="justify-content: center;">// skills</span>
-        <h2 class="section-title">Tools & Technologies</h2>
-        <p class="section-sub" style="margin: 0 auto;">A snapshot of my technical toolkit and proficiency levels across
-          different domains.</p>
+      <!-- Split Header Row (Left: Heading, Right: Buttons) -->
+      <div class="skills-header-row">
+        <div class="skills-header-left fade-in">
+          <span class="section-label" style="justify-content: flex-start;">// skills</span>
+          <h2 class="section-title" style="margin-left: 0;">Tools & Technologies</h2>
+          <p class="section-sub" style="margin-left: 0;">A snapshot of my technical toolkit and proficiency levels across different domains.</p>
+        </div>
+        <div class="skills-header-right fade-in">
+          <button class="skills-nav-btn active" data-target="node-frontend">Frontend</button>
+          <button class="skills-nav-btn" data-target="node-backend">Backend</button>
+          <button class="skills-nav-btn" data-target="node-databases">Databases</button>
+          <button class="skills-nav-btn" data-target="node-sqa">SQA</button>
+          <button class="skills-nav-btn" data-target="node-aiml">AI & ML Research</button>
+          <button class="skills-nav-btn" data-target="node-uiux">UI/UX Design</button>
+        </div>
       </div>
 
-      <!-- Central Axis Line -->
-      <div class="skills-central-axis"></div>
+      <!-- Scrollable Timeline Container -->
+      <div class="skills-scroll-container">
+        <!-- Node Tree Container -->
+        <div class="skills-tree-nodes">
+          <!-- Central Axis Line with Scroll Progress -->
+          <div class="skills-central-axis">
+            <div class="skills-progress-line"></div>
+          </div>
 
-      <!-- Node Tree Container -->
-      <div class="skills-tree-nodes">
-
-        <!-- Domain Node 1: Frontend (Left) -->
-        <div class="domain-node left-node fade-in">
+          <!-- Domain Node 1: Frontend (Left) -->
+          <div id="node-frontend" class="domain-node left-node fade-in">
           <div class="node-wrapper">
             <!-- Node Card -->
             <div class="node-card">
@@ -2018,7 +2168,7 @@
         </div>
 
         <!-- Domain Node 2: Backend (Right) -->
-        <div class="domain-node right-node fade-in">
+        <div id="node-backend" class="domain-node right-node fade-in">
           <div class="node-wrapper">
             <!-- Horizontal Edge -->
             <div class="horizontal-edge"></div>
@@ -2061,7 +2211,7 @@
         </div>
 
         <!-- Domain Node 3: Databases (Left) -->
-        <div class="domain-node left-node fade-in">
+        <div id="node-databases" class="domain-node left-node fade-in">
           <div class="node-wrapper">
             <!-- Node Card -->
             <div class="node-card">
@@ -2100,7 +2250,7 @@
         </div>
 
         <!-- Domain Node 4: Software Quality Assurance (SQA) (Right) -->
-        <div class="domain-node right-node fade-in">
+        <div id="node-sqa" class="domain-node right-node fade-in">
           <div class="node-wrapper">
             <!-- Horizontal Edge -->
             <div class="horizontal-edge"></div>
@@ -2139,7 +2289,7 @@
         </div>
 
         <!-- Domain Node 5: AI & Machine Learning (Left) -->
-        <div class="domain-node left-node fade-in">
+        <div id="node-aiml" class="domain-node left-node fade-in">
           <div class="node-wrapper">
             <!-- Node Card -->
             <div class="node-card">
@@ -2178,7 +2328,7 @@
         </div>
 
         <!-- Domain Node 6: UI/UX (Right) -->
-        <div class="domain-node right-node fade-in">
+        <div id="node-uiux" class="domain-node right-node fade-in">
           <div class="node-wrapper">
             <!-- Horizontal Edge -->
             <div class="horizontal-edge"></div>
@@ -2223,10 +2373,10 @@
           <!-- Marker on Central Line -->
           <div class="node-marker"></div>
         </div>
-
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- PROJECTS -->
   <section id="projects">
@@ -2751,6 +2901,81 @@
       document.getElementById('blogModal').classList.remove('active');
       document.body.style.overflow = ''; // Restore scroll
     }
+
+    // Interactive Skills Navigation & Progress Axis Scrolling
+    document.addEventListener('DOMContentLoaded', () => {
+      const scrollContainer = document.querySelector('.skills-scroll-container');
+      const progressLine = document.querySelector('.skills-progress-line');
+      const navButtons = document.querySelectorAll('.skills-nav-btn');
+      const domainNodes = document.querySelectorAll('.domain-node');
+
+      // Update vertical axis scroll progress line
+      function updateProgressLine() {
+        if (scrollContainer && progressLine) {
+          const scrollTop = scrollContainer.scrollTop;
+          const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+          const progressPercent = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+          progressLine.style.height = `${progressPercent}%`;
+        }
+      }
+
+      // Add scroll event listener to update progress axis on scroll
+      if (scrollContainer) {
+        scrollContainer.addEventListener('scroll', () => {
+          updateProgressLine();
+
+          // Scroll Spy to sync active buttons based on scroll container's top visible card
+          let activeId = '';
+          let minDiff = Infinity;
+          const containerTop = scrollContainer.getBoundingClientRect().top;
+
+          domainNodes.forEach(node => {
+            const rect = node.getBoundingClientRect();
+            // Calculate proximity of node's top boundary relative to container top (plus some offset)
+            const diff = Math.abs(rect.top - containerTop - 40);
+            if (diff < minDiff) {
+              minDiff = diff;
+              activeId = node.id;
+            }
+          });
+
+          if (activeId) {
+            navButtons.forEach(btn => {
+              if (btn.getAttribute('data-target') === activeId) {
+                btn.classList.add('active');
+              } else {
+                btn.classList.remove('active');
+              }
+            });
+          }
+        });
+
+        // Initialize progress line on load
+        updateProgressLine();
+      }
+
+      // Click Handler for smooth internal container scrolling
+      navButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = btn.getAttribute('data-target');
+          const targetNode = document.getElementById(targetId);
+          if (targetNode && scrollContainer) {
+            const containerPadding = 40; // matches padding-top of container
+            const targetScrollTop = targetNode.offsetTop - containerPadding;
+
+            scrollContainer.scrollTo({
+              top: targetScrollTop,
+              behavior: 'smooth'
+            });
+
+            // Update active button state immediately
+            navButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+          }
+        });
+      });
+    });
   </script>
 </body>
 
