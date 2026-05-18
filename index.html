@@ -16,6 +16,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
     rel="stylesheet">
+  <!-- Devicon CDN for rich tech brand logos -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <style>
     *,
     *::before,
@@ -791,6 +793,19 @@
       backdrop-filter: blur(12px);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
       transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .domain-node .leaf-badge i {
+      font-size: 0.85rem;
+      color: var(--accent);
+      transition: color 0.25s ease;
+    }
+
+    .domain-node .leaf-item:hover .leaf-badge i {
+      color: var(--text);
     }
 
     .domain-node .leaf-item:hover .leaf-badge {
@@ -1956,7 +1971,7 @@
                 </div>
               </div>
               <p class="node-desc">Immersive, responsive user experiences.</p>
-              
+
               <!-- Footer Links -->
               <div class="node-footer">
                 <a href="#blog" class="node-link"><i class="fi fi-rr-document"></i> Article</a>
@@ -1966,31 +1981,31 @@
               <!-- Leaf Nodes (Expanding leftwards) -->
               <div class="leaf-container">
                 <div class="leaf-item">
-                  <span class="leaf-badge">HTML</span>
+                  <span class="leaf-badge"><i class="devicon-html5-plain"></i> HTML</span>
                   <div class="leaf-line w-8"></div>
                 </div>
                 <div class="leaf-item">
-                  <span class="leaf-badge">CSS</span>
+                  <span class="leaf-badge"><i class="devicon-css3-plain"></i> CSS</span>
                   <div class="leaf-line w-12"></div>
                 </div>
                 <div class="leaf-item">
-                  <span class="leaf-badge">Tailwind CSS</span>
+                  <span class="leaf-badge"><i class="devicon-tailwindcss-original"></i> Tailwind CSS</span>
                   <div class="leaf-line w-6"></div>
                 </div>
                 <div class="leaf-item">
-                  <span class="leaf-badge">Sass</span>
+                  <span class="leaf-badge"><i class="devicon-sass-original"></i> Sass</span>
                   <div class="leaf-line w-10"></div>
                 </div>
                 <div class="leaf-item">
-                  <span class="leaf-badge">JS</span>
+                  <span class="leaf-badge"><i class="devicon-javascript-plain"></i> JS</span>
                   <div class="leaf-line w-8"></div>
                 </div>
                 <div class="leaf-item">
-                  <span class="leaf-badge">Next.js</span>
+                  <span class="leaf-badge"><i class="devicon-nextjs-plain"></i> Next.js</span>
                   <div class="leaf-line w-12"></div>
                 </div>
                 <div class="leaf-item">
-                  <span class="leaf-badge">React</span>
+                  <span class="leaf-badge"><i class="devicon-react-plain"></i> React</span>
                   <div class="leaf-line w-6"></div>
                 </div>
               </div>
@@ -2028,15 +2043,15 @@
               <div class="leaf-container">
                 <div class="leaf-item">
                   <div class="leaf-line w-8"></div>
-                  <span class="leaf-badge">Spring Boot (Java)</span>
+                  <span class="leaf-badge"><i class="devicon-spring-original"></i> Spring Boot (Java)</span>
                 </div>
                 <div class="leaf-item">
                   <div class="leaf-line w-12"></div>
-                  <span class="leaf-badge">Django (Python)</span>
+                  <span class="leaf-badge"><i class="devicon-django-plain"></i> Django (Python)</span>
                 </div>
                 <div class="leaf-item">
                   <div class="leaf-line w-6"></div>
-                  <span class="leaf-badge">PHP</span>
+                  <span class="leaf-badge"><i class="devicon-php-plain"></i> PHP</span>
                 </div>
               </div>
             </div>
@@ -2068,11 +2083,11 @@
               <!-- Leaf Nodes -->
               <div class="leaf-container">
                 <div class="leaf-item">
-                  <span class="leaf-badge">PostgreSQL</span>
+                  <span class="leaf-badge"><i class="devicon-postgresql-plain"></i> PostgreSQL</span>
                   <div class="leaf-line w-8"></div>
                 </div>
                 <div class="leaf-item">
-                  <span class="leaf-badge">MySQL</span>
+                  <span class="leaf-badge"><i class="devicon-mysql-plain"></i> MySQL</span>
                   <div class="leaf-line w-12"></div>
                 </div>
               </div>
@@ -2110,11 +2125,11 @@
               <div class="leaf-container">
                 <div class="leaf-item">
                   <div class="leaf-line w-8"></div>
-                  <span class="leaf-badge">Postman</span>
+                  <span class="leaf-badge"><i class="devicon-postman-plain"></i> Postman</span>
                 </div>
                 <div class="leaf-item">
                   <div class="leaf-line w-12"></div>
-                  <span class="leaf-badge">Swagger</span>
+                  <span class="leaf-badge"><i class="devicon-swagger-plain"></i> Swagger</span>
                 </div>
               </div>
             </div>
@@ -2146,11 +2161,11 @@
               <!-- Leaf Nodes -->
               <div class="leaf-container">
                 <div class="leaf-item">
-                  <span class="leaf-badge">Python</span>
+                  <span class="leaf-badge"><i class="devicon-python-plain"></i> Python</span>
                   <div class="leaf-line w-8"></div>
                 </div>
                 <div class="leaf-item">
-                  <span class="leaf-badge">Scikit-learn</span>
+                  <span class="leaf-badge"><i class="devicon-scikitlearn-plain"></i> Scikit-learn</span>
                   <div class="leaf-line w-12"></div>
                 </div>
               </div>
@@ -2188,19 +2203,19 @@
               <div class="leaf-container">
                 <div class="leaf-item">
                   <div class="leaf-line w-8"></div>
-                  <span class="leaf-badge">Figma</span>
+                  <span class="leaf-badge"><i class="devicon-figma-plain"></i> Figma</span>
                 </div>
                 <div class="leaf-item">
                   <div class="leaf-line w-12"></div>
-                  <span class="leaf-badge">Framer</span>
+                  <span class="leaf-badge"><i class="devicon-framermotion-original"></i> Framer</span>
                 </div>
                 <div class="leaf-item">
                   <div class="leaf-line w-6"></div>
-                  <span class="leaf-badge">Strich</span>
+                  <span class="leaf-badge"><i class="fi fi-rr-paint-brush"></i> Strich</span>
                 </div>
                 <div class="leaf-item">
                   <div class="leaf-line w-10"></div>
-                  <span class="leaf-badge">Canva</span>
+                  <span class="leaf-badge"><i class="devicon-canva-original"></i> Canva</span>
                 </div>
               </div>
             </div>
