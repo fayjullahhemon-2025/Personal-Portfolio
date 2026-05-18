@@ -2623,6 +2623,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#activity">Activity</a></li>
       <li><a href="#awards">Awards</a></li>
+      <li><a href="#resume">Resume</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#blog">Blogs</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -3244,80 +3245,6 @@
     </div>
   </section>
 
-  <!-- GALLERY -->
-  <section id="gallery" style="background: var(--bg2);">
-    <div class="container">
-      <span class="section-label">// moments</span>
-      <h2 class="section-title fade-in">Photo Gallery</h2>
-      <p class="section-sub fade-in">A glimpse into my journey, projects, and tech explorations.</p>
-      <div class="gallery-slider fade-in">
-        <div class="slider-track" id="sliderTrack">
-          <div class="slide">
-            <img src="images/system_prototype.jpeg" alt="Cooling Storage Prototype">
-          </div>
-          <div class="slide">
-            <img src="images/1.jpeg" alt="Moment 1">
-          </div>
-          <div class="slide">
-            <img src="images/4.jpg" alt="Moment 4">
-          </div>
-          <div class="slide">
-            <img src="images/5.jpg" alt="Moment 5">
-          </div>
-          <div class="slide">
-            <img src="images/8.jpg" alt="Moment 8">
-          </div>
-        </div>
-        <div class="slider-nav">
-          <div class="nav-btn" onclick="moveSlide(-1)">←</div>
-          <div class="nav-btn" onclick="moveSlide(1)">→</div>
-        </div>
-      </div>
-      <div class="slider-dots" id="sliderDots"></div>
-    </div>
-  </section>
-
-  <!-- BLOG -->
-  <section id="blog">
-    <div class="container">
-      <span class="section-label">// writing</span>
-      <h2 class="section-title fade-in">Latest Thoughts</h2>
-      <p class="section-sub fade-in">Essays, tutorials, and research notes on topics I find fascinating.</p>
-      <div class="grid-3" id="blogGrid">
-        <div class="blog-card fade-in" onclick="openBlog(0)">
-          <div class="blog-meta">
-            <span class="blog-cat">FYDP</span>
-            <span class="blog-date">May 2025</span>
-          </div>
-          <h3 class="blog-title">My Journey Of FYDP</h3>
-          <p class="blog-excerpt">Exploring the highs and lows of building the Smart Cooling Storage system, from YOLO
-            training to hardware integration.</p>
-          <div class="blog-read">Read more →</div>
-        </div>
-        <div class="blog-card fade-in" onclick="openBlog(1)">
-          <div class="blog-meta">
-            <span class="blog-cat">Programming</span>
-            <span class="blog-date">Apr 2025</span>
-          </div>
-          <h3 class="blog-title">Java concepts needed for Spring Boot</h3>
-          <p class="blog-excerpt">Mastering the essentials like OOP, Collections, and Streams before diving into the
-            Spring ecosystem.</p>
-          <div class="blog-read">Read more →</div>
-        </div>
-        <div class="blog-card fade-in" onclick="openBlog(2)">
-          <div class="blog-meta">
-            <span class="blog-cat">Opinion</span>
-            <span class="blog-date">Mar 2025</span>
-          </div>
-          <h3 class="blog-title">Why every Researcher should learn to code</h3>
-          <p class="blog-excerpt">How programming empowers researchers to automate data analysis and unlock new
-            scientific insights.</p>
-          <div class="blog-read">Read more →</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- RESUME -->
   <section id="resume">
     <div class="container">
@@ -3621,6 +3548,82 @@
       </div>
     </div>
   </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" style="background: var(--bg);">
+    <div class="container">
+      <span class="section-label">// moments</span>
+      <h2 class="section-title fade-in">Photo Gallery</h2>
+      <p class="section-sub fade-in">A glimpse into my journey, projects, and tech explorations.</p>
+      <div class="gallery-slider fade-in">
+        <div class="slider-track" id="sliderTrack">
+          <div class="slide">
+            <img src="images/system_prototype.jpeg" alt="Cooling Storage Prototype">
+          </div>
+          <div class="slide">
+            <img src="images/1.jpeg" alt="Moment 1">
+          </div>
+          <div class="slide">
+            <img src="images/4.jpg" alt="Moment 4">
+          </div>
+          <div class="slide">
+            <img src="images/5.jpg" alt="Moment 5">
+          </div>
+          <div class="slide">
+            <img src="images/8.jpg" alt="Moment 8">
+          </div>
+        </div>
+        <div class="slider-nav">
+          <div class="nav-btn" onclick="moveSlide(-1)">←</div>
+          <div class="nav-btn" onclick="moveSlide(1)">→</div>
+        </div>
+      </div>
+      <div class="slider-dots" id="sliderDots"></div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog">
+    <div class="container">
+      <span class="section-label">// writing</span>
+      <h2 class="section-title fade-in">Latest Thoughts</h2>
+      <p class="section-sub fade-in">Essays, tutorials, and research notes on topics I find fascinating.</p>
+      <div class="grid-3" id="blogGrid">
+        <div class="blog-card fade-in" onclick="openBlog(0)">
+          <div class="blog-meta">
+            <span class="blog-cat">FYDP</span>
+            <span class="blog-date">May 2025</span>
+          </div>
+          <h3 class="blog-title">My Journey Of FYDP</h3>
+          <p class="blog-excerpt">Exploring the highs and lows of building the Smart Cooling Storage system, from YOLO
+            training to hardware integration.</p>
+          <div class="blog-read">Read more →</div>
+        </div>
+        <div class="blog-card fade-in" onclick="openBlog(1)">
+          <div class="blog-meta">
+            <span class="blog-cat">Programming</span>
+            <span class="blog-date">Apr 2025</span>
+          </div>
+          <h3 class="blog-title">Java concepts needed for Spring Boot</h3>
+          <p class="blog-excerpt">Mastering the essentials like OOP, Collections, and Streams before diving into the
+            Spring ecosystem.</p>
+          <div class="blog-read">Read more →</div>
+        </div>
+        <div class="blog-card fade-in" onclick="openBlog(2)">
+          <div class="blog-meta">
+            <span class="blog-cat">Opinion</span>
+            <span class="blog-date">Mar 2025</span>
+          </div>
+          <h3 class="blog-title">Why every Researcher should learn to code</h3>
+          <p class="blog-excerpt">How programming empowers researchers to automate data analysis and unlock new
+            scientific insights.</p>
+          <div class="blog-read">Read more →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
 
   <!-- CONTACT -->
   <section id="contact">
