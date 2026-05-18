@@ -13,6 +13,7 @@
     rel="stylesheet" />
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
   <style>
     *,
     *::before,
@@ -497,79 +498,343 @@
       line-height: 1.6;
     }
 
-    /* ─── SKILLS ─── */
+    /* ─── INTERACTIVE SKILLS NODE TREE ─── */
     #skills {
       background: var(--bg);
+      position: relative;
+      padding: 6rem 0;
+      overflow: visible;
     }
 
-    .skills-layout {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 5rem;
-      align-items: start;
+    .skills-central-axis {
+      position: absolute;
+      left: 50%;
+      top: 250px;
+      bottom: 80px;
+      width: 2px;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom, transparent, var(--accent) 15%, var(--accent) 85%, transparent);
+      z-index: 1;
+      opacity: 0.8;
     }
 
-    .skill-category {
-      margin-bottom: 2.5rem;
-    }
-
-    .skill-cat-title {
-      font-size: 0.8rem;
-      color: var(--accent);
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1rem;
-    }
-
-    .skill-bars {
+    .skills-tree-nodes {
+      position: relative;
+      margin-top: 4rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 140px;
+      z-index: 2;
     }
 
-    .skill-bar-item {}
-
-    .skill-bar-head {
+    .domain-node {
+      position: relative;
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 6px;
-      font-size: 0.9rem;
+      align-items: center;
+      width: 100%;
     }
 
-    .skill-bar-track {
-      height: 3px;
-      background: var(--border);
-      border-radius: 2px;
+    .domain-node.left-node {
+      justify-content: flex-start;
     }
 
-    .skill-bar-fill {
-      height: 100%;
+    .domain-node.right-node {
+      justify-content: flex-end;
+    }
+
+    .domain-node .node-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 50%;
+    }
+
+    .domain-node.left-node .node-wrapper {
+      justify-content: flex-end;
+      padding-right: 50px;
+    }
+
+    .domain-node.right-node .node-wrapper {
+      justify-content: flex-start;
+      padding-left: 50px;
+    }
+
+    /* Edge connecting card to central line */
+    .domain-node .horizontal-edge {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 2px;
       background: var(--accent);
-      border-radius: 2px;
-      transition: width 1s ease;
-      width: 0;
+      box-shadow: 0 0 10px rgba(200, 245, 87, 0.5);
+      width: 50px;
+      z-index: 2;
     }
 
-    .skill-tags {
+    .domain-node.left-node .horizontal-edge {
+      right: 0;
+    }
+
+    .domain-node.right-node .horizontal-edge {
+      left: 0;
+    }
+
+    /* Node Marker on Central Axis */
+    .domain-node .node-marker {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 4px solid var(--bg);
+      box-shadow: 0 0 12px var(--accent);
+      z-index: 3;
+      transition: transform 0.3s ease;
+    }
+
+    .domain-node:hover .node-marker {
+      transform: translate(-50%, -50%) scale(1.35);
+      box-shadow: 0 0 20px var(--accent);
+    }
+
+    /* Node Card styling */
+    .domain-node .node-card {
+      background: var(--bg2);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 1.6rem 1.8rem;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 350px;
+      backdrop-filter: blur(16px);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      cursor: pointer;
+      position: relative;
+      z-index: 10;
+    }
+
+    .domain-node .node-card:hover {
+      background: rgba(200, 245, 87, 0.04);
+      border-color: rgba(200, 245, 87, 0.4);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3), 0 0 25px rgba(200, 245, 87, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .domain-node .node-header {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.6rem;
     }
 
-    .skill-tag {
-      padding: 0.35rem 0.8rem;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      font-size: 0.8rem;
-      font-family: var(--font-mono);
-      color: var(--muted);
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .skill-tag:hover {
-      border-color: var(--accent);
+    .domain-node .node-icon {
+      font-size: 1.6rem;
       color: var(--accent);
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .domain-node .node-title {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .domain-node .node-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Leaf Nodes Container (Expanding) */
+    .domain-node .leaf-container {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%) scale(0.9);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: max-content;
+      z-index: 5;
+    }
+
+    .domain-node.left-node .leaf-container {
+      right: 100%;
+      margin-right: 2.2rem;
+      align-items: flex-end;
+    }
+
+    .domain-node.right-node .leaf-container {
+      left: 100%;
+      margin-left: 2.2rem;
+      align-items: flex-start;
+    }
+
+    .domain-node:hover .leaf-container {
+      opacity: 1;
+      transform: translateY(-50%) scale(1);
+      pointer-events: auto;
+    }
+
+    /* Branch Vertical & Horizontal Connecting Lines */
+    .domain-node .leaf-container::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      bottom: 15px;
+      width: 1px;
+      background: rgba(200, 245, 87, 0.35);
+      z-index: 1;
+      transition: background 0.3s ease;
+    }
+
+    .domain-node.left-node .leaf-container::before {
+      right: 0;
+    }
+
+    .domain-node.right-node .leaf-container::before {
+      left: 0;
+    }
+
+    .domain-node .leaf-container::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      height: 1px;
+      background: rgba(200, 245, 87, 0.35);
+      z-index: 1;
+      transition: background 0.3s ease;
+    }
+
+    .domain-node.left-node .leaf-container::after {
+      right: -2.2rem;
+      width: 2.2rem;
+    }
+
+    .domain-node.right-node .leaf-container::after {
+      left: -2.2rem;
+      width: 2.2rem;
+    }
+
+    .domain-node:hover .leaf-container::before,
+    .domain-node:hover .leaf-container::after {
+      background: var(--accent);
+    }
+
+    /* Leaf Nodes Individual Item */
+    .domain-node .leaf-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: transform 0.2s ease;
+    }
+
+    .domain-node .leaf-item:hover {
+      transform: scale(1.05);
+    }
+
+    .domain-node .leaf-badge {
+      padding: 0.35rem 0.85rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      color: var(--text);
+      white-space: nowrap;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      transition: all 0.25s ease;
+    }
+
+    .domain-node .leaf-item:hover .leaf-badge {
+      background: rgba(200, 245, 87, 0.1);
+      border-color: rgba(200, 245, 87, 0.4);
+      color: var(--accent);
+      box-shadow: 0 0 15px rgba(200, 245, 87, 0.2);
+    }
+
+    .domain-node .leaf-line {
+      height: 1px;
+      background: rgba(200, 245, 87, 0.35);
+      transition: background 0.25s ease;
+    }
+
+    .domain-node .leaf-item:hover .leaf-line {
+      background: var(--accent);
+    }
+
+    /* Visual spacing widths */
+    .w-6 { width: 1.5rem; }
+    .w-8 { width: 2.2rem; }
+    .w-10 { width: 3rem; }
+    .w-12 { width: 3.8rem; }
+
+    /* Responsive adjustments */
+    @media (max-width: 990px) {
+      #skills {
+        padding: 5rem 0;
+        overflow: hidden;
+      }
+      .skills-central-axis {
+        left: 24px;
+        top: 250px;
+        bottom: 50px;
+        transform: none;
+      }
+      .skills-tree-nodes {
+        gap: 60px;
+      }
+      .domain-node {
+        justify-content: flex-start !important;
+        padding-left: 50px;
+      }
+      .domain-node .node-wrapper {
+        width: 100% !important;
+        justify-content: flex-start !important;
+        padding: 0 !important;
+      }
+      .domain-node .horizontal-edge {
+        left: -26px !important;
+        right: auto !important;
+        width: 26px !important;
+      }
+      .domain-node .node-marker {
+        left: 24px !important;
+        transform: translate(-50%, -50%) !important;
+      }
+      .domain-node:hover .node-marker {
+        transform: translate(-50%, -50%) scale(1.2) !important;
+      }
+      .domain-node .leaf-container {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        margin: 1rem 0 0 0 !important;
+        opacity: 1 !important;
+        transform: none !important;
+        pointer-events: auto !important;
+        align-items: flex-start !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+      }
+      .domain-node .leaf-line {
+        display: none !important;
+      }
+      .domain-node .leaf-container::before,
+      .domain-node .leaf-container::after {
+        display: none !important;
+      }
     }
 
     /* ─── PROJECTS ─── */
@@ -1525,7 +1790,7 @@
         <div class="hero-card">
           <div class="floating-badge">Available for Hire</div>
           <div class="avatar-ring"
-            style="background-image: url('profile.jpeg'); background-size: cover; background-position: center;"></div>
+            style="background-image: url('images/profile.jpeg'); background-size: cover; background-position: center;"></div>
           <div class="hc-name">Fayjullah Haque Emon</div>
           <div class="hc-role">Computer Science Student · Web Developer</div>
           <div class="hc-stats">
@@ -1603,68 +1868,230 @@
   <!-- SKILLS -->
   <section id="skills">
     <div class="container">
-      <div class="skills-layout">
-        <div class="fade-in">
-          <span class="section-label">// skills</span>
-          <h2 class="section-title">Tools & Technologies</h2>
-          <p class="section-sub" style="margin-bottom:0">A snapshot of my technical toolkit and proficiency levels
-            across different domains.</p>
+      <div class="fade-in" style="text-align: center; margin-bottom: 4rem;">
+        <span class="section-label" style="justify-content: center;">// skills</span>
+        <h2 class="section-title">Tools & Technologies</h2>
+        <p class="section-sub" style="margin: 0 auto;">A snapshot of my technical toolkit and proficiency levels across different domains.</p>
+      </div>
+
+      <!-- Central Axis Line -->
+      <div class="skills-central-axis"></div>
+
+      <!-- Node Tree Container -->
+      <div class="skills-tree-nodes">
+        
+        <!-- Domain Node 1: Web Design (Left) -->
+        <div class="domain-node left-node fade-in">
+          <div class="node-wrapper">
+            <!-- Node Card -->
+            <div class="node-card">
+              <div class="node-header">
+                <span class="material-symbols-outlined node-icon">web</span>
+                <h3 class="node-title">Web Design</h3>
+              </div>
+              <p class="node-desc">Immersive, responsive user experiences.</p>
+              
+              <!-- Leaf Nodes (Expanding leftwards) -->
+              <div class="leaf-container">
+                <div class="leaf-item">
+                  <span class="leaf-badge">HTML</span>
+                  <div class="leaf-line w-8"></div>
+                </div>
+                <div class="leaf-item">
+                  <span class="leaf-badge">CSS</span>
+                  <div class="leaf-line w-12"></div>
+                </div>
+                <div class="leaf-item">
+                  <span class="leaf-badge">Tailwind CSS</span>
+                  <div class="leaf-line w-6"></div>
+                </div>
+                <div class="leaf-item">
+                  <span class="leaf-badge">Sass</span>
+                  <div class="leaf-line w-10"></div>
+                </div>
+                <div class="leaf-item">
+                  <span class="leaf-badge">JS</span>
+                  <div class="leaf-line w-8"></div>
+                </div>
+                <div class="leaf-item">
+                  <span class="leaf-badge">Next.js</span>
+                  <div class="leaf-line w-12"></div>
+                </div>
+                <div class="leaf-item">
+                  <span class="leaf-badge">React</span>
+                  <div class="leaf-line w-6"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Horizontal Edge -->
+            <div class="horizontal-edge"></div>
+          </div>
+          <!-- Marker on Central Line -->
+          <div class="node-marker"></div>
         </div>
-        <div class="fade-in">
-          <div class="skill-category">
-            <div class="skill-cat-title">Programming Languages</div>
-            <div class="skill-bars">
-              <div class="skill-bar-item">
-                <div class="skill-bar-head"><span>Python</span><span style="color:var(--muted)">90%</span></div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" data-width="90"></div>
-                </div>
+
+        <!-- Domain Node 2: Web Development (Right) -->
+        <div class="domain-node right-node fade-in">
+          <div class="node-wrapper">
+            <!-- Horizontal Edge -->
+            <div class="horizontal-edge"></div>
+            <!-- Node Card -->
+            <div class="node-card">
+              <div class="node-header">
+                <span class="material-symbols-outlined node-icon">code</span>
+                <h3 class="node-title">Web Development</h3>
               </div>
-              <div class="skill-bar-item">
-                <div class="skill-bar-head"><span>JavaScript</span><span style="color:var(--muted)">80%</span></div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" data-width="80"></div>
+              <p class="node-desc">Scalable systems & robust server logic.</p>
+              
+              <!-- Leaf Nodes (Expanding rightwards) -->
+              <div class="leaf-container">
+                <div class="leaf-item">
+                  <div class="leaf-line w-8"></div>
+                  <span class="leaf-badge">Spring Boot (Java)</span>
                 </div>
-              </div>
-              <div class="skill-bar-item">
-                <div class="skill-bar-head"><span>PHP</span><span style="color:var(--muted)">85%</span></div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" data-width="85"></div>
+                <div class="leaf-item">
+                  <div class="leaf-line w-12"></div>
+                  <span class="leaf-badge">Django (Python)</span>
                 </div>
-              </div>
-              <div class="skill-bar-item">
-                <div class="skill-bar-head"><span>Java / C++</span><span style="color:var(--muted)">65%</span></div>
-                <div class="skill-bar-track">
-                  <div class="skill-bar-fill" data-width="65"></div>
+                <div class="leaf-item">
+                  <div class="leaf-line w-6"></div>
+                  <span class="leaf-badge">PHP</span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="skill-category">
-            <div class="skill-cat-title">Expertise & Domains</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Web Design & Developer</span>
-              <span class="skill-tag">SQA</span>
-              <span class="skill-tag">Figma</span>
-              <span class="skill-tag">Canva</span>
-              <span class="skill-tag">Postman</span>
-              <span class="skill-tag">AI Researcher</span>
-            </div>
-          </div>
-          <div class="skill-category">
-            <div class="skill-cat-title">Primary Tech Stack</div>
-            <div class="skill-tags">
-              <span class="skill-tag">HTML/CSS</span>
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">PHP</span>
-              <span class="skill-tag">MySQL</span>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">Spring Boot</span>
-              <span class="skill-tag">Scikit-learn</span>
-            </div>
-          </div>
+          <!-- Marker on Central Line -->
+          <div class="node-marker"></div>
         </div>
+
+        <!-- Domain Node 3: Databases (Left) -->
+        <div class="domain-node left-node fade-in">
+          <div class="node-wrapper">
+            <!-- Node Card -->
+            <div class="node-card">
+              <div class="node-header">
+                <span class="material-symbols-outlined node-icon">database</span>
+                <h3 class="node-title">Databases</h3>
+              </div>
+              <p class="node-desc">Data modeling, optimization & structures.</p>
+              
+              <!-- Leaf Nodes -->
+              <div class="leaf-container">
+                <div class="leaf-item">
+                  <span class="leaf-badge">PostgreSQL</span>
+                  <div class="leaf-line w-8"></div>
+                </div>
+                <div class="leaf-item">
+                  <span class="leaf-badge">MySQL</span>
+                  <div class="leaf-line w-12"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Horizontal Edge -->
+            <div class="horizontal-edge"></div>
+          </div>
+          <!-- Marker on Central Line -->
+          <div class="node-marker"></div>
+        </div>
+
+        <!-- Domain Node 4: Software Quality Assurance (SQA) (Right) -->
+        <div class="domain-node right-node fade-in">
+          <div class="node-wrapper">
+            <!-- Horizontal Edge -->
+            <div class="horizontal-edge"></div>
+            <!-- Node Card -->
+            <div class="node-card">
+              <div class="node-header">
+                <span class="material-symbols-outlined node-icon">verified_user</span>
+                <h3 class="node-title">Software Quality (SQA)</h3>
+              </div>
+              <p class="node-desc">Automated testing, metrics & API coverage.</p>
+              
+              <!-- Leaf Nodes -->
+              <div class="leaf-container">
+                <div class="leaf-item">
+                  <div class="leaf-line w-8"></div>
+                  <span class="leaf-badge">Postman</span>
+                </div>
+                <div class="leaf-item">
+                  <div class="leaf-line w-12"></div>
+                  <span class="leaf-badge">Swagger</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Marker on Central Line -->
+          <div class="node-marker"></div>
+        </div>
+
+        <!-- Domain Node 5: AI & Machine Learning (Left) -->
+        <div class="domain-node left-node fade-in">
+          <div class="node-wrapper">
+            <!-- Node Card -->
+            <div class="node-card">
+              <div class="node-header">
+                <span class="material-symbols-outlined node-icon">psychology</span>
+                <h3 class="node-title">AI & ML Research</h3>
+              </div>
+              <p class="node-desc">Predictive models & mathematical computing.</p>
+              
+              <!-- Leaf Nodes -->
+              <div class="leaf-container">
+                <div class="leaf-item">
+                  <span class="leaf-badge">Python</span>
+                  <div class="leaf-line w-8"></div>
+                </div>
+                <div class="leaf-item">
+                  <span class="leaf-badge">Scikit-learn</span>
+                  <div class="leaf-line w-12"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Horizontal Edge -->
+            <div class="horizontal-edge"></div>
+          </div>
+          <!-- Marker on Central Line -->
+          <div class="node-marker"></div>
+        </div>
+
+        <!-- Domain Node 6: UI/UX (Right) -->
+        <div class="domain-node right-node fade-in">
+          <div class="node-wrapper">
+            <!-- Horizontal Edge -->
+            <div class="horizontal-edge"></div>
+            <!-- Node Card -->
+            <div class="node-card">
+              <div class="node-header">
+                <span class="material-symbols-outlined node-icon">category</span>
+                <h3 class="node-title">UI/UX Design</h3>
+              </div>
+              <p class="node-desc">User-centric prototyping & interface flow.</p>
+              
+              <!-- Leaf Nodes -->
+              <div class="leaf-container">
+                <div class="leaf-item">
+                  <div class="leaf-line w-8"></div>
+                  <span class="leaf-badge">Figma</span>
+                </div>
+                <div class="leaf-item">
+                  <div class="leaf-line w-12"></div>
+                  <span class="leaf-badge">Framer</span>
+                </div>
+                <div class="leaf-item">
+                  <div class="leaf-line w-6"></div>
+                  <span class="leaf-badge">Strich</span>
+                </div>
+                <div class="leaf-item">
+                  <div class="leaf-line w-10"></div>
+                  <span class="leaf-badge">Canva</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Marker on Central Line -->
+          <div class="node-marker"></div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1692,14 +2119,14 @@
             </div>
           </div>
           <div class="project-img">
-            <img src="Job portal.PNG" alt="Job Portal">
+            <img src="images/Job portal.PNG" alt="Job Portal">
           </div>
         </div>
 
         <!-- Project Cards -->
         <div class="project-card fade-in">
           <div class="project-thumb">
-            <img src="shelf to tales.PNG" alt="Shelf To Tales">
+            <img src="images/shelf to tales.PNG" alt="Shelf To Tales">
             <div class="project-thumb-num">02</div>
           </div>
           <div class="project-body">
@@ -1717,7 +2144,7 @@
 
         <div class="project-card fade-in">
           <div class="project-thumb">
-            <img src="Denoise.PNG" alt="Denoising Audio">
+            <img src="images/Denoise.PNG" alt="Denoising Audio">
             <div class="project-thumb-num">03</div>
           </div>
           <div class="project-body">
@@ -1735,7 +2162,7 @@
 
         <div class="project-card fade-in">
           <div class="project-thumb">
-            <img src="Software Testing.PNG" alt="Software Testing Tool">
+            <img src="images/Software Testing.PNG" alt="Software Testing Tool">
             <div class="project-thumb-num">04</div>
           </div>
           <div class="project-body">
@@ -1752,7 +2179,7 @@
 
         <div class="project-card fade-in">
           <div class="project-thumb">
-            <img src="system_prototype.jpeg" alt="Smart Cooling Storage">
+            <img src="images/system_prototype.jpeg" alt="Smart Cooling Storage">
             <div class="project-thumb-num">05</div>
           </div>
           <div class="project-body">
@@ -1813,7 +2240,7 @@
           <div class="award-card">
             <div class="award-badge">🏆 5th Runner Up</div>
             <div class="award-icon-row">
-              <div class="award-icon" style="background-image: url('award.jpg');"></div>
+              <div class="award-icon" style="background-image: url('images/award.jpg');"></div>
               <div class="award-info">
                 <h3>Smart Farm Fresh Storage — Cooling System</h3>
               </div>
@@ -1836,7 +2263,7 @@
         </div>
         <div class="fade-in">
           <div class="award-visual-box">
-            <img src="7.jpg" alt="Project Visual">
+            <img src="images/7.jpg" alt="Project Visual">
           </div>
         </div>
       </div>
@@ -1852,19 +2279,19 @@
       <div class="gallery-slider fade-in">
         <div class="slider-track" id="sliderTrack">
           <div class="slide">
-            <img src="system_prototype.jpeg" alt="Cooling Storage Prototype">
+            <img src="images/system_prototype.jpeg" alt="Cooling Storage Prototype">
           </div>
           <div class="slide">
-            <img src="1.jpeg" alt="Moment 1">
+            <img src="images/1.jpeg" alt="Moment 1">
           </div>
           <div class="slide">
-            <img src="4.jpg" alt="Moment 4">
+            <img src="images/4.jpg" alt="Moment 4">
           </div>
           <div class="slide">
-            <img src="5.jpg" alt="Moment 5">
+            <img src="images/5.jpg" alt="Moment 5">
           </div>
           <div class="slide">
-            <img src="8.jpg" alt="Moment 8">
+            <img src="images/8.jpg" alt="Moment 8">
           </div>
         </div>
         <div class="slider-nav">
@@ -1927,7 +2354,7 @@
           </p>
         </div>
         <div class="resume-actions">
-          <a href="resume.pdf" download class="btn-primary">Download CV ↓</a>
+          <a href="CV.pdf" download class="btn-primary">Download CV ↓</a>
           <a href="#contact" class="btn-outline">Let's Talk</a>
         </div>
       </div>
@@ -2125,7 +2552,7 @@
         title: "My Journey Of FYDP: Smart Cooling Storage",
         cat: "FYDP",
         date: "May 15, 2025",
-        img: "system_prototype.jpeg",
+        img: "images/system_prototype.jpeg",
         content: `
         <p>Building the "Smart Farm Fresh Storage" was one of the most challenging yet rewarding experiences of my academic life. It wasn't just about writing code; it was about bridging the gap between digital intelligence and physical hardware.</p>
         <h4>The Vision</h4>
@@ -2140,7 +2567,7 @@
         title: "Essential Java Concepts for Spring Boot Mastery",
         cat: "Programming",
         date: "April 20, 2025",
-        img: "7.jpg",
+        img: "images/7.jpg",
         content: `
         <p>Before jumping into the magical world of Spring Boot, it's crucial to have a rock-solid foundation in Java. Many developers struggle with Spring not because the framework is hard, but because their Java fundamentals are shaky.</p>
         <h4>1. Object-Oriented Programming (OOP)</h4>
@@ -2157,7 +2584,7 @@
         title: "Why Every Researcher Should Learn to Code",
         cat: "Opinion",
         date: "March 10, 2025",
-        img: "award.jpg",
+        img: "images/award.jpg",
         content: `
         <p>In the modern era of science, the line between "researcher" and "programmer" is blurring. Whether you are in biology, physics, or social sciences, code has become a primary tool for discovery.</p>
         <h4>Automation and Efficiency</h4>
