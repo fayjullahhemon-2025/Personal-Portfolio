@@ -2312,6 +2312,301 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ─── INTERACTIVE RESUME SECTION ─── */
+    #resume {
+      background: var(--bg2);
+      position: relative;
+    }
+
+    .resume-container {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+
+    .resume-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 100px;
+      z-index: 10;
+    }
+
+    .resume-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 0.9rem 1.2rem;
+      color: var(--muted);
+      text-align: left;
+      font-family: var(--font-head);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .resume-btn i {
+      font-size: 1.1rem;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+
+    .resume-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .resume-btn.active {
+      color: var(--accent);
+      background: rgba(200, 245, 87, 0.08);
+      border-color: rgba(200, 245, 87, 0.2);
+      box-shadow: 0 0 15px rgba(200, 245, 87, 0.08);
+    }
+
+    .resume-btn.active i {
+      color: var(--accent);
+    }
+
+    .resume-panes {
+      position: relative;
+      min-height: 480px;
+    }
+
+    .resume-pane {
+      display: none;
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .resume-pane.active {
+      display: flex;
+      animation: resumeFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes resumeFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .resume-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .resume-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      opacity: 0;
+      animation: cardStaggerIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation-delay: calc(var(--delay, 0) * 0.08s);
+    }
+
+    @keyframes cardStaggerIn {
+      0% {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .resume-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .resume-card:hover {
+      border-color: rgba(200, 245, 87, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .resume-card:hover::before {
+      opacity: 1;
+    }
+
+    .resume-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.8rem;
+      margin-bottom: 0.2rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .resume-card-title h3 {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .resume-card-org {
+      font-family: var(--font-mono);
+      font-size: 0.825rem;
+      color: var(--accent);
+      margin-top: 0.25rem;
+    }
+
+    .resume-card-date {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .resume-card-body {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .resume-card-body ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .resume-card-body li {
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .resume-card-body li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+
+    /* Specialized layouts */
+    .skills-category-card {
+      grid-column: span 2;
+    }
+    
+    .skills-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .skill-badge {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 0.8rem;
+      text-align: center;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--text);
+      transition: all 0.25s ease;
+    }
+
+    .skill-badge:hover {
+      border-color: var(--accent);
+      background: rgba(200, 245, 87, 0.05);
+      color: var(--accent);
+      transform: scale(1.03);
+    }
+
+    .download-callout-card {
+      grid-column: span 2;
+      background: linear-gradient(135deg, var(--card) 0%, rgba(200, 245, 87, 0.03) 100%);
+      border-color: rgba(200, 245, 87, 0.1);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    /* ─── RESPONSIVE RESUME ─── */
+    @media (max-width: 990px) {
+      .resume-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .resume-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 0.8rem;
+        position: static;
+        white-space: nowrap;
+        scrollbar-width: none; /* Hide standard Firefox scrollbars */
+      }
+
+      .resume-nav::-webkit-scrollbar {
+        display: none; /* Hide Chrome/Safari scrollbar */
+      }
+
+      .resume-btn {
+        padding: 0.7rem 1.1rem;
+        font-size: 0.875rem;
+        flex-shrink: 0;
+      }
+
+      .resume-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .skills-category-card {
+        grid-column: span 1;
+      }
+
+      .download-callout-card {
+        grid-column: span 1;
+      }
+    }
   </style>
 </head>
 
@@ -3026,15 +3321,302 @@
   <!-- RESUME -->
   <section id="resume">
     <div class="container">
-      <div class="resume-box fade-in">
-        <div class="resume-text">
-          <h3>Want the full picture?</h3>
-          <p>Download my resume to see my complete academic and professional background, publications, awards, and more.
-          </p>
+      <span class="section-label">// background</span>
+      <h2 class="section-title fade-in">Interactive Resume</h2>
+      <p class="section-sub fade-in">Click a category below to explore my academic, research, and technical achievements.</p>
+
+      <div class="resume-container fade-in">
+        <!-- Sidebar Navigation Buttons -->
+        <div class="resume-nav">
+          <button class="resume-btn active" onclick="switchResumeTab(event, 'resume-education')">
+            🎓 Education
+          </button>
+          <button class="resume-btn" onclick="switchResumeTab(event, 'resume-research')">
+            🔬 Research & Academic
+          </button>
+          <button class="resume-btn" onclick="switchResumeTab(event, 'resume-experience')">
+            💼 Experience
+          </button>
+          <button class="resume-btn" onclick="switchResumeTab(event, 'resume-projects')">
+            💻 Projects
+          </button>
+          <button class="resume-btn" onclick="switchResumeTab(event, 'resume-skills')">
+            🛠️ Technical Skills
+          </button>
+          <button class="resume-btn" onclick="switchResumeTab(event, 'resume-awards')">
+            🏆 Awards & Mentions
+          </button>
         </div>
-        <div class="resume-actions">
-          <a href="CV.pdf" download class="btn-primary">Download CV ↓</a>
-          <a href="#contact" class="btn-outline">Let's Talk</a>
+
+        <!-- Detail Panes -->
+        <div class="resume-panes">
+          <!-- EDUCATION PANE -->
+          <div class="resume-pane active" id="resume-education">
+            <div class="resume-grid">
+              <div class="resume-card" style="--delay: 1">
+                <div class="resume-card-header">
+                  <div class="resume-card-title">
+                    <h3>B.Sc. in Computer Science and Engineering</h3>
+                    <div class="resume-card-org">United International University</div>
+                  </div>
+                  <span class="resume-card-date">2021 — Present</span>
+                </div>
+                <div class="resume-card-body">
+                  <p>Currently pursuing a Bachelor of Science in CSE, focusing on core computing principles, artificial intelligence, and software engineering. Highly engaged in research and technical student communities.</p>
+                  <ul>
+                    <li>Focus areas: Software Engineering, AI & Machine Learning, Databases</li>
+                    <li>Active participant in club workshops and developer hackathons</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="resume-card" style="--delay: 2">
+                <div class="resume-card-header">
+                  <div class="resume-card-title">
+                    <h3>Higher Secondary Certificate (HSC)</h3>
+                    <div class="resume-card-org">Motijheel Boy's Govt. School & College</div>
+                  </div>
+                  <span class="resume-card-date">2018 — 2020</span>
+                </div>
+                <div class="resume-card-body">
+                  <p>Completed higher secondary education in the Science Group, building strong analytical foundations in Mathematics, Physics, and Chemistry.</p>
+                  <ul>
+                    <li>Science discipline with an emphasis on analytical problem solving</li>
+                    <li>Developed strong logical foundations prior to university</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="resume-card" style="--delay: 3">
+                <div class="resume-card-header">
+                  <div class="resume-card-title">
+                    <h3>Secondary School Certificate (SSC)</h3>
+                    <div class="resume-card-org">Sher-E-Bangla School</div>
+                  </div>
+                  <span class="resume-card-date">2016 — 2018</span>
+                </div>
+                <div class="resume-card-body">
+                  <p>Completed secondary schooling in the Science Group, establishing initial foundational academic accomplishments in general science and math.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RESEARCH & ACADEMIC PANE -->
+          <div class="resume-pane" id="resume-research">
+            <div class="resume-grid">
+              <div class="resume-card" style="--delay: 1">
+                <div class="resume-card-header">
+                  <div class="resume-card-title">
+                    <h3>Deep Learning & Computer Vision Research</h3>
+                    <div class="resume-card-org">United International University</div>
+                  </div>
+                  <span class="resume-card-date">Academic Project</span>
+                </div>
+                <div class="resume-card-body">
+                  <p>Developing AI-driven computer vision systems for object tracking and classification, heavily leveraging YOLO algorithms and image augmentation techniques.</p>
+                  <ul>
+                    <li>Trained vegetable detection models utilizing Custom YOLOv8 datasets</li>
+                    <li>Optimized CNN classifiers for robotic sorting operations</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="resume-card" style="--delay: 2">
+                <div class="resume-card-header">
+                  <div class="resume-card-title">
+                    <h3>IoT & Automation Frameworks</h3>
+                    <div class="resume-card-org">United International University</div>
+                  </div>
+                  <span class="resume-card-date">Research Project</span>
+                </div>
+                <div class="resume-card-body">
+                  <p>Co-designed IoT architectures incorporating ESP32 microcontrollers, complex sensors, Peltier cooling grids, and real-time authenticated web dashboards.</p>
+                  <ul>
+                    <li>Integrated real-time sensor streams with cloud analytics interfaces</li>
+                    <li>Designed low-latency hardware sorting conveyors and RFID nodes</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXPERIENCE PANE -->
+          <div class="resume-pane" id="resume-experience">
+            <div class="resume-grid">
+              <div class="resume-card" style="--delay: 1">
+                <div class="resume-card-header">
+                  <div class="resume-card-title">
+                    <h3>PHP Developer Intern</h3>
+                    <div class="resume-card-org">Study.net</div>
+                  </div>
+                  <span class="resume-card-date">3 Months</span>
+                </div>
+                <div class="resume-card-body">
+                  <p>Worked as a backend PHP developer gaining hands-on professional experiences in web application workflows, clean code architecture, and agile environments.</p>
+                  <ul>
+                    <li>Collaborated with team developers to build dynamic backend features</li>
+                    <li>Optimized database operations and queries using MySQL</li>
+                    <li>Ensured interface parity and robust cross-browser compatibility</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="resume-card" style="--delay: 2">
+                <div class="resume-card-header">
+                  <div class="resume-card-title">
+                    <h3>Active Club Member</h3>
+                    <div class="resume-card-org">UIU Computer Club</div>
+                  </div>
+                  <span class="resume-card-date">2022 — Present</span>
+                </div>
+                <div class="resume-card-body">
+                  <p>Volunteered in several student-led tech workshops, programming competitions, and academic seminars designed to promote technical skills among general students.</p>
+                  <ul>
+                    <li>Helped coordinate logistically during active UIU campus hackathons</li>
+                    <li>Participated regularly in coding study circles and technical workshops</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PROJECTS PANE -->
+          <div class="resume-pane" id="resume-projects">
+            <div class="resume-grid">
+              <div class="resume-card" style="--delay: 1">
+                <div class="resume-card-header">
+                  <div class="resume-card-title">
+                    <h3>Smart Cooling Storage</h3>
+                    <div class="resume-card-org">IoT & YOLO Classification</div>
+                  </div>
+                  <span class="resume-card-date">FYDP</span>
+                </div>
+                <div class="resume-card-body">
+                  <p>An automated hardware-software prototype featuring YOLOv8-based crop classification, Peltier cooling, RFID dashboard panels, and conveyors.</p>
+                  <ul>
+                    <li>Hardware: ESP32, Peltier thermoelectric cooler, RFID, Load Cell</li>
+                    <li>Software: Python, OpenCV, custom Dashboard</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="resume-card" style="--delay: 2">
+                <div class="resume-card-header">
+                  <div class="resume-card-title">
+                    <h3>Smart Job Portal</h3>
+                    <div class="resume-card-org">Full-Stack Application</div>
+                  </div>
+                  <span class="resume-card-date">Academic</span>
+                </div>
+                <div class="resume-card-body">
+                  <p>A comprehensive platform facilitating interactions between recruiters and applicants with application tracking and user profile tracking.</p>
+                  <ul>
+                    <li>Stack: JavaScript, HTML, CSS, relational databases</li>
+                    <li>Designed responsive dashboards for user roles</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="resume-card" style="--delay: 3">
+                <div class="resume-card-header">
+                  <div class="resume-card-title">
+                    <h3>ShelfToTales</h3>
+                    <div class="resume-card-org">3D Virtual Bookshelf</div>
+                  </div>
+                  <span class="resume-card-date">Academic</span>
+                </div>
+                <div class="resume-card-body">
+                  <p>An innovative bookshelf concept designed for book collectors to log books, review stats, and organize dynamic custom bookshelves in virtual 3D cards.</p>
+                  <ul>
+                    <li>Stack: Spring Boot, React.js, HTML/CSS</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TECHNICAL SKILLS PANE -->
+          <div class="resume-pane" id="resume-skills">
+            <div class="resume-grid">
+              <div class="resume-card skills-category-card" style="--delay: 1">
+                <div class="resume-card-title">
+                  <h3>Languages & Frameworks</h3>
+                </div>
+                <div class="skills-mini-grid">
+                  <div class="skill-badge">C++</div>
+                  <div class="skill-badge">HTML / CSS</div>
+                  <div class="skill-badge">JavaScript</div>
+                  <div class="skill-badge">Java</div>
+                  <div class="skill-badge">PHP</div>
+                  <div class="skill-badge">Spring Boot</div>
+                  <div class="skill-badge">React.js</div>
+                  <div class="skill-badge">Laravel</div>
+                  <div class="skill-badge">Bootstrap</div>
+                </div>
+              </div>
+
+              <div class="resume-card skills-category-card" style="--delay: 2">
+                <div class="resume-card-title">
+                  <h3>Tools, Databases & Libraries</h3>
+                </div>
+                <div class="skills-mini-grid">
+                  <div class="skill-badge">PostgreSQL</div>
+                  <div class="skill-badge">MySQL</div>
+                  <div class="skill-badge">scikit-learn</div>
+                  <div class="skill-badge">OpenCV</div>
+                  <div class="skill-badge">git / GitHub</div>
+                  <div class="skill-badge">Figma</div>
+                  <div class="skill-badge">Postman</div>
+                  <div class="skill-badge">Canva</div>
+                </div>
+              </div>
+
+              <div class="resume-card skills-category-card" style="--delay: 3">
+                <div class="resume-card-title">
+                  <h3>Core Competencies & SQA</h3>
+                </div>
+                <div class="skills-mini-grid">
+                  <div class="skill-badge">Manual Testing</div>
+                  <div class="skill-badge">Automation Testing</div>
+                  <div class="skill-badge">SQA Fundamentals</div>
+                  <div class="skill-badge">AI Research</div>
+                  <div class="skill-badge">Data Analysis</div>
+                  <div class="skill-badge">UI/UX Design</div>
+                  <div class="skill-badge">Problem Solving</div>
+                  <div class="skill-badge">Team Collaboration</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AWARDS & CERTIFICATIONS PANE -->
+          <div class="resume-pane" id="resume-awards">
+            <div class="resume-grid">
+              <div class="resume-card" style="--delay: 1">
+                <div class="resume-card-header">
+                  <div class="resume-card-title">
+                    <h3>5th Runner Up</h3>
+                    <div class="resume-card-org">Smart Cooling Storage Competition</div>
+                  </div>
+                  <span class="resume-card-date">Special Recognition</span>
+                </div>
+                <div class="resume-card-body">
+                  <p>Awarded 5th Runner Up in a competitive project showcase for designing an automated Peltier-driven storage cooling prototype with YOLO classification logic.</p>
+                </div>
+              </div>
+
+              <div class="resume-card download-callout-card" style="--delay: 2">
+                <div class="resume-card-title">
+                  <h3 style="font-size: 1.4rem; color: var(--accent); margin-bottom: 0.5rem;">Looking for the official document?</h3>
+                  <p style="color: var(--muted); max-width: 45ch; margin: 0 auto 1.5rem; font-size: 0.9rem;">Download my complete, high-fidelity CV in standard PDF format to review my comprehensive achievements.</p>
+                  <a href="EmonCv.pdf" download class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                    Download Full CV ↓
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -3648,6 +4230,35 @@
         longestStreakEl.innerHTML = `Consistent`;
         dailyAverageEl.innerHTML = `1.5+`;
       }
+
+      // INTERACTIVE RESUME TAB CONTROLLER
+      window.switchResumeTab = function(event, tabId) {
+        event.preventDefault();
+        
+        const buttons = document.querySelectorAll('.resume-btn');
+        const panes = document.querySelectorAll('.resume-pane');
+        
+        // Deactivate all active tabs and panes
+        buttons.forEach(btn => btn.classList.remove('active'));
+        panes.forEach(pane => {
+          pane.classList.remove('active');
+          
+          // Force browser reflow to repeat keyframe animations on every click
+          const cards = pane.querySelectorAll('.resume-card');
+          cards.forEach(card => {
+            card.style.animation = 'none';
+            card.offsetHeight; // reflow trigger
+            card.style.animation = '';
+          });
+        });
+        
+        // Activate current tab button and corresponding pane
+        event.currentTarget.classList.add('active');
+        const targetPane = document.getElementById(tabId);
+        if (targetPane) {
+          targetPane.classList.add('active');
+        }
+      };
 
       // Fetch on load
       fetchGitHubContributions();
