@@ -13,7 +13,9 @@
     rel="stylesheet" />
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet">
   <style>
     *,
     *::before,
@@ -603,7 +605,7 @@
     /* Node Card styling */
     .domain-node .node-card {
       background: var(--bg2);
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       padding: 1.6rem 1.8rem;
       border-radius: 20px;
       width: 100%;
@@ -618,7 +620,7 @@
     .domain-node .node-card:hover {
       background: rgba(200, 245, 87, 0.04);
       border-color: rgba(200, 245, 87, 0.4);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3), 0 0 25px rgba(200, 245, 87, 0.08);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 25px rgba(200, 245, 87, 0.08);
       transform: translateY(-4px);
     }
 
@@ -647,6 +649,44 @@
       font-size: 0.85rem;
       color: var(--muted);
       line-height: 1.5;
+    }
+
+    .domain-node .node-count {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .domain-node .node-footer {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 1rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .domain-node .node-link {
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.25s ease, transform 0.2s ease;
+      text-decoration: none;
+    }
+
+    .domain-node .node-link:hover {
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .domain-node .node-link i {
+      font-size: 0.85rem;
     }
 
     /* Leaf Nodes Container (Expanding) */
@@ -749,7 +789,7 @@
       color: var(--text);
       white-space: nowrap;
       backdrop-filter: blur(12px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
       transition: all 0.25s ease;
     }
 
@@ -771,10 +811,21 @@
     }
 
     /* Visual spacing widths */
-    .w-6 { width: 1.5rem; }
-    .w-8 { width: 2.2rem; }
-    .w-10 { width: 3rem; }
-    .w-12 { width: 3.8rem; }
+    .w-6 {
+      width: 1.5rem;
+    }
+
+    .w-8 {
+      width: 2.2rem;
+    }
+
+    .w-10 {
+      width: 3rem;
+    }
+
+    .w-12 {
+      width: 3.8rem;
+    }
 
     /* Responsive adjustments */
     @media (max-width: 990px) {
@@ -782,36 +833,44 @@
         padding: 5rem 0;
         overflow: hidden;
       }
+
       .skills-central-axis {
         left: 24px;
         top: 250px;
         bottom: 50px;
         transform: none;
       }
+
       .skills-tree-nodes {
         gap: 60px;
       }
+
       .domain-node {
         justify-content: flex-start !important;
         padding-left: 50px;
       }
+
       .domain-node .node-wrapper {
         width: 100% !important;
         justify-content: flex-start !important;
         padding: 0 !important;
       }
+
       .domain-node .horizontal-edge {
         left: -26px !important;
         right: auto !important;
         width: 26px !important;
       }
+
       .domain-node .node-marker {
         left: 24px !important;
         transform: translate(-50%, -50%) !important;
       }
+
       .domain-node:hover .node-marker {
         transform: translate(-50%, -50%) scale(1.2) !important;
       }
+
       .domain-node .leaf-container {
         position: relative !important;
         left: auto !important;
@@ -828,9 +887,11 @@
         gap: 0.5rem !important;
         width: 100% !important;
       }
+
       .domain-node .leaf-line {
         display: none !important;
       }
+
       .domain-node .leaf-container::before,
       .domain-node .leaf-container::after {
         display: none !important;
@@ -1790,7 +1851,8 @@
         <div class="hero-card">
           <div class="floating-badge">Available for Hire</div>
           <div class="avatar-ring"
-            style="background-image: url('images/profile.jpeg'); background-size: cover; background-position: center;"></div>
+            style="background-image: url('images/profile.jpeg'); background-size: cover; background-position: center;">
+          </div>
           <div class="hc-name">Fayjullah Haque Emon</div>
           <div class="hc-role">Computer Science Student · Web Developer</div>
           <div class="hc-stats">
@@ -1871,7 +1933,8 @@
       <div class="fade-in" style="text-align: center; margin-bottom: 4rem;">
         <span class="section-label" style="justify-content: center;">// skills</span>
         <h2 class="section-title">Tools & Technologies</h2>
-        <p class="section-sub" style="margin: 0 auto;">A snapshot of my technical toolkit and proficiency levels across different domains.</p>
+        <p class="section-sub" style="margin: 0 auto;">A snapshot of my technical toolkit and proficiency levels across
+          different domains.</p>
       </div>
 
       <!-- Central Axis Line -->
@@ -1879,18 +1942,27 @@
 
       <!-- Node Tree Container -->
       <div class="skills-tree-nodes">
-        
-        <!-- Domain Node 1: Web Design (Left) -->
+
+        <!-- Domain Node 1: Frontend (Left) -->
         <div class="domain-node left-node fade-in">
           <div class="node-wrapper">
             <!-- Node Card -->
             <div class="node-card">
               <div class="node-header">
                 <span class="material-symbols-outlined node-icon">web</span>
-                <h3 class="node-title">Web Design</h3>
+                <div>
+                  <h3 class="node-title">Frontend</h3>
+                  <span class="node-count">7 Tools</span>
+                </div>
               </div>
               <p class="node-desc">Immersive, responsive user experiences.</p>
               
+              <!-- Footer Links -->
+              <div class="node-footer">
+                <a href="#blog" class="node-link"><i class="fi fi-rr-document"></i> Article</a>
+                <a href="#projects" class="node-link"><i class="fi fi-rr-folder"></i> Projects</a>
+              </div>
+
               <!-- Leaf Nodes (Expanding leftwards) -->
               <div class="leaf-container">
                 <div class="leaf-item">
@@ -1930,7 +2002,7 @@
           <div class="node-marker"></div>
         </div>
 
-        <!-- Domain Node 2: Web Development (Right) -->
+        <!-- Domain Node 2: Backend (Right) -->
         <div class="domain-node right-node fade-in">
           <div class="node-wrapper">
             <!-- Horizontal Edge -->
@@ -1939,10 +2011,19 @@
             <div class="node-card">
               <div class="node-header">
                 <span class="material-symbols-outlined node-icon">code</span>
-                <h3 class="node-title">Web Development</h3>
+                <div>
+                  <h3 class="node-title">Backend</h3>
+                  <span class="node-count">3 Tools</span>
+                </div>
               </div>
               <p class="node-desc">Scalable systems & robust server logic.</p>
-              
+
+              <!-- Footer Links -->
+              <div class="node-footer">
+                <a href="#blog" class="node-link"><i class="fi fi-rr-document"></i> Article</a>
+                <a href="#projects" class="node-link"><i class="fi fi-rr-folder"></i> Projects</a>
+              </div>
+
               <!-- Leaf Nodes (Expanding rightwards) -->
               <div class="leaf-container">
                 <div class="leaf-item">
@@ -1971,10 +2052,19 @@
             <div class="node-card">
               <div class="node-header">
                 <span class="material-symbols-outlined node-icon">database</span>
-                <h3 class="node-title">Databases</h3>
+                <div>
+                  <h3 class="node-title">Databases</h3>
+                  <span class="node-count">2 Tools</span>
+                </div>
               </div>
               <p class="node-desc">Data modeling, optimization & structures.</p>
-              
+
+              <!-- Footer Links -->
+              <div class="node-footer">
+                <a href="#blog" class="node-link"><i class="fi fi-rr-document"></i> Article</a>
+                <a href="#projects" class="node-link"><i class="fi fi-rr-folder"></i> Projects</a>
+              </div>
+
               <!-- Leaf Nodes -->
               <div class="leaf-container">
                 <div class="leaf-item">
@@ -2003,10 +2093,19 @@
             <div class="node-card">
               <div class="node-header">
                 <span class="material-symbols-outlined node-icon">verified_user</span>
-                <h3 class="node-title">Software Quality (SQA)</h3>
+                <div>
+                  <h3 class="node-title">Software Quality (SQA)</h3>
+                  <span class="node-count">2 Tools</span>
+                </div>
               </div>
               <p class="node-desc">Automated testing, metrics & API coverage.</p>
-              
+
+              <!-- Footer Links -->
+              <div class="node-footer">
+                <a href="#blog" class="node-link"><i class="fi fi-rr-document"></i> Article</a>
+                <a href="#projects" class="node-link"><i class="fi fi-rr-folder"></i> Projects</a>
+              </div>
+
               <!-- Leaf Nodes -->
               <div class="leaf-container">
                 <div class="leaf-item">
@@ -2031,10 +2130,19 @@
             <div class="node-card">
               <div class="node-header">
                 <span class="material-symbols-outlined node-icon">psychology</span>
-                <h3 class="node-title">AI & ML Research</h3>
+                <div>
+                  <h3 class="node-title">AI & ML Research</h3>
+                  <span class="node-count">2 Tools</span>
+                </div>
               </div>
               <p class="node-desc">Predictive models & mathematical computing.</p>
-              
+
+              <!-- Footer Links -->
+              <div class="node-footer">
+                <a href="#blog" class="node-link"><i class="fi fi-rr-document"></i> Article</a>
+                <a href="#projects" class="node-link"><i class="fi fi-rr-folder"></i> Projects</a>
+              </div>
+
               <!-- Leaf Nodes -->
               <div class="leaf-container">
                 <div class="leaf-item">
@@ -2063,10 +2171,19 @@
             <div class="node-card">
               <div class="node-header">
                 <span class="material-symbols-outlined node-icon">category</span>
-                <h3 class="node-title">UI/UX Design</h3>
+                <div>
+                  <h3 class="node-title">UI/UX Design</h3>
+                  <span class="node-count">4 Tools</span>
+                </div>
               </div>
               <p class="node-desc">User-centric prototyping & interface flow.</p>
-              
+
+              <!-- Footer Links -->
+              <div class="node-footer">
+                <a href="#blog" class="node-link"><i class="fi fi-rr-document"></i> Article</a>
+                <a href="#projects" class="node-link"><i class="fi fi-rr-folder"></i> Projects</a>
+              </div>
+
               <!-- Leaf Nodes -->
               <div class="leaf-container">
                 <div class="leaf-item">
