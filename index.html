@@ -3849,6 +3849,83 @@
       #hero .hero-actions {
         justify-content: center !important;
       }
+
+      /* About section responsive optimizations for 576px-767px */
+      .about-layout {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.5rem !important;
+      }
+
+      .about-layout .fade-in {
+        display: contents !important;
+      }
+
+      /* Center the section label at row 1 */
+      .about-layout .section-label {
+        grid-column: span 2 !important;
+        grid-row: 1 !important;
+        text-align: center !important;
+        justify-content: center !important;
+        margin-bottom: 0.5rem !important;
+      }
+
+      /* Center the section title and remove the line break at row 2 */
+      .about-layout .section-title {
+        grid-column: span 2 !important;
+        grid-row: 2 !important;
+        text-align: center !important;
+        margin-bottom: 1.5rem !important;
+      }
+
+      .about-layout .section-title br {
+        display: none !important;
+      }
+
+      /* Shift about.jpeg below the section title at row 3 */
+      .about-layout .about-img-frame-new {
+        grid-column: span 2 !important;
+        grid-row: 3 !important;
+        height: 340px !important;
+        width: 100% !important;
+        margin-top: 1rem !important;
+        margin-bottom: 1.5rem !important;
+      }
+
+      /* About me cards stack at row 4 */
+      .about-layout .about-cards-stack {
+        grid-column: span 2 !important;
+        grid-row: 4 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.2rem !important;
+        margin: 0 !important;
+      }
+
+      /* Focus pill and read bio button div at row 5 in 1 row 2 cols */
+      .about-layout div[style*="display: flex; flex-direction: column"] {
+        grid-column: span 2 !important;
+        grid-row: 5 !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1rem !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin-top: 1.5rem !important;
+      }
+
+      .about-layout .about-focus-pill {
+        width: 100% !important;
+        text-align: center !important;
+        margin-bottom: 0 !important;
+        justify-content: center !important;
+      }
+
+      .about-layout .about-read-bio-btn {
+        width: 100% !important;
+        text-align: center !important;
+        display: block !important;
+      }
     }
   </style>
 </head>
