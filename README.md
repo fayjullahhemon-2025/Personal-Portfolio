@@ -1,75 +1,81 @@
 <!--
   ══════════════════════════════════════════════════════════════════════════
-  🎨 THEME: Modern Elegant Portfolio (Glassmorphism Inspired)
-  👤 PROFILE: Fayjullah Haque Emon
-  🎓 EDUCATION: CSE @ United International University
+  ⚡ THEME: Cyber-Glassmorphism Neon (Portfolio Coordinated)
+  👤 PROFILE: Fayjullah Haque Emon (FHE.dev)
+  🎓 ACCENT COLORS: Neon Lime (#c8f557) & Cyber Blue (#38bdf8)
   ══════════════════════════════════════════════════════════════════════════
 -->
 
-<!-- SECTION 1: HERO HEADER -->
 <div align="center">
 
-  <!-- Project Theme Animated Wave Header -->
-  ![Header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=c8f557,0d1117,1e293b,38bdf8&height=120&section=header&fontSize=0)
+  <!-- Main Animated Theme Banner -->
+  ![Cyberpunk Wave Banner](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=c8f557,0a0a0f,0f3642,38bdf8&height=180&section=header&text=Fayjullah%20Haque%20Emon&fontSize=34&fontColor=c8f557&animation=twinkle&fontAlignY=35&desc=AI%20Researcher%20%E2%80%A2%20Full%20Stack%20Developer%20%E2%80%A2%20Data%20Scientist&descSize=16&descAlignY=62)
 
-  <!-- Typing Animation 1: Main Focus -->
+  <!-- Main Subtitle Typing Animation -->
   <a href="https://github.com/fayjullahhemon-2025">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=21&duration=3000&pause=1000&color=c8f557&center=true&vCenter=true&multiline=false&repeat=true&width=600&height=40&lines=CSE+Undergraduate;at+United+International+University;Data+Science+Major+%E2%80%A2+AI+Researcher;Full+Stack+Developer+%E2%80%A2+IoT+Enthusiast;Building+clean%2C+scalable+software+and+hardware+systems" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=c8f557&center=true&vCenter=true&multiline=false&repeat=true&width=600&height=40&lines=B.Sc.+in+CSE+%40+UIU;Data+Science+Major;Deep+Learning+%26+Cloud+Research;Full+Stack+Web+Developer;Building+next-gen+software+%26+hardware" alt="Typing SVG" />
   </a>
 
-  <!-- Typing Animation 2: Simulated Cyber Terminal -->
-  <br/>
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=16&duration=4000&pause=1500&color=38bdf8&background=18182400&center=true&vCenter=true&width=600&height=40&lines=%24+cat+skills.txt+%7C+grep+-E+%22(AI%7CWeb%7CIoT)%22;%5BSuccess%5D+Executing+passion.exe...;%24+curl+-s+https%3A%2F%2Ffhe.dev;%5BInfo%5D+Welcome+to+Fayjullah's+Universe!" alt="Terminal Typing SVG" />
+  <!-- Cyberpunk Terminal Command Loader -->
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=16&duration=4000&pause=1500&color=38bdf8&background=18182400&center=true&vCenter=true&width=600&height=40&lines=%24+fhe-dev+--init+--expert-mode;%E2%9E%A4+Connecting+to+Fayjullah's+Universe...;%E2%9E%A4+All+systems+nominal.+Welcome+aboard!" alt="Terminal Typing" />
 
-  <!-- Social Badges (Teal/Cyan Theme) -->
+  <br/>
+
+  <!-- High-Fidelity Themed Quick Links -->
   <a href="https://www.linkedin.com/in/fayjullah-haque-6187a5228/">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=1f2937&color=0A66C2"/>
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=0a0a0f&color=0A66C2"/>
   </a>
   &nbsp;
   <a href="https://github.com/fayjullahhemon-2025">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white&labelColor=1f2937&color=2DD4BF"/>
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white&labelColor=0a0a0f&color=c8f557"/>
   </a>
   &nbsp;
   <a href="mailto:fayjullahhaqueemon@gmail.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white&labelColor=1f2937&color=D14836"/>
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0a0a0f&color=D14836"/>
   </a>
   &nbsp;
   <a href="https://github.com/fayjullahhemon-2025/Personal-Portfolio">
-    <img src="https://img.shields.io/badge/Portfolio-2DD4BF?style=for-the-badge&logo=google-chrome&logoColor=white&labelColor=1f2937&color=059669"/>
+    <img src="https://img.shields.io/badge/Live_Portfolio-2DD4BF?style=for-the-badge&logo=google-chrome&logoColor=white&labelColor=0a0a0f&color=38bdf8"/>
   </a>
 
 </div>
 
 <br/>
 
-<!-- SECTION 2: ABOUT ME -->
-## 👨‍💻 &nbsp;About Me
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
-> *"The best way to predict the future is to invent it."*
+<!-- ABOUT ME SECTION -->
+## 🌌 &nbsp;The Developer Orbit
 
-Hi there! I'm **Fayjullah Haque Emon**, a passionate **Computer Science & Engineering student** at **United International University (UIU)**, majoring in **Data Science**. My journey is defined by a deep curiosity for software development, microarchitectural research, machine learning, and IoT hardware automation. I focus on building efficient, intelligent, and scalable solutions that bridge the gap between clean code and smart systems.
+> *"Code is not just logic; it's a medium of creative expression."*
 
-<table>
+Welcome to my digital playground! I am a **Computer Science and Engineering Undergraduate** at **United International University (UIU)**, deeply immersed in the world of **Data Science** and system optimization. By day, I build full-stack architectures and machine learning systems; by night, I dive into microarchitectural masking JIT research to make serverless hosts secure and highly performant.
+
+<table border="0">
 <tr>
-<td width="55%">
+<td width="55%" valign="top">
 
-- 🎓 Pursuing **B.Sc. in CSE** at United International University (CGPA: 3.59)
-- 📊 Majoring in **Data Science** & exploring **AI Research**
-- 💻 Experienced in **Full Stack Web Development (PHP/Laravel/Spring Boot)**
-- 🌱 Actively researching microarchitectural masking dispatcher optimizations in serverless computing
-- 🤖 Built multiple innovative projects combining **IoT & Computer Vision** (YOLOv8)
-- ⚡ General Member of the **UIU Computer Club**
+### 🚀 Technical Overview
+* **Academic Excellence**: B.Sc. in CSE @ UIU with a **CGPA of 3.59**.
+* **AI & Data Science**: Specialize in Deep Learning (CNNs, LSTMs), SVMs, and computer vision model training (YOLOv8).
+* **Research Focus**: Authoring papers on serverless microarchitectural security and vocal attribute extraction for clinical depression detection.
+* **IoT & Hardware**: Hands-on microchip programmer combining automated sensors (ESP32), weight modules, and robotic conveyor lines.
 
 </td>
-<td width="45%">
+<td width="45%" valign="top">
 
+### 💻 System Attributes
 ```javascript
-const emon = {
-    university: "UIU",
-    major: "Data Science & CSE",
-    code: ["Python", "JavaScript", "PHP", "Java", "C++"],
-    frameworks: ["Spring Boot", "Laravel", "React.js"],
-    expertise: ["AI Research", "Web Dev", "IoT Systems"]
+const systemStats = {
+  codename: "FHE.dev",
+  status: "Open to Collaborations",
+  environment: "Linux / Windows",
+  coreSkills: [
+    "Machine Learning & AI",
+    "Full-Stack Web Dev",
+    "Microarchitectural Security",
+    "Hardware Automation"
+  ]
 };
 ```
 
@@ -81,166 +87,21 @@ const emon = {
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
-<!-- SECTION 3: TECH STACK -->
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" width="30"/> &nbsp;Tech Arsenal
+<!-- TECH STACK -->
+## 🛠️ &nbsp;Tech Arsenal
 
 <div align="center">
+  
+### Languages & Runtimes
+<a href="#">
+  <img src="https://skillicons.dev/icons?i=python,js,php,java,cpp,html,css&theme=dark" />
+</a>
 
 <br/>
 
-<!-- Modern Skill Icons Grid -->
-<table>
-  <tr>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=python&theme=dark" width="40"/>
-      <br/><sub>Python</sub>
-    </td>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=js&theme=dark" width="40"/>
-      <br/><sub>JavaScript</sub>
-    </td>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=php&theme=dark" width="40"/>
-      <br/><sub>PHP</sub>
-    </td>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=java&theme=dark" width="40"/>
-      <br/><sub>Java</sub>
-    </td>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=cpp&theme=dark" width="40"/>
-      <br/><sub>C++</sub>
-    </td>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=spring&theme=dark" width="40"/>
-      <br/><sub>Spring Boot</sub>
-    </td>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=laravel&theme=dark" width="40"/>
-      <br/><sub>Laravel</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=react&theme=dark" width="40"/>
-      <br/><sub>React.js</sub>
-    </td>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=bootstrap&theme=dark" width="40"/>
-      <br/><sub>Bootstrap</sub>
-    </td>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=mysql&theme=dark" width="40"/>
-      <br/><sub>MySQL</sub>
-    </td>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=postgres&theme=dark" width="40"/>
-      <br/><sub>PostgreSQL</sub>
-    </td>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=postman&theme=dark" width="40"/>
-      <br/><sub>Postman</sub>
-    </td>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=figma&theme=dark" width="40"/>
-      <br/><sub>Figma</sub>
-    </td>
-    <td align="center" width="90">
-      <img src="https://skillicons.dev/icons?i=git&theme=dark" width="40"/>
-      <br/><sub>Git</sub>
-    </td>
-  </tr>
-</table>
-
-</div>
-
-<br/>
-
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
-
-<!-- SECTION 4: GITHUB STATS -->
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png" width="28"/> &nbsp;GitHub Analytics
-
-<div align="center">
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=fayjullahhemon-2025&theme=tokyonight" />
-</p>
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=fayjullahhemon-2025&theme=tokyonight" />
-</p>
-
-<br/>
-
-<!-- Activity Graph -->
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=fayjullahhemon-2025&bg_color=0d1117&color=2DD4BF&line=38bdf8&point=e5e7eb&area=true&area_color=0f3642&hide_border=true" width="100%" alt="Activity Graph"/>
-</div>
-
-<br/>
-
-<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
-
-<!-- SECTION 5: FEATURED PROJECTS -->
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Gem%20Stone.png" width="30"/> &nbsp;Featured Projects
-
-<div align="center">
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3 align="center">📚 Shelf To Tales</h3>
-      <p align="center">
-        <a href="https://github.com/fayjullahhemon-2025/ShelfToTales">
-          <img src="https://img.shields.io/badge/View_Repository-181717?style=social&logo=github" alt="Repo"/>
-        </a>
-      </p>
-      <p align="center">Innovative 3D virtual bookshelf featuring a personalized, immersive reading catalog environment.</p>
-      <p align="center">
-        <code>Java</code> <code>Spring Boot</code> <code>React.js</code> <code>3D Graphics</code>
-      </p>
-    </td>
-    <td width="50%" valign="top">
-      <h3 align="center">🌾 Smart Farm Fresh Storage</h3>
-      <p align="center">
-        <a href="https://github.com/fayjullahhemon-2025/Smart-Cooling-Storage">
-          <img src="https://img.shields.io/badge/View_Repository-181717?style=social&logo=github" alt="Repo"/>
-        </a>
-      </p>
-      <p align="center">IoT automation featuring YOLOv8 computer vision classification, robotic arm sorting, and RFID auth dashboards.</p>
-      <p align="center">
-        <code>Python</code> <code>YOLOv8</code> <code>IoT</code> <code>ESP32</code> <code>OpenCV</code>
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h3 align="center">🧪 Software Testing Tool</h3>
-      <p align="center">
-        <a href="https://github.com/fayjullahhemon-2025/API-Testing-Tool">
-          <img src="https://img.shields.io/badge/View_Repository-181717?style=social&logo=github" alt="Repo"/>
-        </a>
-      </p>
-      <p align="center">Comprehensive API lifecycle platform for automated testing environment variable bindings and JWT parsing.</p>
-      <p align="center">
-        <code>JavaScript</code> <code>API Lifecycle</code> <code>JSON Suite</code>
-      </p>
-    </td>
-    <td width="50%" valign="top">
-      <h3 align="center">⚡ Microarchitectural Masking</h3>
-      <p align="center">
-        <img src="https://img.shields.io/badge/Academic_Research-059669?style=flat&logo=googlescholar&logoColor=white" alt="Research"/>
-      </p>
-      <p align="center">JIT Adaptive Dispatcher mitigating cloud noisy neighbor interference and optimizing green carbon footprint.</p>
-      <p align="center">
-        <code>Cloud Computing</code> <code>JIT Dispatcher</code> <code>System Design</code>
-      </p>
-    </td>
-  </tr>
-</table>
-
-<br/>
-
-<a href="https://github.com/fayjullahhemon-2025?tab=repositories">
-  <img src="https://img.shields.io/badge/Explore_All_Works_%E2%86%92-24292e?style=for-the-badge&logo=github&logoColor=white"/>
+### Frameworks, Tools & Databases
+<a href="#">
+  <img src="https://skillicons.dev/icons?i=spring,laravel,react,bootstrap,mysql,postgres,postman,figma,git&theme=dark" />
 </a>
 
 </div>
@@ -249,16 +110,130 @@ const emon = {
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
-<!-- SECTION 6: CURRENT FOCUS & LEARNING -->
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" width="30"/> &nbsp;Current Roadmap
+<!-- PROJECTS GRID -->
+## 🔮 &nbsp;Core Portfolio Deployments
 
 <div align="center">
 
-| 🏗️ Building | 🔭 Exploring | 📚 Mastering |
-|:---:|:---:|:---:|
-| **Advanced Web & IoT** | **Microarchitectural Research** | **Data Science & ML** |
-| Scalable Enterprise Frameworks | Cloud Kernel Dispatchers | Deep Learning Architectures |
-| Automated Testing Environments | Green Carbon Neutral Cloud | Audio Denoising Algorithms |
+<table border="0">
+  <tr>
+    <td width="50%" valign="top">
+      <div align="center">
+        <h3>📚 Shelf To Tales</h3>
+        <a href="https://github.com/fayjullahhemon-2025/ShelfToTales">
+          <img src="https://img.shields.io/badge/Explore_Source-181717?style=for-the-badge&logo=github&logoColor=c8f557"/>
+        </a>
+        <p align="left"><i>An immersive 3D digital bookshelf catalog experience designed for passionate book enthusiasts.</i></p>
+        <p align="left">🛡️ <b>Key Architecture:</b> Dynamic book catalog management, interactive 3D UI, and secure reading history tracking.</p>
+        <div align="left">
+          <img src="https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white"/>
+          <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat&logo=springboot&logoColor=white"/>
+          <img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB"/>
+        </div>
+      </div>
+    </td>
+    <td width="50%" valign="top">
+      <div align="center">
+        <h3>🌾 Smart Farm Fresh Storage</h3>
+        <a href="https://github.com/fayjullahhemon-2025/Smart-Cooling-Storage">
+          <img src="https://img.shields.io/badge/Explore_Source-181717?style=for-the-badge&logo=github&logoColor=c8f557"/>
+        </a>
+        <p align="left"><i>IoT automated agricultural preservation system built to combat post-harvest losses in rural regions.</i></p>
+        <p align="left">🤖 <b>Key Architecture:</b> YOLOv8 vegetable sorting, Peltier thermal sensors, robotic arms, and ESP32 dashboard controllers.</p>
+        <div align="left">
+          <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"/>
+          <img src="https://img.shields.io/badge/YOLOv8-FF0000?style=flat&logo=opencv&logoColor=white"/>
+          <img src="https://img.shields.io/badge/IoT_Hardware-4B8BBE?style=flat&logo=arduino&logoColor=white"/>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <div align="center">
+        <h3>🧪 Software API Testing Tool</h3>
+        <a href="https://github.com/fayjullahhemon-2025/API-Testing-Tool">
+          <img src="https://img.shields.io/badge/Explore_Source-181717?style=for-the-badge&logo=github&logoColor=c8f557"/>
+        </a>
+        <p align="left"><i>A fully featured API lifecycle framework automating JWT authentications and mock staging environments.</i></p>
+        <p align="left">⚙️ <b>Key Architecture:</b> Custom environment variable bindings, pass/fail status trackers, and structured JSON suite exports.</p>
+        <div align="left">
+          <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black"/>
+          <img src="https://img.shields.io/badge/API_Lifecycle-38bdf8?style=flat"/>
+          <img src="https://img.shields.io/badge/Automation-c8f557?style=flat"/>
+        </div>
+      </div>
+    </td>
+    <td width="50%" valign="top">
+      <div align="center">
+        <h3>⚡ Microarchitectural Masking</h3>
+        <a href="#">
+          <img src="https://img.shields.io/badge/Research_Paper-059669?style=for-the-badge&logo=googlescholar&logoColor=white"/>
+        </a>
+        <p align="left"><i>Zero-privilege JIT kernel dispatcher successfully neutralizing Noisy Neighbor interferences in cloud servers.</i></p>
+        <p align="left">📈 <b>Key Highlights:</b> Recovers ~60% memory contention latency, zero application performance overheads, and cuts cloud carbon footprints.</p>
+        <div align="left">
+          <img src="https://img.shields.io/badge/Cloud_Systems-0a0a0f?style=flat"/>
+          <img src="https://img.shields.io/badge/JIT_Dispatcher-38bdf8?style=flat"/>
+          <img src="https://img.shields.io/badge/Green_Cloud-059669?style=flat"/>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+<br/>
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+<!-- ACADEMIC RESEARCH AND CONTRIBUTIONS -->
+## 📚 &nbsp;Academic & Research Endeavors
+
+* 📑 **"Microarchitectural Masking: A JIT-Based Adaptive Dispatcher for Resource-Resilient Serverless Computing"**
+  * *Focus*: Mitigation of noisy neighbors and memory latency in cloud microservices via user-space kernel dispatching.
+  * *Result*: Restores ~60% memory contention latency and reduces greenhouse CO2e footprints by 29.6kg per million serverless executions.
+
+* 📑 **"AI-Driven Speech-Based Depression Detection System"**
+  * *Focus*: Evaluating clinical predictive systems using custom vocal attribute extractions.
+  * *Architecture*: Implemented deep neural models (CNN, RNN, LSTM) and vocal spectrum analyzers (GMM, openSMILE) targeting Weighted Average Recall optimizations.
+
+<br/>
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+<!-- GITHUB ANALYTICS -->
+## 📊 &nbsp;GitHub Command Center
+
+<div align="center">
+
+<!-- Combined Cards -->
+<p align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=fayjullahhemon-2025&theme=tokyonight" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=fayjullahhemon-2025&theme=tokyonight" />
+</p>
+
+<!-- Activity Sparkline -->
+<br/>
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=fayjullahhemon-2025&bg_color=0a0a0f&color=c8f557&line=38bdf8&point=e5e7eb&area=true&area_color=0f3642&hide_border=true" width="100%" alt="Activity Sparkline"/>
+
+</div>
+
+<br/>
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+<!-- ROADMAP & EXPERTISE -->
+## 🎯 &nbsp;Hacking Pipeline
+
+<div align="center">
+
+| 🏗️ Under Active Code | 🔬 Research Orbit | 📚 Core Masteries |
+| :---: | :---: | :---: |
+| **Enterprise Server Frameworks** | **Cloud Kernel Dispatchers** | **Deep Neural Architectures** |
+| Automated Variable API Tests | Green Serverless Computing | Vocal Spectrogram Models |
+| Interactive 3D Interfaces | Microarchitectural Security | Computer Vision Classifiers |
 
 </div>
 
@@ -267,16 +242,12 @@ const emon = {
 <!-- FOOTER -->
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=100&section=footer"/>
+  ![Footer Waving Wave](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=38bdf8,0f3642,0a0a0f,c8f557&height=100&section=footer)
 
-<br/>
+  <br/>
 
-*"The best way to predict the future is to invent it."*
-
-<br/>
-
-<a href="https://github.com/fayjullahhemon-2025">
-  <img src="https://img.shields.io/badge/Made_with_%E2%9D%A4%EF%B8%8F_by-Emon-ff69b4?style=flat-square&labelColor=24292e"/>
-</a>
+  <a href="https://github.com/fayjullahhemon-2025">
+    <img src="https://img.shields.io/badge/Engineered_With_⚡_By-Emon-c8f557?style=flat-square&labelColor=0a0a0f"/>
+  </a>
 
 </div>
