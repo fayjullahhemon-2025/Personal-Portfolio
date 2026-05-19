@@ -4036,9 +4036,15 @@
         z-index: initial !important;
       }
 
-      /* Directly target #node-frontend to remove any inherited left padding */
-      #node-frontend {
+      /* Remove padding-left from ALL skill section cards to center them */
+      #node-frontend,
+      #node-backend,
+      #node-databases,
+      #node-sqa,
+      #node-aiml,
+      #node-uiux {
         padding-left: 0 !important;
+        padding-right: 0 !important;
       }
     }
   </style>
