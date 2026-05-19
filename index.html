@@ -2584,6 +2584,48 @@
       font-family: var(--font-mono);
     }
 
+    /* COLLAPSIBLE DETAILED DESCRIPTIONS */
+    .resume-card-detailed-desc {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin-bottom 0.3s ease;
+      margin-bottom: 0;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--muted);
+      border-left: 2px solid rgba(200, 245, 87, 0.3);
+      padding-left: 1rem;
+    }
+
+    .resume-card-detailed-desc.show {
+      max-height: 250px;
+      opacity: 1;
+      margin-bottom: 1rem;
+    }
+
+    .resume-read-more-btn {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 0.8rem;
+      transition: color 0.2s, transform 0.2s;
+      width: fit-content;
+    }
+
+    .resume-read-more-btn:hover {
+      color: #fff;
+      transform: translateX(4px);
+    }
+
     /* Specialized layouts */
     .skills-category-card {
       grid-column: span 2;
@@ -3795,11 +3837,16 @@
                   <span class="resume-card-date">Ongoing</span>
                 </div>
                 <div class="resume-card-body">
-                  <p>Designed and evaluated "Microarchitectural Masking", a zero-privilege, user-space JIT dispatcher that successfully neutralizes "Noisy Neighbor" interference in cloud hosts by dynamically shifting to hardware-pressure-optimized algorithmic kernels.</p>
+                  <div class="resume-card-detailed-desc">
+                    Designed and evaluated "Microarchitectural Masking", a zero-privilege, user-space JIT dispatcher that successfully neutralizes "Noisy Neighbor" interference in cloud hosts by dynamically shifting to hardware-pressure-optimized algorithmic kernels.
+                  </div>
                   <ul>
                     <li>Ensured virtually no performance loss for compute/IO workloads under contention while recovering ~60% of memory-bound latency.</li>
                     <li>Mitigated an estimated 29.6kg of CO2e per million invocations seamlessly without requiring underlying infrastructure changes.</li>
                   </ul>
+                  <button class="resume-read-more-btn" onclick="toggleResumeDetails(this)">
+                    <span class="text">Read More</span> <span class="arrow" style="transition: transform 0.3s ease; display: inline-block;">→</span>
+                  </button>
                 </div>
               </div>
 
@@ -3812,11 +3859,16 @@
                   <span class="resume-card-date">Completed</span>
                 </div>
                 <div class="resume-card-body">
-                  <p>Implemented machine learning and deep learning architectures to detect depression from vocal features, extracting robust vocal attributes utilizing openSMILE feature extraction tools and methodologies.</p>
+                  <div class="resume-card-detailed-desc">
+                    Implemented machine learning and deep learning architectures to detect depression from vocal features, extracting robust vocal attributes utilizing openSMILE feature extraction tools and methodologies.
+                  </div>
                   <ul>
                     <li>Built predictive models using SVM, XGBoost, CNN, RNN, LSTM, and GMM models.</li>
                     <li>Evaluated and analyzed system performance using Weighted Average Recall (WAR) and conducted comparative model analysis to optimize predictive reliability.</li>
                   </ul>
+                  <button class="resume-read-more-btn" onclick="toggleResumeDetails(this)">
+                    <span class="text">Read More</span> <span class="arrow" style="transition: transform 0.3s ease; display: inline-block;">→</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -4780,6 +4832,24 @@
         const targetPane = document.getElementById(tabId);
         if (targetPane) {
           targetPane.classList.add('active');
+        }
+      };
+
+      // TOGGLE RESEARCH CARD EXPANDED DESCRIPTION
+      window.toggleResumeDetails = function(btn) {
+        const cardBody = btn.closest('.resume-card-body');
+        const desc = cardBody.querySelector('.resume-card-detailed-desc');
+        const isExpanded = desc.classList.toggle('show');
+        btn.classList.toggle('active');
+        
+        const arrow = btn.querySelector('.arrow');
+        const text = btn.querySelector('.text');
+        if (isExpanded) {
+          text.textContent = 'Read Less';
+          arrow.style.transform = 'rotate(-90deg)';
+        } else {
+          text.textContent = 'Read More';
+          arrow.style.transform = 'rotate(0deg)';
         }
       };
 
