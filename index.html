@@ -3528,20 +3528,26 @@
         display: none !important;
       }
 
-      /* Center the skills heading row */
+      /* Left-align the skills heading row like About section */
       .skills-header-row {
         grid-template-columns: 1fr !important;
-        text-align: center !important;
+        text-align: left !important;
+        margin-bottom: 1.5rem !important; /* Reduced vertical gap */
       }
 
       .skills-header-left {
-        align-items: center !important;
-        text-align: center !important;
+        align-items: flex-start !important;
+        text-align: left !important;
         width: 100% !important;
       }
 
       .skills-header-left .section-label {
-        justify-content: center !important;
+        justify-content: flex-start !important;
+      }
+
+      /* Reduce scroll container top padding to shrink vertical gap */
+      .skills-scroll-container {
+        padding-top: 0 !important;
       }
 
       /* Hide the central axis, horizontal connector lines, and markers */
@@ -3579,7 +3585,7 @@
         height: 100% !important;
         display: flex !important;
         flex-direction: column !important;
-        transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
       }
 
       /* Let card descriptions stretch to push leaves/tools to the bottom if needed */
@@ -3587,12 +3593,13 @@
         flex-grow: 1 !important;
       }
 
-      /* Hover highlight card border color #c8f557 (100% opacity) and zoom effect */
+      /* Hover highlight same as about-card-new: translateX(6px) and soft border color */
       .domain-node:hover .node-card {
-        border-color: #c8f557 !important;
-        box-shadow: 0 0 25px rgba(200, 245, 87, 0.25) !important;
-        transform: scale(1.04) !important;
-        z-index: 10 !important;
+        background: rgba(255, 255, 255, 0.03) !important;
+        border-color: rgba(200, 245, 87, 0.15) !important;
+        transform: translateX(6px) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+        z-index: initial !important;
       }
     }
   </style>
