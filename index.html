@@ -3551,6 +3551,15 @@
       .domain-node .node-card {
         width: 100% !important;
         margin: 0 !important;
+        transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease !important;
+      }
+
+      /* Active highlighted card border color #c8f557 (100% opacity) and zoom effect */
+      .domain-node.active-card .node-card {
+        border-color: #c8f557 !important;
+        box-shadow: 0 0 25px rgba(200, 245, 87, 0.25) !important;
+        transform: scale(1.04) !important;
+        z-index: 10 !important;
       }
     }
   </style>
@@ -4987,11 +4996,30 @@
                 btn.classList.remove('active');
               }
             });
+
+            // Toggle active-card class on nodes for tablet zoom & glow effects
+            domainNodes.forEach(node => {
+              if (node.id === activeId) {
+                node.classList.add('active-card');
+              } else {
+                node.classList.remove('active-card');
+              }
+            });
           }
         });
 
         // Initialize progress line on load
         updateProgressLine();
+
+        // Initialize default active card class
+        const defaultActiveBtn = document.querySelector('.skills-nav-btn.active');
+        if (defaultActiveBtn) {
+          const defaultTarget = defaultActiveBtn.getAttribute('data-target');
+          const defaultNode = document.getElementById(defaultTarget);
+          if (defaultNode) {
+            defaultNode.classList.add('active-card');
+          }
+        }
       }
 
       // Click Handler for smooth internal container scrolling
@@ -5012,6 +5040,15 @@
             // Update active button state immediately
             navButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+
+            // Update active card class immediately
+            domainNodes.forEach(node => {
+              if (node.id === targetId) {
+                node.classList.add('active-card');
+              } else {
+                node.classList.remove('active-card');
+              }
+            });
           }
         });
       });
