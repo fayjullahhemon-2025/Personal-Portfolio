@@ -518,9 +518,16 @@
 
     .about-layout {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 5rem;
-      align-items: start;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 990px) {
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
     }
 
     .about-quote {
@@ -560,43 +567,174 @@
       font-family: var(--font-mono);
     }
 
-    .interests-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    .interest-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 2rem;
+    .about-cards-stack {
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
-      transition: transform 0.3s, border-color 0.3s;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
-    .interest-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
+    .about-card-new {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
     }
 
-    .interest-icon {
-      font-size: 2.2rem;
-      margin-bottom: 0.2rem;
+    .about-card-new:hover {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(200, 245, 87, 0.15);
+      transform: translateX(6px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
-    .interest-title {
-      font-size: 1.1rem;
-      font-weight: 600;
+    .about-card-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    /* Scholar (Green-yellow) */
+    .about-card-new.scholar .about-card-icon-box {
+      background: rgba(200, 245, 87, 0.06);
+      border: 1px solid rgba(200, 245, 87, 0.12);
+      color: var(--accent);
+    }
+
+    /* Builder (Blue/Cyan) */
+    .about-card-new.builder .about-card-icon-box {
+      background: rgba(14, 165, 233, 0.06);
+      border: 1px solid rgba(14, 165, 233, 0.12);
+      color: #38bdf8;
+    }
+
+    /* Visionary (Teal/Emerald) */
+    .about-card-new.visionary .about-card-icon-box {
+      background: rgba(16, 185, 129, 0.06);
+      border: 1px solid rgba(16, 185, 129, 0.12);
+      color: #34d399;
+    }
+
+    .about-card-new:hover .about-card-icon-box {
+      transform: scale(1.08);
+    }
+
+    .about-card-new.scholar:hover .about-card-icon-box {
+      box-shadow: 0 0 15px rgba(200, 245, 87, 0.25);
+      background: rgba(200, 245, 87, 0.12);
+    }
+
+    .about-card-new.builder:hover .about-card-icon-box {
+      box-shadow: 0 0 15px rgba(14, 165, 233, 0.25);
+      background: rgba(14, 165, 233, 0.12);
+    }
+
+    .about-card-new.visionary:hover .about-card-icon-box {
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+      background: rgba(16, 185, 129, 0.12);
+    }
+
+    .about-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .about-card-content h3 {
       font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
     }
 
-    .interest-desc {
+    .about-card-content p {
       font-size: 0.85rem;
+      line-height: 1.55;
       color: var(--muted);
-      line-height: 1.6;
+    }
+
+    .about-card-content p strong {
+      color: #fff;
+    }
+
+    /* Glow Pill Current Focus */
+    .about-focus-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200, 245, 87, 0.05);
+      border: 1px solid rgba(200, 245, 87, 0.12);
+      color: var(--accent);
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      width: fit-content;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-read-bio-btn {
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .about-read-bio-btn:hover {
+      color: #fff;
+      transform: translateX(4px);
+    }
+
+    /* Right Column Image Frame - Tall, gorgeous & full colorful */
+    .about-img-frame-new {
+      width: 100%;
+      height: 520px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      background: var(--bg3);
+      transition: all 0.5s ease;
+    }
+
+    .about-img-frame-new img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .about-img-frame-new:hover {
+      border-color: rgba(200, 245, 87, 0.2);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .about-img-frame-new:hover img {
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 990px) {
+      .about-img-frame-new {
+        height: 420px;
+      }
     }
 
     /* ─── INTERACTIVE SKILLS NODE TREE ─── */
@@ -3303,49 +3441,61 @@
   <section id="about">
     <div class="container">
       <div class="about-layout">
+        <!-- Left Column: Stack of Cards -->
         <div class="fade-in">
           <span class="section-label">// about me</span>
-          <h2 class="section-title">Curious mind,<br>relentless builder.</h2>
-          <blockquote class="about-quote">"Research is to see what everybody else has seen, and to think what nobody
-            else has thought."</blockquote>
-          <p class="about-text">I'm a Computer Science student at United International University, dedicated to
-            mastering the art of software development and AI research. I thrive on challenges that require creative
-            problem-solving and efficient algorithmic thinking.</p>
-          <p class="about-text">Beyond academics, I am an active member of the UIU Computer Club, where I engage with
-            fellow tech enthusiasts and stay updated with the latest industry trends.</p>
-          <ul class="about-list" style="margin-top: 1.5rem;">
-            <li>University — United International University (Ongoing)</li>
-            <li>College — Motijheel Boy's Govt. school</li>
-            <li>School — Sher - E - Bangla School</li>
-            <li>Member — UIU Computer Club (General Member)</li>
-          </ul>
+          <h2 class="section-title" style="margin-bottom: 2rem;">Curious mind,<br>relentless builder.</h2>
+          
+          <div class="about-cards-stack">
+            <!-- Card 1: The Scholar -->
+            <div class="about-card-new scholar">
+              <div class="about-card-icon-box">
+                <span class="material-symbols-outlined" style="font-size: 1.5rem;">school</span>
+              </div>
+              <div class="about-card-content">
+                <h3>The Scholar</h3>
+                <p>I'm a <strong>Computer Science & Engineering student</strong> at <strong>United International University</strong>, driven by a passion for building clean, scalable, and efficient software systems.</p>
+              </div>
+            </div>
+
+            <!-- Card 2: The Builder -->
+            <div class="about-card-new builder">
+              <div class="about-card-icon-box">
+                <span class="material-symbols-outlined" style="font-size: 1.5rem;">code</span>
+              </div>
+              <div class="about-card-content">
+                <h3>The Builder</h3>
+                <p>I specialize in <strong>Full-Stack Development</strong> using <strong>React.js</strong>, <strong>Spring Boot</strong>, and <strong>MySQL</strong>. I love solving complex problems and creating applications with real-world impact.</p>
+              </div>
+            </div>
+
+            <!-- Card 3: The Visionary -->
+            <div class="about-card-new visionary">
+              <div class="about-card-icon-box">
+                <span class="material-symbols-outlined" style="font-size: 1.5rem;">rocket_launch</span>
+              </div>
+              <div class="about-card-content">
+                <h3>The Visionary</h3>
+                <p>I'm constantly exploring technologies like <strong>AI & ML Research</strong>, <strong>Docker</strong>, and <strong>Cloud Architecture</strong>. My goal is to build software that is not only functional but also <em>elegant and user-friendly</em>.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Focus Badge & Link -->
+          <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+            <div class="about-focus-pill">
+              <span>⚡ Current Focus: Advanced Data Structures & Microservices</span>
+            </div>
+            <div>
+              <a href="#resume" class="about-read-bio-btn">Read full bio →</a>
+            </div>
+          </div>
         </div>
+
+        <!-- Right Column: Tall colorful about image -->
         <div class="fade-in">
-          <div class="interests-grid">
-            <div class="interest-card">
-              <div class="interest-icon">🔬</div>
-              <div class="interest-title">Research</div>
-              <div class="interest-desc">Conducting studies in [your area], publishing findings and contributing to the
-                academic community.</div>
-            </div>
-            <div class="interest-card">
-              <div class="interest-icon">💻</div>
-              <div class="interest-title">Development</div>
-              <div class="interest-desc">Building tools and applications that solve real-world problems with clean,
-                scalable code.</div>
-            </div>
-            <div class="interest-card">
-              <div class="interest-icon">📝</div>
-              <div class="interest-title">Writing</div>
-              <div class="interest-desc">Sharing knowledge through blogs, papers, and documentation to help others learn
-                and grow.</div>
-            </div>
-            <div class="interest-card">
-              <div class="interest-icon">🤝</div>
-              <div class="interest-title">Collaboration</div>
-              <div class="interest-desc">Working with diverse teams across disciplines to create innovative and
-                meaningful solutions.</div>
-            </div>
+          <div class="about-img-frame-new">
+            <img src="images/about.jpeg" alt="Fayjullah Haque Emon">
           </div>
         </div>
       </div>
