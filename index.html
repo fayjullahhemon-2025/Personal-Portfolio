@@ -3767,6 +3767,20 @@
         text-align: center !important;
         white-space: nowrap !important; /* Prevent text wrapping inside the badge */
       }
+
+      /* Grid layout for Contact items and centered socials on tablets */
+      .contact-info {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto auto !important;
+        gap: 1.5rem !important;
+      }
+
+      .contact-info .socials {
+        grid-column: span 2 !important;
+        justify-content: center !important;
+        margin-top: 1rem !important;
+      }
     }
   </style>
 </head>
