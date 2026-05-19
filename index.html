@@ -154,21 +154,26 @@
     }
 
     .dropdown-trigger {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
       cursor: pointer;
+      vertical-align: middle;
+      line-height: 1 !important;
     }
 
     .dropdown-arrow {
-      font-size: 0.65rem;
-      transition: transform 0.3s ease;
+      font-size: 0.8rem !important;
+      transition: transform 0.3s ease, color 0.3s ease;
       color: var(--muted);
+      display: inline-block !important;
+      line-height: 1 !important;
+      margin-top: 1px;
     }
 
     .nav-dropdown:hover .dropdown-arrow {
       transform: rotate(180deg);
-      color: var(--accent);
+      color: var(--accent) !important;
     }
 
     .dropdown-menu {
@@ -3239,7 +3244,7 @@
       <li><a href="#awards">Awards</a></li>
       <li><a href="#contact">Contact</a></li>
       <li class="nav-dropdown">
-        <a href="javascript:void(0)" class="dropdown-trigger">More <span class="dropdown-arrow">▼</span></a>
+        <a href="javascript:void(0)" class="dropdown-trigger">More <i class="fi fi-rr-angle-small-down dropdown-arrow"></i></a>
         <ul class="dropdown-menu">
           <li><a href="#activity"><i class="fi fi-brands-github"></i> GitHub</a></li>
           <li><a href="#resume"><i class="fi fi-rr-document"></i> Resume</a></li>
