@@ -9,11 +9,8 @@
 <!-- SECTION 1: HERO HEADER -->
 <div align="center">
 
-  <!-- Layered Wave Background 1: Shark Style (Cyberpunk Gradient) -->
-  <img src="https://capsule-render.vercel.app/api?type=shark&color=gradient&customColorList=23,10,15,30,35,40&height=220&section=header&text=Fayjullah%20Haque%20Emon&fontSize=38&fontColor=c8f557&animation=twinkle&fontAlignY=38&desc=Data%20Science%20Major%20%E2%80%A2%20Full%20Stack%20Engineer&descSize=16&descAlignY=62"/>
-
-  <!-- Layered Wave Background 2: Waving Style (Liquid Transition) -->
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,5,20,30,40&height=120&section=header&fontSize=0&animation=fadeIn" style="margin-top:-60px;"/>
+  <!-- Project Theme Animated Wave Header -->
+  ![Header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=c8f557,0d1117,1e293b,38bdf8&height=120&section=header&fontSize=0)
 
   <!-- Typing Animation 1: Main Focus -->
   <a href="https://github.com/fayjullahhemon-2025">
