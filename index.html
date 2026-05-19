@@ -4116,16 +4116,47 @@
       #awards .awards-layout {
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        gap: 2rem !important;
+        gap: 1.5rem !important;
         align-items: stretch !important;
       }
 
-      #awards .award-card .award-info ul {
+      /* Flatten DOM structure to allow grid positioning */
+      #awards .awards-layout > div.fade-in {
+        display: contents !important;
+      }
+
+      /* Place award card in top-left */
+      #awards .award-card {
+        grid-column: 1 / 2 !important;
+        grid-row: 1 !important;
+        height: 100% !important;
+      }
+
+      /* Hide project description and features from main card */
+      #awards .award-card > .award-info {
         display: none !important;
       }
 
+      /* Stack badge, image, and h4 vertically inside award-card */
+      #awards .award-icon-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1rem !important;
+      }
+
+      /* Place visual image in top-right */
+      #awards .award-visual-box {
+        grid-column: 2 / 3 !important;
+        grid-row: 1 !important;
+        height: 100% !important;
+      }
+
+      /* Span features card across the entire bottom row */
       #awards .award-features-card {
         display: block !important;
+        grid-column: 1 / 3 !important;
+        grid-row: 2 !important;
+        margin-top: 0.5rem !important;
       }
 
       #awards .award-read-more-container {
