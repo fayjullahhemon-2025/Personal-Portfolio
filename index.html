@@ -4207,6 +4207,20 @@
         margin-left: auto !important;
         margin-right: auto !important;
       }
+
+      /* Grid layout for Contact items and centered socials */
+      .contact-info {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto auto !important;
+        gap: 1.5rem !important;
+      }
+
+      .contact-info .socials {
+        grid-column: span 2 !important;
+        justify-content: center !important;
+        margin-top: 1rem !important;
+      }
     }
   </style>
 </head>
