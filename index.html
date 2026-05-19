@@ -2204,17 +2204,17 @@
     }
 
     .day-level-1 {
-      background: rgba(200, 245, 87, 0.15);
-      border-color: rgba(200, 245, 87, 0.05);
-      --day-glow: rgba(200, 245, 87, 0.2);
-      --day-border: rgba(200, 245, 87, 0.4);
+      background: rgba(200, 245, 87, 0.28);
+      border-color: rgba(200, 245, 87, 0.08);
+      --day-glow: rgba(200, 245, 87, 0.3);
+      --day-border: rgba(200, 245, 87, 0.5);
     }
 
     .day-level-2 {
-      background: rgba(200, 245, 87, 0.35);
-      border-color: rgba(200, 245, 87, 0.1);
-      --day-glow: rgba(200, 245, 87, 0.4);
-      --day-border: rgba(200, 245, 87, 0.6);
+      background: rgba(200, 245, 87, 0.48);
+      border-color: rgba(200, 245, 87, 0.12);
+      --day-glow: rgba(200, 245, 87, 0.5);
+      --day-border: rgba(200, 245, 87, 0.7);
     }
 
     .day-level-3 {
@@ -4505,7 +4505,7 @@
 
       async function fetchGitHubContributions() {
         try {
-          const response = await fetch(`https://github-contributions-api.deno.dev/${username}.json`);
+          const response = await fetch(`https://github-contributions-api.deno.dev/${username}.json?t=${new Date().getTime()}`);
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
