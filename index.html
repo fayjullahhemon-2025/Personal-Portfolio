@@ -4222,6 +4222,94 @@
         margin-top: 1rem !important;
       }
     }
+
+    /* Extra-small mobile devices (Less than 576px) */
+    @media (max-width: 575px) {
+      /* Center all headings */
+      .section-label,
+      .section-title,
+      .section-sub {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      /* Stack the awards layout vertically and center items */
+      #awards .awards-layout {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+
+      #awards .award-card {
+        grid-column: 1 / 2 !important;
+        grid-row: 1 !important;
+        width: 100% !important;
+      }
+
+      /* Remove award photo from Awards & Special Mentions section */
+      #awards .award-visual-box {
+        display: none !important;
+      }
+
+      #awards .award-features-card {
+        grid-column: 1 / 2 !important;
+        grid-row: 2 !important;
+        width: 100% !important;
+      }
+
+      /* Stack contact-info vertically and center items */
+      .contact-info {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        text-align: center !important;
+      }
+
+      .contact-item {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 0.5rem !important;
+      }
+
+      .contact-info .socials {
+        grid-column: span 1 !important;
+        justify-content: center !important;
+      }
+
+      /* Stack About section focus pill & button vertically on ultra-small screens */
+      .about-layout .row:last-child {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+      }
+
+      .about-layout .row:last-child .btn-primary,
+      .about-layout .row:last-child .focus-pill {
+        justify-content: center !important;
+        width: 100% !important;
+      }
+
+      /* Stack experience timeline nicely and center elements */
+      .timeline-item {
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+
+      .timeline-date,
+      .timeline-role,
+      .timeline-org,
+      .timeline-desc {
+        text-align: center !important;
+      }
+
+      /* Ensure hero text and stats are perfectly centered */
+      .hero-content-role,
+      .hero-content-stats {
+        text-align: center !important;
+        justify-content: center !important;
+      }
+    }
   </style>
 </head>
 
