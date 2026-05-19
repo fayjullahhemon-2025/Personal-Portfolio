@@ -9,15 +9,20 @@
 <!-- SECTION 1: HERO HEADER -->
 <div align="center">
 
-  <!-- Animated Wave Background (Teal/Cyan Gradient) -->
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5,30&height=180&section=header&text=Fayjullah%20Haque%20Emon&fontSize=32&fontColor=e5e7eb&animation=fadeIn&fontAlignY=35&desc=Computer%20Science%20Undergraduate%20%E2%80%A2%20Developer&descSize=16&descAlignY=62"/>
+  <!-- Layered Wave Background 1: Shark Style (Cyberpunk Gradient) -->
+  <img src="https://capsule-render.vercel.app/api?type=shark&color=gradient&customColorList=23,10,15,30,35,40&height=220&section=header&text=Fayjullah%20Haque%20Emon&fontSize=38&fontColor=c8f557&animation=twinkle&fontAlignY=38&desc=Data%20Science%20Major%20%E2%80%A2%20Full%20Stack%20Engineer&descSize=16&descAlignY=62"/>
 
-  <!-- Typing Animation -->
+  <!-- Layered Wave Background 2: Waving Style (Liquid Transition) -->
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,5,20,30,40&height=120&section=header&fontSize=0&animation=fadeIn" style="margin-top:-60px;"/>
+
+  <!-- Typing Animation 1: Main Focus -->
   <a href="https://github.com/fayjullahhemon-2025">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=20&duration=3000&pause=1000&color=2DD4BF&center=true&vCenter=true&multiline=false&repeat=true&width=600&height=40&lines=CSE+Undergraduate;at+United+International+University;Data+Science+Major+%E2%80%A2+AI+Researcher;Full+Stack+Developer+%E2%80%A2+IoT+Enthusiast;Building+clean%2C+scalable+software+and+hardware+systems" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=21&duration=3000&pause=1000&color=c8f557&center=true&vCenter=true&multiline=false&repeat=true&width=600&height=40&lines=CSE+Undergraduate;at+United+International+University;Data+Science+Major+%E2%80%A2+AI+Researcher;Full+Stack+Developer+%E2%80%A2+IoT+Enthusiast;Building+clean%2C+scalable+software+and+hardware+systems" alt="Typing SVG" />
   </a>
 
+  <!-- Typing Animation 2: Simulated Cyber Terminal -->
   <br/>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=16&duration=4000&pause=1500&color=38bdf8&background=18182400&center=true&vCenter=true&width=600&height=40&lines=%24+cat+skills.txt+%7C+grep+-E+%22(AI%7CWeb%7CIoT)%22;%5BSuccess%5D+Executing+passion.exe...;%24+curl+-s+https%3A%2F%2Ffhe.dev;%5BInfo%5D+Welcome+to+Fayjullah's+Universe!" alt="Terminal Typing SVG" />
 
   <!-- Social Badges (Teal/Cyan Theme) -->
   <a href="https://www.linkedin.com/in/fayjullah-haque-6187a5228/">
