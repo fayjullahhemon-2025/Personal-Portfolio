@@ -3926,6 +3926,85 @@
         text-align: center !important;
         display: block !important;
       }
+
+      /* Skills section responsive optimizations for 576px-767px */
+      #skills {
+        padding: 4rem 1.25rem !important;
+      }
+
+      /* Center headings and label */
+      .skills-header-row {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        margin-bottom: 2rem !important;
+      }
+
+      .skills-header-left {
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+      }
+
+      .skills-header-left .section-label {
+        justify-content: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .skills-header-left .section-sub {
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      /* Remove filter buttons */
+      .skills-header-right {
+        display: none !important;
+      }
+
+      /* Reduce vertical gap */
+      .skills-scroll-container {
+        padding-top: 0 !important;
+      }
+
+      /* Remove central axis, horizontal connector lines, and markers */
+      .skills-central-axis,
+      .domain-node .node-marker,
+      .domain-node .horizontal-edge {
+        display: none !important;
+      }
+
+      /* Cards in 1 column, centered */
+      .skills-tree-nodes {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      /* Card styling */
+      .domain-node .node-card {
+        width: 100% !important;
+        max-width: 500px !important;
+        margin: 0 auto !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      }
+
+      .domain-node .node-desc {
+        flex-grow: 1 !important;
+      }
+
+      /* Hover effect matching 768px */
+      .domain-node:hover .node-card {
+        background: rgba(255, 255, 255, 0.03) !important;
+        border-color: rgba(200, 245, 87, 0.15) !important;
+        transform: translateX(6px) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
+        z-index: initial !important;
+      }
     }
   </style>
 </head>
