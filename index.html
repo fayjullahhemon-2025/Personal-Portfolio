@@ -345,6 +345,11 @@
       flex-wrap: wrap;
     }
 
+    .hero-content-role,
+    .hero-content-stats {
+      display: none;
+    }
+
     .btn-primary {
       padding: 0.85rem 2rem;
       background: var(--accent);
@@ -3782,6 +3787,69 @@
         margin-top: 1rem !important;
       }
     }
+
+    /* Hero responsive layout for viewports 576px to 767px */
+    @media (min-width: 576px) and (max-width: 767px) {
+      /* Hide the visual column completely (removes div-hero-card) */
+      #hero .hero-visual {
+        display: none !important;
+      }
+
+      /* Stack hero elements vertically in a single column */
+      #hero .hero-grid {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        gap: 0 !important;
+      }
+
+      /* Centering content and resetting paddings */
+      #hero .hero-content {
+        align-items: center !important;
+        text-align: center !important;
+        max-width: 100% !important;
+      }
+
+      /* Shift text width on mobile for better layout centering */
+      #hero .hero-desc {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 50ch !important;
+        margin-bottom: 1.5rem !important;
+      }
+
+      /* Display the inline role after hero-name */
+      .hero-content-role {
+        display: block !important;
+        font-size: 0.95rem !important;
+        color: var(--accent) !important;
+        font-family: var(--font-mono) !important;
+        margin-top: 0.8rem !important;
+        margin-bottom: 1.5rem !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      /* Display the inline stats bar after hero-desc */
+      .hero-content-stats {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 3rem !important;
+        margin-top: 1.5rem !important;
+        margin-bottom: 2.5rem !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        padding: 1.5rem 0 !important;
+        width: 100% !important;
+        max-width: 480px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      /* Adjust actions alignment on mobile */
+      #hero .hero-actions {
+        justify-content: center !important;
+      }
+    }
   </style>
 </head>
 
@@ -3821,8 +3889,23 @@
       <div class="hero-content fade-in">
         <div class="hero-tag">Passion for Code & Algorithms</div>
         <h1 class="hero-name">Fayjullah <br>Haque <em>Emon</em></h1>
+        <div class="hc-role hero-content-role">Computer Science Student · Web Developer</div>
         <p class="hero-desc">I'm Fayjullah haque, a passionate Computer Science student exploring the vast world of code
           and algorithms. Building meaningful projects, one line of code at a time.</p>
+        <div class="hc-stats hero-content-stats">
+          <div class="stat-item">
+            <div class="stat-n">10+</div>
+            <div class="stat-l">Projects</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-n">1</div>
+            <div class="stat-l">Award</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-n">3+</div>
+            <div class="stat-l">Years</div>
+          </div>
+        </div>
         <div class="hero-actions">
           <a href="#projects" class="btn-primary">View Projects →</a>
           <a href="#contact" class="btn-outline">Get in Touch</a>
