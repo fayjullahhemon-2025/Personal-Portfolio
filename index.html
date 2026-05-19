@@ -3516,6 +3516,43 @@
         margin-bottom: 0 !important;
       }
     }
+
+    /* Tools & Technologies (#skills) tablet responsive overrides (768px to 991px viewport width) */
+    @media (min-width: 768px) and (max-width: 991px) {
+      #skills {
+        padding: 4rem 1.25rem !important; /* Matches other sections exactly */
+      }
+
+      /* Hide the central axis, horizontal connector lines, and markers */
+      .skills-central-axis,
+      .domain-node .node-marker,
+      .domain-node .horizontal-edge {
+        display: none !important;
+      }
+
+      /* Convert node tree layout into a clean 2-column grid */
+      .skills-tree-nodes {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.5rem !important;
+      }
+
+      .domain-node {
+        padding-left: 0 !important;
+        width: 100% !important;
+        justify-content: stretch !important;
+      }
+
+      .domain-node .node-wrapper {
+        width: 100% !important;
+        padding: 0 !important;
+      }
+
+      .domain-node .node-card {
+        width: 100% !important;
+        margin: 0 !important;
+      }
+    }
   </style>
 </head>
 
