@@ -1852,20 +1852,47 @@
       }
 
       .nav-links {
-        display: none;
-      }
-
-      .nav-links.open {
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 64px;
+        top: 70px;
         left: 0;
         right: 0;
-        background: var(--bg2);
-        padding: 1.5rem;
+        background: rgba(10, 10, 15, 0.96);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 2.5rem 2rem;
         border-bottom: 1px solid var(--border);
-        z-index: 101;
+        z-index: 99;
+        transform: translateY(-150%);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        opacity: 0;
+        pointer-events: none;
+        gap: 1.5rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Animated Hamburger to 'X' */
+      .hamburger span {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
       }
 
       .hamburger {
@@ -2081,7 +2108,6 @@
       display: flex;
       height: 20px;
       margin-bottom: 8px;
-      margin-left: 32px; /* space for day labels */
       position: relative;
       font-size: 0.75rem;
       color: var(--muted);
@@ -2113,33 +2139,38 @@
       padding-bottom: 2px;
       line-height: 1;
       flex-shrink: 0;
+      margin-top: 28px; /* Push down to align with scrollable grid */
     }
 
-    .calendar-grid {
-      display: flex;
-      gap: 4px;
+    .calendar-scrollable-area {
       overflow-x: auto;
+      flex: 1;
       padding-bottom: 12px;
       /* Custom thin scrollbar for grid */
       scrollbar-width: thin;
       scrollbar-color: rgba(200, 245, 87, 0.2) transparent;
     }
 
-    .calendar-grid::-webkit-scrollbar {
+    .calendar-scrollable-area::-webkit-scrollbar {
       height: 4px;
     }
 
-    .calendar-grid::-webkit-scrollbar-track {
+    .calendar-scrollable-area::-webkit-scrollbar-track {
       background: transparent;
     }
 
-    .calendar-grid::-webkit-scrollbar-thumb {
+    .calendar-scrollable-area::-webkit-scrollbar-thumb {
       background: rgba(200, 245, 87, 0.2);
       border-radius: 2px;
     }
 
-    .calendar-grid::-webkit-scrollbar-thumb:hover {
+    .calendar-scrollable-area::-webkit-scrollbar-thumb:hover {
       background: var(--accent);
+    }
+
+    .calendar-grid {
+      display: flex;
+      gap: 4px;
     }
 
     .calendar-week {
@@ -2576,21 +2607,24 @@
       }
 
       .resume-nav {
-        flex-direction: row;
-        overflow-x: auto;
-        padding: 0.8rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+        padding: 1rem;
         position: static;
-        white-space: nowrap;
-        scrollbar-width: none; /* Hide standard Firefox scrollbars */
+        white-space: normal;
+        overflow-x: visible;
       }
 
       .resume-nav::-webkit-scrollbar {
-        display: none; /* Hide Chrome/Safari scrollbar */
+        display: none;
       }
 
       .resume-btn {
-        padding: 0.7rem 1.1rem;
-        font-size: 0.875rem;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0.8rem 1rem;
+        font-size: 0.85rem;
         flex-shrink: 0;
       }
 
@@ -2957,6 +2991,48 @@
         bottom: 4.8rem;
         width: calc(100vw - 2rem);
         height: 420px;
+      }
+    }
+
+    /* ─── PREMIUM RESPONSIVE ADDITIONS & OVERRIDES ─── */
+    @media (max-width: 990px) {
+      /* Skills card responsive padding */
+      .domain-node .node-card {
+        padding: 1.2rem !important;
+      }
+
+      /* Resume skills grid optimization (ensures double column on mobile rather than single) */
+      .skills-mini-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) !important;
+        gap: 0.6rem !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Center CTA buttons and align section elements nicely on small viewports */
+      .hero-actions {
+        justify-content: center;
+        width: 100%;
+      }
+      .hero-actions a {
+        width: 100%;
+        justify-content: center;
+      }
+      .resume-nav {
+        grid-template-columns: 1fr !important;
+        padding: 0.8rem !important;
+        gap: 0.5rem !important;
+      }
+      .resume-box {
+        padding: 1.5rem 1rem !important;
+      }
+      .resume-actions {
+        width: 100%;
+        justify-content: center;
+      }
+      .resume-actions a {
+        width: 100%;
+        justify-content: center;
       }
     }
   </style>
@@ -4130,11 +4206,15 @@
     // Nav toggle
     function toggleNav() {
       document.getElementById('navLinks').classList.toggle('open');
+      document.getElementById('hamburger').classList.toggle('active');
     }
 
     // Close nav on link click
     document.querySelectorAll('.nav-links a').forEach(a => {
-      a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+      a.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+        document.getElementById('hamburger').classList.remove('active');
+      });
     });
 
     // Scroll animations
@@ -4587,8 +4667,12 @@
           grid.appendChild(weekCol);
         });
 
-        gridWrapper.appendChild(grid);
-        calendarInner.appendChild(monthRow);
+        const scrollArea = document.createElement('div');
+        scrollArea.className = 'calendar-scrollable-area';
+        scrollArea.appendChild(monthRow);
+        scrollArea.appendChild(grid);
+
+        gridWrapper.appendChild(scrollArea);
         calendarInner.appendChild(gridWrapper);
 
         // 3. Calendar Legend & Footer Actions
