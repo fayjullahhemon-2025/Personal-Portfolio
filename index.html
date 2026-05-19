@@ -3643,10 +3643,20 @@
         align-items: stretch !important;
       }
 
-      /* Hide description and features on tablets */
-      .award-card .award-info p,
-      .award-card .award-info ul {
+      /* Hide description paragraph on tablets */
+      .award-card .award-info p {
         display: none !important;
+      }
+
+      /* Style features list as a 3-column, 2-row grid on tablets */
+      .award-card .award-info ul {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        grid-template-rows: auto auto !important;
+        gap: 0.6rem !important;
+        margin-top: 1.2rem !important;
+        margin-bottom: 1.2rem !important;
+        width: 100% !important;
       }
 
       /* Display the Read More button on tablets */
