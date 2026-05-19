@@ -2047,7 +2047,8 @@
       flex-shrink: 0;
     }
 
-    .award-info h3 {
+    .award-info h3,
+    .award-info h4 {
       font-family: var(--font-head);
       font-size: 1.4rem;
       margin-bottom: 0.5rem;
@@ -3652,6 +3653,13 @@
       .award-read-more-container {
         display: block !important;
       }
+
+      /* Style award-card title like resume-card title on tablets */
+      .award-info h4 {
+        font-size: 1.15rem !important;
+        line-height: 1.4 !important;
+        margin-bottom: 0.4rem !important;
+      }
     }
   </style>
 </head>
@@ -4280,7 +4288,7 @@
             <div class="award-icon-row">
               <div class="award-icon" style="background-image: url('images/award.jpg');"></div>
               <div class="award-info">
-                <h3>Smart Farm Fresh Storage — Cooling System</h3>
+                <h4>Smart Farm Fresh Storage — Cooling System</h4>
               </div>
             </div>
             <div class="award-info">
@@ -4298,7 +4306,9 @@
               </ul>
             </div>
             <div class="award-read-more-container">
-              <a href="javascript:void(0)" onclick="openBlog(0)" class="award-read-more-btn">Read more →</a>
+              <button class="resume-read-more-btn" onclick="openBlog(0)">
+                <span class="text">Read More</span> <span class="arrow" style="transition: transform 0.3s ease; display: inline-block;">→</span>
+              </button>
             </div>
           </div>
         </div>
