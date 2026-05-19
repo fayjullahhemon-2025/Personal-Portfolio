@@ -2023,6 +2023,42 @@
       cursor: pointer;
     }
 
+    /* Global styles for new Award Features Card (hidden on desktop/mobile by default) */
+    .award-features-card {
+      display: none;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+
+    .award-features-card .features-title {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .award-features-card .features-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0.8rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .award-features-card .features-list li {
+      font-family: var(--font-sans);
+    }
+
     .award-read-more-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(200, 245, 87, 0.2);
@@ -3648,15 +3684,14 @@
         display: none !important;
       }
 
-      /* Style features list as a 3-column, 2-row grid on tablets */
+      /* Hide original features list inside award-card on tablets */
       .award-card .award-info ul {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr 1fr !important;
-        grid-template-rows: auto auto !important;
-        gap: 0.6rem !important;
-        margin-top: 1.2rem !important;
-        margin-bottom: 1.2rem !important;
-        width: 100% !important;
+        display: none !important;
+      }
+
+      /* Show the new features card below the image on tablets */
+      .award-features-card {
+        display: block !important;
       }
 
       /* Display the Read More button on tablets */
@@ -4325,6 +4360,17 @@
         <div class="fade-in">
           <div class="award-visual-box">
             <img src="images/7.jpg" alt="Project Visual">
+          </div>
+          <div class="award-features-card">
+            <div class="features-title">🔧 Core Technical Features</div>
+            <ul class="features-list">
+              <li>• YOLO Image Processing</li>
+              <li>• Robotic Arm Sorting</li>
+              <li>• RFID Authentication</li>
+              <li>• IoT Dashboard</li>
+              <li>• Smart Weight Sensing</li>
+              <li>• Automated Conveyor</li>
+            </ul>
           </div>
         </div>
       </div>
