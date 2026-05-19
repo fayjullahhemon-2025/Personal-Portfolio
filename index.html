@@ -3446,6 +3446,76 @@
         justify-content: flex-start !important;
       }
     }
+
+    /* About section tablet responsive overrides (768px to 991px viewport width) */
+    @media (min-width: 768px) and (max-width: 991px) {
+      .about-layout {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.5rem !important;
+      }
+
+      .about-layout .fade-in {
+        display: contents !important;
+      }
+
+      /* Span Label & Title full width at the top */
+      .about-layout .section-label {
+        grid-column: span 2 !important;
+        grid-row: 1 !important;
+        margin-bottom: 0 !important;
+      }
+
+      .about-layout .section-title {
+        grid-column: span 2 !important;
+        grid-row: 2 !important;
+        margin-bottom: 1.5rem !important;
+      }
+
+      .about-layout .section-title br {
+        display: none !important; /* Remove break tag */
+      }
+
+      /* Place about.jpeg directly below the title, spanning full width */
+      .about-layout .about-img-frame-new {
+        grid-column: span 2 !important;
+        grid-row: 3 !important;
+        height: 380px !important;
+        width: 100% !important;
+        margin-bottom: 1.5rem !important;
+      }
+
+      /* Convert cards stack into 2-column, 2-row grid below the image */
+      .about-layout .about-cards-stack {
+        grid-column: span 2 !important;
+        grid-row: 4 !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto auto !important;
+        gap: 1.5rem !important;
+        margin: 0 !important;
+      }
+
+      /* Card 3 (Visionary) spans both columns in Row 2 for perfect symmetry */
+      .about-layout .about-card-new.visionary {
+        grid-column: span 2 !important;
+      }
+
+      /* Focus pill and read bio buttons container at the bottom */
+      .about-layout div[style*="display: flex; flex-direction: column"] {
+        grid-column: span 2 !important;
+        grid-row: 5 !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin-top: 1rem !important;
+      }
+
+      .about-focus-pill {
+        margin-bottom: 0 !important;
+      }
+    }
   </style>
 </head>
 
