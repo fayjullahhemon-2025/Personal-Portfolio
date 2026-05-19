@@ -3766,11 +3766,13 @@
       }
 
       .skills-category-card .skill-badge {
-        flex: 1 1 auto !important; /* Grow and shrink dynamically to fit text */
+        flex: 1 1 auto !important;
+        /* Grow and shrink dynamically to fit text */
         min-width: fit-content !important;
         width: auto !important;
         text-align: center !important;
-        white-space: nowrap !important; /* Prevent text wrapping inside the badge */
+        white-space: nowrap !important;
+        /* Prevent text wrapping inside the badge */
       }
 
       /* Grid layout for Contact items and centered socials on tablets */
@@ -3790,6 +3792,7 @@
 
     /* Hero responsive layout for viewports 576px to 767px */
     @media (min-width: 576px) and (max-width: 767px) {
+
       /* Hide the visual column completely (removes div-hero-card) */
       #hero .hero-visual {
         display: none !important;
@@ -3992,6 +3995,24 @@
         padding: 0 !important;
         height: 100% !important;
       }
+
+      /* Remove the 50px offset padding from left-node and right-node on small screens */
+      .domain-node.left-node .node-wrapper {
+        padding-right: 0 !important;
+        justify-content: center !important;
+      }
+
+      .domain-node.right-node .node-wrapper {
+        padding-left: 0 !important;
+        justify-content: center !important;
+      }
+
+      /* Center the node rows themselves */
+      .domain-node.left-node,
+      .domain-node.right-node {
+        justify-content: center !important;
+      }
+
       .domain-node .node-card {
         width: 100% !important;
         max-width: 500px !important;
@@ -4013,6 +4034,11 @@
         transform: translateX(6px) !important;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35) !important;
         z-index: initial !important;
+      }
+
+      /* Directly target #node-frontend to remove any inherited left padding */
+      #node-frontend {
+        padding-left: 0 !important;
       }
     }
   </style>
@@ -4135,7 +4161,8 @@
                 <h3>The Builder</h3>
                 <p>I specialize in <strong>Full-Stack Development</strong> using <strong>React.js</strong>,
                   <strong>Spring Boot</strong>, and <strong>MySQL</strong>. I love solving complex problems and creating
-                  applications with real-world impact.</p>
+                  applications with real-world impact.
+                </p>
               </div>
             </div>
 
@@ -4148,7 +4175,8 @@
                 <h3>The Visionary</h3>
                 <p>I'm constantly exploring technologies like <strong>AI & ML Research</strong>,
                   <strong>Docker</strong>, and <strong>Cloud Architecture</strong>. My goal is to build software that is
-                  not only functional but also <em>elegant and user-friendly</em>.</p>
+                  not only functional but also <em>elegant and user-friendly</em>.
+                </p>
               </div>
             </div>
           </div>
