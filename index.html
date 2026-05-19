@@ -3408,6 +3408,44 @@
         border: 1px solid rgba(255, 255, 255, 0.06) !important;
       }
     }
+
+    /* Hero section horizontal alignment for 768px to 991px screen width */
+    @media (min-width: 768px) and (max-width: 991px) {
+      .hero-grid {
+        grid-template-columns: 1.2fr 1fr !important;
+        gap: 2.5rem !important;
+        text-align: left !important;
+      }
+
+      #hero {
+        text-align: left !important;
+        padding-top: 8rem !important;
+      }
+
+      .hero-content {
+        align-items: flex-start !important;
+        text-align: left !important;
+      }
+
+      .hero-visual {
+        display: flex !important;
+        justify-content: flex-end !important;
+        order: initial !important;
+        margin-bottom: 0 !important;
+      }
+
+      .hero-name {
+        font-size: 2.8rem !important;
+      }
+
+      .hero-desc {
+        max-width: 100% !important;
+      }
+
+      .hero-actions {
+        justify-content: flex-start !important;
+      }
+    }
   </style>
 </head>
 
