@@ -3523,6 +3523,27 @@
         padding: 4rem 1.25rem !important; /* Matches other sections exactly */
       }
 
+      /* Hide the filter buttons and header right column */
+      .skills-header-right {
+        display: none !important;
+      }
+
+      /* Center the skills heading row */
+      .skills-header-row {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+      }
+
+      .skills-header-left {
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+      }
+
+      .skills-header-left .section-label {
+        justify-content: center !important;
+      }
+
       /* Hide the central axis, horizontal connector lines, and markers */
       .skills-central-axis,
       .domain-node .node-marker,
@@ -3535,27 +3556,39 @@
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
         gap: 1.5rem !important;
+        align-items: stretch !important; /* Stretch cards to have same height in rows */
       }
 
       .domain-node {
         padding-left: 0 !important;
         width: 100% !important;
         justify-content: stretch !important;
+        height: 100% !important;
       }
 
       .domain-node .node-wrapper {
         width: 100% !important;
         padding: 0 !important;
+        height: 100% !important;
       }
 
+      /* Make card grid boxes same size (height 100%) and flex column layout */
       .domain-node .node-card {
         width: 100% !important;
         margin: 0 !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
         transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease !important;
       }
 
-      /* Active highlighted card border color #c8f557 (100% opacity) and zoom effect */
-      .domain-node.active-card .node-card {
+      /* Let card descriptions stretch to push leaves/tools to the bottom if needed */
+      .domain-node .node-desc {
+        flex-grow: 1 !important;
+      }
+
+      /* Hover highlight card border color #c8f557 (100% opacity) and zoom effect */
+      .domain-node:hover .node-card {
         border-color: #c8f557 !important;
         box-shadow: 0 0 25px rgba(200, 245, 87, 0.25) !important;
         transform: scale(1.04) !important;
