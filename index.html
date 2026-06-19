@@ -56,6 +56,9 @@
       font-size: 16px;
       line-height: 1.7;
       overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     ::selection {
@@ -110,26 +113,25 @@
       width: 90px;
       height: 90px;
       border-radius: 50%;
-      border: 3px solid #7c3aed;
+      border: none;
       object-fit: cover;
       margin-bottom: 1rem;
-      box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+      box-shadow: 0 0 25px rgba(74, 158, 255, 0.2);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .sidebar-avatar:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+      box-shadow: 0 0 35px rgba(74, 158, 255, 0.4);
     }
 
     .sidebar-name {
       font-family: var(--font-head);
       font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
       color: var(--text);
       line-height: 1.2;
+      text-align: center;
     }
 
     .sidebar-sub {
@@ -176,6 +178,42 @@
     .sidebar-nav a.active {
       color: var(--accent);
       background: var(--accent-glow);
+    }
+
+    .nav-dropdown {
+      width: 100%;
+    }
+
+    .dropdown-arrow {
+      margin-left: auto;
+      transition: transform 0.3s;
+      font-size: 0.8rem;
+    }
+
+    .nav-dropdown.open .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      padding-left: 2.2rem;
+      transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+    }
+
+    .nav-dropdown.open .dropdown-menu {
+      max-height: 250px;
+      opacity: 1;
+      margin-top: 0.3rem;
+    }
+
+    .dropdown-menu a {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
     }
 
     .sidebar-footer {
@@ -285,14 +323,31 @@
       display: block;
     }
 
-    /* ─── MAIN CONTENT ─── */
     .main-content {
       margin-left: var(--sidebar-w);
-      min-height: 100vh;
+      flex: 1;
     }
 
     section {
       padding: 5rem 3rem;
+      display: none;
+    }
+
+    section.active-section {
+      display: block;
+      animation: fadeInTab 0.4s ease forwards;
+    }
+
+    @keyframes fadeInTab {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .container {
@@ -391,10 +446,21 @@
     }
 
     @keyframes blinkCursor {
-      0% { background-color: var(--accent); }
-      49% { background-color: var(--accent); }
-      50% { background-color: transparent; }
-      99% { background-color: transparent; }
+      0% {
+        background-color: var(--accent);
+      }
+
+      49% {
+        background-color: var(--accent);
+      }
+
+      50% {
+        background-color: transparent;
+      }
+
+      99% {
+        background-color: transparent;
+      }
     }
 
     .hero-top-row {
@@ -541,7 +607,7 @@
       display: grid;
       grid-template-columns: 1.3fr 1fr;
       gap: 3rem;
-      align-items: start;
+      align-items: center;
     }
 
     .about-cards-stack {
@@ -1196,81 +1262,117 @@
       display: grid;
       grid-template-columns: 1fr 1.5fr;
       gap: 4rem;
+      align-items: center;
     }
 
-    .timeline {
+    .journey-card {
+      background: linear-gradient(145deg, var(--card), var(--bg3));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
       position: relative;
-      padding-left: 2rem;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
-    .timeline::before {
+    .journey-card::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: rgba(255, 255, 255, 0.06);
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(circle at top right, var(--accent-glow), transparent 60%);
+      pointer-events: none;
     }
 
-    .timeline-progress-line {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 2px;
-      height: 0%;
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
-      transition: height 0.1s;
+    .journey-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 40px rgba(74, 158, 255, 0.15);
+    }
+
+    .journey-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
       z-index: 2;
     }
 
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2.5rem;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: -2.35rem;
-      top: 0.4rem;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid var(--bg2);
-      z-index: 3;
-      transition: all 0.3s;
-    }
-
-    .timeline-dot.active {
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
-    }
-
-    .timeline-date {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .timeline-role {
-      font-family: var(--font-head);
-      font-size: 1.1rem;
-      margin-bottom: 0.15rem;
-    }
-
-    .timeline-org {
-      font-size: 0.88rem;
+    .journey-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(74, 158, 255, 0.1);
+      border: 1px solid rgba(74, 158, 255, 0.2);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: var(--accent);
-      margin-bottom: 0.6rem;
+      flex-shrink: 0;
+    }
+    
+    .journey-icon span {
+      font-size: 2rem;
     }
 
-    .timeline-desc {
+    .journey-titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .journey-date {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.05em;
+    }
+
+    .journey-role {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .journey-org {
+      font-size: 0.95rem;
       color: var(--muted);
-      font-size: 0.9rem;
+      margin-top: 0.2rem;
+    }
+
+    .journey-desc {
+      color: #b0b0b0;
+      font-size: 0.95rem;
       line-height: 1.7;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .journey-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .journey-tags span {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .journey-tags span:hover {
+      background: rgba(74, 158, 255, 0.1);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     /* ─── AWARDS ─── */
@@ -2572,8 +2674,8 @@
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-profile">
       <img src="images/profile.jpeg" alt="Fayjullah Haque Emon" class="sidebar-avatar">
-      <div class="sidebar-name">FAYJULLAH</div>
-      <div class="sidebar-sub">By EMON</div>
+      <div class="sidebar-name">Fayjullah Haque Emon</div>
+      <div class="sidebar-sub">CSE Student & Researcher</div>
     </div>
 
     <nav class="sidebar-nav" id="sidebarNav">
@@ -2581,12 +2683,20 @@
       <a href="#about"><span class="nav-icon"><i class="fi fi-rr-user"></i></span> About</a>
       <a href="#skills"><span class="nav-icon"><i class="fi fi-rr-settings-sliders"></i></span> Skills</a>
       <a href="#projects"><span class="nav-icon"><i class="fi fi-rr-folder"></i></span> Projects</a>
-      <a href="#activity"><span class="nav-icon"><i class="fi fi-brands-github"></i></span> GitHub</a>
       <a href="#experience"><span class="nav-icon"><i class="fi fi-rr-briefcase"></i></span> Experience</a>
       <a href="#awards"><span class="nav-icon"><i class="fi fi-rr-trophy"></i></span> Awards</a>
-      <a href="#resume"><span class="nav-icon"><i class="fi fi-rr-document"></i></span> Resume</a>
-      <a href="#gallery"><span class="nav-icon"><i class="fi fi-rr-picture"></i></span> Gallery</a>
-      <a href="#blog"><span class="nav-icon"><i class="fi fi-rr-pencil"></i></span> Blog</a>
+      <div class="nav-dropdown">
+        <a href="javascript:void(0)" class="dropdown-toggle" onclick="this.parentElement.classList.toggle('open')">
+          <span class="nav-icon"><i class="fi fi-rr-apps"></i></span> More
+          <i class="fi fi-rr-angle-small-down dropdown-arrow"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#activity"><span class="nav-icon"><i class="fi fi-brands-github"></i></span> GitHub</a>
+          <a href="#resume"><span class="nav-icon"><i class="fi fi-rr-document"></i></span> Resume</a>
+          <a href="#gallery"><span class="nav-icon"><i class="fi fi-rr-picture"></i></span> Gallery</a>
+          <a href="#blog"><span class="nav-icon"><i class="fi fi-rr-pencil"></i></span> Blog</a>
+        </div>
+      </div>
       <a href="#contact"><span class="nav-icon"><i class="fi fi-rr-envelope"></i></span> Contact</a>
     </nav>
 
@@ -2609,7 +2719,8 @@
       <div class="container">
         <h2 class="greeting-sub fade-in">Hi there, I'm</h2>
         <h1 class="hero-headline fade-in" style="color: var(--text);">Fayjullah Haque Emon</h1>
-        <div class="hero-dynamic-text fade-in">&#8203;<span class="typed-text"></span><span class="typed-cursor"></span></div>
+        <div class="hero-dynamic-text fade-in">&#8203;<span class="typed-text"></span><span class="typed-cursor"></span>
+        </div>
 
         <div class="hero-bottom-row fade-in">
           <div class="hero-stats-row">
@@ -2974,23 +3085,24 @@
             <p class="section-sub" style="font-size:0.92rem;">Academic journey, research positions, internships and
               collaborations that shaped my skills.</p>
           </div>
-          <div class="timeline fade-in">
-            <div class="timeline-progress-line"></div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-date">3 Months</div>
-              <div class="timeline-role">Internship — PHP Developer</div>
-              <div class="timeline-org">Study.net</div>
-              <div class="timeline-desc">Worked as a PHP developer, gaining hands-on experience in building and
-                maintaining web applications in a professional environment.</div>
+          <div class="journey-card fade-in">
+            <div class="journey-header">
+              <div class="journey-icon">
+                <span class="material-symbols-outlined">school</span>
+              </div>
+              <div class="journey-titles">
+                <span class="journey-date">2021 — Present</span>
+                <h3 class="journey-role">Computer Science Student</h3>
+                <div class="journey-org">United International University</div>
+              </div>
             </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-date">2021 — Present</div>
-              <div class="timeline-role">Computer Science Student</div>
-              <div class="timeline-org">United International University</div>
-              <div class="timeline-desc">Focusing on core CS principles, web development, and AI research. Active
-                participant in club activities and technical workshops.</div>
+            <p class="journey-desc">
+              Currently pursuing my B.Sc. in Computer Science and Engineering. Immersed in an environment that fosters innovation, I am deeply focused on core CS principles, full-stack web development, and artificial intelligence research.
+            </p>
+            <div class="journey-tags">
+              <span>Web Development</span>
+              <span>AI Research</span>
+              <span>Software Engineering</span>
             </div>
           </div>
         </div>
@@ -3154,23 +3266,6 @@
             <!-- EXPERIENCE -->
             <div class="resume-pane" id="resume-experience">
               <div class="resume-grid">
-                <div class="resume-card">
-                  <div class="resume-card-header">
-                    <div class="resume-card-title">
-                      <h3>PHP Developer Intern</h3>
-                      <div class="resume-card-org">Study.net</div>
-                    </div><span class="resume-card-date">3 Months</span>
-                  </div>
-                  <div class="resume-card-body">
-                    <p>Worked as a backend PHP developer gaining professional experience in web applications, clean
-                      code, and agile environments.</p>
-                    <ul>
-                      <li>Collaborated with developers to build dynamic backend features</li>
-                      <li>Optimized database operations and queries using MySQL</li>
-                      <li>Ensured robust cross-browser compatibility</li>
-                    </ul>
-                  </div>
-                </div>
                 <div class="resume-card">
                   <div class="resume-card-header">
                     <div class="resume-card-title">
@@ -3546,26 +3641,71 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // ─── ACTIVE NAV HIGHLIGHT ───
+    // ─── SPA ROUTING & NAV HIGHLIGHT ───
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.sidebar-nav a');
 
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 150) current = s.id;
-      });
-      navLinks.forEach(a => {
+    function showSection(hash) {
+      if (!hash || hash === '#') hash = '#home';
+
+      // Update sidebar links
+      document.querySelectorAll('.sidebar-nav a').forEach(a => {
         a.classList.remove('active');
-        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+        if (a.getAttribute('href') === hash) a.classList.add('active');
       });
 
-      // Back to top visibility
+      // Hide all sections, show target
+      sections.forEach(s => s.classList.remove('active-section'));
+      const target = document.querySelector(hash);
+      if (target) {
+        target.classList.add('active-section');
+
+        // Reset fade-in animations so they replay
+        target.querySelectorAll('.fade-in').forEach(el => {
+          el.classList.remove('visible');
+        });
+
+        window.scrollTo({ top: 0 }); // reset scroll for new tab
+
+
+      }
+    }
+
+    // Intercept clicks on links that point to sections
+    document.body.addEventListener('click', e => {
+      const link = e.target.closest('a[href^="#"]');
+      if (link && !link.classList.contains('mobile-logo')) {
+        const hash = link.getAttribute('href');
+        if (document.querySelector(hash)) {
+          e.preventDefault();
+          history.pushState(null, null, hash);
+          showSection(hash);
+
+          // Close mobile nav if open
+          if (window.innerWidth <= 768) {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('hamburger').classList.remove('active');
+            document.getElementById('mobileOverlay').classList.remove('active');
+          }
+        }
+      }
+    });
+
+    // Handle browser back/forward
+    window.addEventListener('popstate', () => {
+      showSection(window.location.hash);
+    });
+
+    // Initial load
+    window.addEventListener('DOMContentLoaded', () => {
+      showSection(window.location.hash);
+    });
+
+    // Back to top visibility
+    window.addEventListener('scroll', () => {
       const backToTopBtn = document.getElementById('backToTopBtn');
-      if (window.scrollY > 300) {
-        backToTopBtn.classList.add('visible');
-      } else {
-        backToTopBtn.classList.remove('visible');
+      if (backToTopBtn) {
+        if (window.scrollY > 300) backToTopBtn.classList.add('visible');
+        else backToTopBtn.classList.remove('visible');
       }
     });
 
@@ -3730,8 +3870,8 @@
       if (q.includes('education') || q.includes('study') || q.includes('university')) {
         return "Emon's academic background:<br><br>• <strong>B.Sc. in CSE</strong>: Currently at United International University (UIU), Dhaka<br>• <strong>HSC</strong>: Science group at Motijheel Boy's Govt. School & College<br>• <strong>SSC</strong>: Science group at Sher-E-Bangla School";
       }
-      if (q.includes('experience') || q.includes('intern') || q.includes('work')) {
-        return "Emon completed a 3-month internship as a <strong>PHP Developer</strong> at <strong>Study.net</strong>.<br><br>He gained professional experience in web apps, MySQL optimization, and agile development.";
+      if (q.includes('experience') || q.includes('work')) {
+        return "Emon is currently focusing on his Computer Science studies and AI research at United International University. He has strong hands-on experience building full-stack web applications and participating in academic projects.";
       }
       if (q.includes('projects') || q.includes('shelftotales') || q.includes('job portal')) {
         return "Emon's notable projects:<br><br>1. <strong>Smart Cooling Storage</strong>: IoT system with YOLO classification<br>2. <strong>Job Portal</strong>: Full-stack with recruiter/applicant dashboards<br>3. <strong>ShelfToTales</strong>: 3D interactive virtual bookshelf";
@@ -3744,26 +3884,7 @@
 
     // ─── EXPERIENCE TIMELINE PROGRESS ───
     document.addEventListener('DOMContentLoaded', () => {
-      const expTimeline = document.querySelector('.timeline');
-      const expProgressLine = document.querySelector('.timeline-progress-line');
-      const expDots = document.querySelectorAll('.timeline-dot');
 
-      function updateExperienceProgress() {
-        if (expTimeline && expProgressLine) {
-          const rect = expTimeline.getBoundingClientRect();
-          const focalPoint = window.innerHeight * 0.65;
-          const scrolledAmount = focalPoint - rect.top;
-          let progressPercent = (scrolledAmount / rect.height) * 100;
-          progressPercent = Math.max(0, Math.min(100, progressPercent));
-          expProgressLine.style.height = `${progressPercent}%`;
-          expDots.forEach(dot => {
-            if (dot.getBoundingClientRect().top <= focalPoint) dot.classList.add('active');
-            else dot.classList.remove('active');
-          });
-        }
-      }
-      window.addEventListener('scroll', updateExperienceProgress);
-      updateExperienceProgress();
 
       // ─── GITHUB CONTRIBUTIONS ───
       const username = 'fayjullahhemon-2025';
@@ -3920,7 +4041,7 @@
     });
 
     // ─── TYPING ANIMATION ───
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const typedTextSpan = document.querySelector(".typed-text");
       const cursorSpan = document.querySelector(".typed-cursor");
 
@@ -3934,11 +4055,11 @@
 
         function type() {
           if (charIndex < textArray[textArrayIndex].length) {
-            if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+            if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
             typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
             charIndex++;
             setTimeout(type, typingDelay);
-          } 
+          }
           else {
             cursorSpan.classList.remove("typing");
             setTimeout(erase, newTextDelay);
@@ -3947,19 +4068,19 @@
 
         function erase() {
           if (charIndex > 0) {
-            if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-            typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+            if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+            typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
             charIndex--;
             setTimeout(erase, erasingDelay);
-          } 
+          }
           else {
             cursorSpan.classList.remove("typing");
             textArrayIndex++;
-            if(textArrayIndex >= textArray.length) textArrayIndex = 0;
+            if (textArrayIndex >= textArray.length) textArrayIndex = 0;
             setTimeout(type, typingDelay + 1100);
           }
         }
-        
+
         setTimeout(type, newTextDelay + 250);
       }
     });
