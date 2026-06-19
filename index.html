@@ -1273,13 +1273,16 @@
       position: relative;
       overflow: hidden;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
     .journey-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: radial-gradient(circle at top right, var(--accent-glow), transparent 60%);
       pointer-events: none;
     }
@@ -1311,7 +1314,7 @@
       color: var(--accent);
       flex-shrink: 0;
     }
-    
+
     .journey-icon span {
       font-size: 2rem;
     }
@@ -2846,10 +2849,7 @@
               <span class="skill-tool-badge"><i class="devicon-html5-plain"></i> HTML</span>
               <span class="skill-tool-badge"><i class="devicon-css3-plain"></i> CSS</span>
               <span class="skill-tool-badge"><i class="devicon-tailwindcss-original"></i> Tailwind</span>
-              <span class="skill-tool-badge"><i class="devicon-sass-original"></i> Sass</span>
               <span class="skill-tool-badge"><i class="devicon-javascript-plain"></i> JS</span>
-              <span class="skill-tool-badge"><i class="devicon-nextjs-plain"></i> Next.js</span>
-              <span class="skill-tool-badge"><i class="devicon-react-plain"></i> React</span>
             </div>
           </div>
 
@@ -2864,7 +2864,6 @@
             <p class="skill-node-desc">Scalable systems & robust server logic.</p>
             <div class="skill-tools">
               <span class="skill-tool-badge"><i class="devicon-spring-original"></i> Spring Boot</span>
-              <span class="skill-tool-badge"><i class="devicon-django-plain"></i> Django</span>
               <span class="skill-tool-badge"><i class="devicon-php-plain"></i> PHP</span>
             </div>
           </div>
@@ -2879,7 +2878,6 @@
             </div>
             <p class="skill-node-desc">Data modeling, optimization & structures.</p>
             <div class="skill-tools">
-              <span class="skill-tool-badge"><i class="devicon-postgresql-plain"></i> PostgreSQL</span>
               <span class="skill-tool-badge"><i class="devicon-mysql-plain"></i> MySQL</span>
             </div>
           </div>
@@ -3097,7 +3095,9 @@
               </div>
             </div>
             <p class="journey-desc">
-              Currently pursuing my B.Sc. in Computer Science and Engineering. Immersed in an environment that fosters innovation, I am deeply focused on core CS principles, full-stack web development, and artificial intelligence research.
+              Currently pursuing my B.Sc. in Computer Science and Engineering. Immersed in an environment that fosters
+              innovation, I am deeply focused on core CS principles, full-stack web development, and artificial
+              intelligence research.
             </p>
             <div class="journey-tags">
               <span>Web Development</span>
@@ -3226,11 +3226,18 @@
                     </div><span class="resume-card-date">2025</span>
                   </div>
                   <div class="resume-card-body">
-                    <div class="resume-card-detailed-desc">Designed and evaluated Microarchitectural Masking, a zero-privilege, user-space JIT dispatcher that successfully neutralizes "Noisy Neighbor" interference in cloud hosts by dynamically shifting to hardware-pressure-optimized algorithmic kernels.</div>
+                    <div class="resume-card-detailed-desc">Designed and evaluated Microarchitectural Masking, a
+                      zero-privilege, user-space JIT dispatcher that successfully neutralizes "Noisy Neighbor"
+                      interference in cloud hosts by dynamically shifting to hardware-pressure-optimized algorithmic
+                      kernels.</div>
                     <ul>
-                      <li>Ensured virtually no performance loss for compute/IO workloads under contention while recovering ~60% of memory-bound latency.</li>
-                      <li>Mitigated an estimated 29.6kg of CO2e per million invocations seamlessly without requiring underlying infrastructure changes.</li>
-                    </ul><button class="resume-read-more-btn" onclick="toggleResumeDetails(this)"><span class="text">Read More</span> <span class="arrow" style="transition: transform 0.3s; display: inline-block;">→</span></button>
+                      <li>Ensured virtually no performance loss for compute/IO workloads under contention while
+                        recovering ~60% of memory-bound latency.</li>
+                      <li>Mitigated an estimated 29.6kg of CO2e per million invocations seamlessly without requiring
+                        underlying infrastructure changes.</li>
+                    </ul><button class="resume-read-more-btn" onclick="toggleResumeDetails(this)"><span
+                        class="text">Read More</span> <span class="arrow"
+                        style="transition: transform 0.3s; display: inline-block;">→</span></button>
                   </div>
                 </div>
                 <div class="resume-card">
@@ -3241,11 +3248,16 @@
                     </div><span class="resume-card-date">2026</span>
                   </div>
                   <div class="resume-card-body">
-                    <div class="resume-card-detailed-desc">Implemented machine learning and deep learning architectures including SVM, XGBoost, CNN, RNN, LSTM, and GMM models.</div>
+                    <div class="resume-card-detailed-desc">Implemented machine learning and deep learning architectures
+                      including SVM, XGBoost, CNN, RNN, LSTM, and GMM models.</div>
                     <ul>
-                      <li>Extracted robust vocal attributes utilizing openSMILE feature extraction tools and methodologies.</li>
-                      <li>Evaluated and analyzed system performance using Weighted Average Recall (WAR) and conducted comparative model analysis to optimize predictive reliability.</li>
-                    </ul><button class="resume-read-more-btn" onclick="toggleResumeDetails(this)"><span class="text">Read More</span> <span class="arrow" style="transition: transform 0.3s; display: inline-block;">→</span></button>
+                      <li>Extracted robust vocal attributes utilizing openSMILE feature extraction tools and
+                        methodologies.</li>
+                      <li>Evaluated and analyzed system performance using Weighted Average Recall (WAR) and conducted
+                        comparative model analysis to optimize predictive reliability.</li>
+                    </ul><button class="resume-read-more-btn" onclick="toggleResumeDetails(this)"><span
+                        class="text">Read More</span> <span class="arrow"
+                        style="transition: transform 0.3s; display: inline-block;">→</span></button>
                   </div>
                 </div>
               </div>
@@ -3283,7 +3295,8 @@
                     </div><span class="resume-card-date">Academic</span>
                   </div>
                   <div class="resume-card-body">
-                    <p>Created an interactive platform featuring a 3D visual bookshelf and personalized reading experiences.</p>
+                    <p>Created an interactive platform featuring a 3D visual bookshelf and personalized reading
+                      experiences.</p>
                     <ul>
                       <li>Integrated backend services to manage book catalogs and user reading history.</li>
                       <li>Technologies: Java, Spring Boot, React.js, HTML/CSS.</li>
@@ -3298,9 +3311,11 @@
                     </div><span class="resume-card-date">Academic</span>
                   </div>
                   <div class="resume-card-body">
-                    <p>Built an automated storage system featuring YOLOv8-based vegetable classification and robotic arm sorting.</p>
+                    <p>Built an automated storage system featuring YOLOv8-based vegetable classification and robotic arm
+                      sorting.</p>
                     <ul>
-                      <li>Implemented RFID-authenticated dashboards and IoT-driven temperature control via Peltier modules.</li>
+                      <li>Implemented RFID-authenticated dashboards and IoT-driven temperature control via Peltier
+                        modules.</li>
                       <li>Developed real-time monitoring features for weight sensing and storage conditions.</li>
                       <li>Technologies: Python, YOLO, OpenCV, IoT, Arduino/ESP32, RFID.</li>
                     </ul>
@@ -3316,11 +3331,16 @@
                   <div class="resume-card-body">
                     <p>Comprehensive platform for API lifecycle management and test environment automation.</p>
                     <ul>
-                      <li>Supports multiple environments with custom variables utilizing the {{variable_name}} syntax framework.</li>
-                      <li>Automatically extracts and saves JWT authentication tokens to the active environment upon successful system login.</li>
-                      <li>Enables sending GET, POST, PUT, PATCH, and DELETE requests with custom headers and varied body structures.</li>
-                      <li>Structures API tests hierarchically into Workspaces, Modules, and timestamped Requests with definitive pass/fail feedback.</li>
-                      <li>Supports exporting and importing the complete test suite as a single unified JSON file to streamline easy team collaboration.</li>
+                      <li>Supports multiple environments with custom variables utilizing the {{variable_name}} syntax
+                        framework.</li>
+                      <li>Automatically extracts and saves JWT authentication tokens to the active environment upon
+                        successful system login.</li>
+                      <li>Enables sending GET, POST, PUT, PATCH, and DELETE requests with custom headers and varied body
+                        structures.</li>
+                      <li>Structures API tests hierarchically into Workspaces, Modules, and timestamped Requests with
+                        definitive pass/fail feedback.</li>
+                      <li>Supports exporting and importing the complete test suite as a single unified JSON file to
+                        streamline easy team collaboration.</li>
                     </ul>
                   </div>
                 </div>
@@ -3408,14 +3428,18 @@
                     </div><span class="resume-card-date">Summer 2025</span>
                   </div>
                   <div class="resume-card-body">
-                    <p>Awarded 5th Runner Up for designing an automated Peltier-driven storage cooling prototype with YOLO classification.</p>
+                    <p>Awarded 5th Runner Up for designing an automated Peltier-driven storage cooling prototype with
+                      YOLO classification.</p>
                   </div>
                 </div>
 
                 <div class="resume-card download-callout-card">
                   <div class="resume-card-title">
-                    <h3 style="font-size:1.3rem;color:var(--accent);margin-bottom:0.4rem;">Looking for the official document?</h3>
-                    <p style="color:var(--muted);max-width:45ch;margin:0 auto 1.2rem;font-size:0.88rem;">Download my complete CV in PDF format to review my comprehensive achievements.</p><a href="EmonCv.pdf" download class="btn-primary">Download Full CV ↓</a>
+                    <h3 style="font-size:1.3rem;color:var(--accent);margin-bottom:0.4rem;">Looking for the official
+                      document?</h3>
+                    <p style="color:var(--muted);max-width:45ch;margin:0 auto 1.2rem;font-size:0.88rem;">Download my
+                      complete CV in PDF format to review my comprehensive achievements.</p><a href="EmonCv.pdf"
+                      download class="btn-primary">Download Full CV ↓</a>
                   </div>
                 </div>
               </div>
