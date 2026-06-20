@@ -2272,6 +2272,45 @@
       transform: translateY(-50%) scale(1);
     }
 
+    .online-dot {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: 14px;
+      height: 14px;
+      background: #10b981;
+      border: 3px solid var(--bg);
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    .chatbot-greeting-bubble {
+      position: absolute;
+      right: 65px;
+      top: 50%;
+      transform: translateY(-50%) scale(0.9);
+      background: var(--card);
+      border: 1px solid #10b981;
+      color: var(--text);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      border-bottom-right-radius: 4px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      z-index: 998;
+      cursor: pointer;
+    }
+
+    .chatbot-greeting-bubble.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(-50%) scale(1);
+    }
+
     /* Chat Widget */
     .chat-widget {
       position: fixed;
@@ -3677,7 +3716,16 @@
     <button class="floating-btn back-to-top" id="backToTopBtn" onclick="scrollToTop()"
       data-tooltip="Back to Top">↑</button>
     <button class="floating-btn" onclick="scrollToResume()" data-tooltip="Interactive Resume">📄</button>
-    <button class="floating-btn" onclick="toggleChatbot()" data-tooltip="AI Assistant" id="chatbotToggleBtn">🤖</button>
+    
+    <div style="position: relative; display: flex;">
+      <div class="chatbot-greeting-bubble" id="chatbotGreetingBubble" onclick="toggleChatbot()">
+        Hi! I'm Emon's AI assistant. How can I help?
+      </div>
+      <button class="floating-btn" onclick="toggleChatbot()" data-tooltip="AI Assistant" id="chatbotToggleBtn">
+        <span class="online-dot"></span>
+        🤖
+      </button>
+    </div>
   </div>
 
   <!-- AI CHATBOT WIDGET -->
@@ -3939,8 +3987,24 @@
 
     window.toggleChatbot = function () {
       chatbotWidget.classList.toggle('active');
+      const bubble = document.getElementById('chatbotGreetingBubble');
+      if (bubble) bubble.classList.remove('visible');
       if (chatbotWidget.classList.contains('active')) chatInputField.focus();
     };
+
+    // Show greeting bubble after 2 seconds
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const bubble = document.getElementById('chatbotGreetingBubble');
+        if (bubble && !chatbotWidget.classList.contains('active')) {
+          bubble.classList.add('visible');
+          // Hide it automatically after 8 seconds
+          setTimeout(() => {
+            bubble.classList.remove('visible');
+          }, 8000);
+        }
+      }, 2000);
+    });
 
     window.handleSuggestion = function (text) {
       chatInputField.value = text;
