@@ -591,6 +591,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      background: transparent;
+      cursor: pointer;
     }
 
     .btn-outline:hover {
@@ -970,6 +972,8 @@
       height: 220px;
       overflow: hidden;
       border: 1px solid var(--border);
+      transition: all 0.4s ease;
+      position: relative;
     }
 
     .project-img img {
@@ -979,8 +983,11 @@
       transition: transform 0.5s;
     }
 
-    .featured-project:hover .project-img img {
-      transform: scale(1.05);
+    .featured-project:hover .project-img {
+      transform: scale(1.08) translateY(-10px);
+      box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+      border-color: var(--accent);
+      z-index: 10;
     }
 
     .project-filter {
@@ -2989,6 +2996,7 @@
                 Features include job postings, application tracking, and candidate profile management.</p>
               <div class="project-links">
                 <a href="https://github.com/Fayjullahh/Job_Portal" target="_blank" class="project-link">⌥ GitHub</a>
+                <button class="btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;margin-left:auto;">Details</button>
               </div>
             </div>
             <div class="project-img">
@@ -2996,119 +3004,116 @@
             </div>
           </div>
 
-          <div class="project-card fade-in" data-category="frontend backend">
-            <div class="project-thumb">
+          <div class="featured-project fade-in" data-category="frontend backend">
+            <div>
+              <div class="featured-label">📁 Project 02</div>
+              <div class="project-tags"><span class="project-tag">Web Dev</span><span class="project-tag">Spring Boot</span></div>
+              <h3 class="project-title" style="font-size:1.5rem;margin-bottom:0.6rem;">Shelf To Tales</h3>
+              <p class="project-desc">An innovative platform for book lovers, featuring a 3D virtual bookshelf and interactive reading experiences.</p>
+              <div class="project-links">
+                <a href="https://github.com/fayjullahhemon-2025/ShelfToTales" target="_blank" class="project-link">⌥ GitHub</a>
+                <button class="btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;margin-left:auto;">Details</button>
+              </div>
+            </div>
+            <div class="project-img">
               <img src="images/shelf to tales.PNG" alt="Shelf To Tales">
-              <div class="project-thumb-num">02</div>
-            </div>
-            <div class="project-body">
-              <div class="project-tags"><span class="project-tag">Web Dev</span><span class="project-tag">Spring
-                  Boot</span></div>
-              <h3 class="project-title">Shelf To Tales</h3>
-              <p class="project-desc">An innovative platform for book lovers, featuring a 3D virtual bookshelf and
-                interactive reading experiences.</p>
-              <div class="project-links">
-                <a href="https://github.com/fayjullahhemon-2025/ShelfToTales" target="_blank" class="project-link">⌥
-                  GitHub</a>
-              </div>
             </div>
           </div>
 
-          <div class="project-card fade-in" data-category="ai-ml">
-            <div class="project-thumb">
+          <div class="featured-project fade-in" data-category="ai-ml">
+            <div>
+              <div class="featured-label">📁 Project 03</div>
+              <div class="project-tags"><span class="project-tag">AI/ML</span><span class="project-tag">Python</span></div>
+              <h3 class="project-title" style="font-size:1.5rem;margin-bottom:0.6rem;">Denoising audio</h3>
+              <p class="project-desc">Advanced audio processing project focused on removing background noise from recordings using machine learning techniques.</p>
+              <div class="project-links">
+                <a href="https://github.com/fayjullahhemon-2025/Denoising_audio" target="_blank" class="project-link">⌥ GitHub</a>
+                <button class="btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;margin-left:auto;">Details</button>
+              </div>
+            </div>
+            <div class="project-img">
               <img src="images/Denoise.PNG" alt="Denoising Audio">
-              <div class="project-thumb-num">03</div>
-            </div>
-            <div class="project-body">
-              <div class="project-tags"><span class="project-tag">AI/ML</span><span class="project-tag">Python</span>
-              </div>
-              <h3 class="project-title">Denoising audio</h3>
-              <p class="project-desc">Advanced audio processing project focused on removing background noise from
-                recordings using machine learning techniques.</p>
-              <div class="project-links">
-                <a href="https://github.com/fayjullahhemon-2025/Denoising_audio" target="_blank" class="project-link">⌥
-                  GitHub</a>
-              </div>
             </div>
           </div>
 
-          <div class="project-card fade-in" data-category="backend">
-            <div class="project-thumb">
-              <img src="images/project 4.PNG" alt="Software Testing Tool">
-              <div class="project-thumb-num">04</div>
-            </div>
-            <div class="project-body">
+          <div class="featured-project fade-in" data-category="backend">
+            <div>
+              <div class="featured-label">📁 Project 04</div>
               <div class="project-tags"><span class="project-tag">SQA</span><span class="project-tag">Tools</span></div>
-              <h3 class="project-title">Software Testing Tool</h3>
-              <p class="project-desc">A specialized tool developed to automate and optimize software quality assurance
-                processes.</p>
+              <h3 class="project-title" style="font-size:1.5rem;margin-bottom:0.6rem;">Software Testing Tool</h3>
+              <p class="project-desc">A specialized tool developed to automate and optimize software quality assurance processes.</p>
               <div class="project-links">
-                <a href="https://github.com/fayjullahhemon-2025/Software-Testing-Tool" target="_blank"
-                  class="project-link">⌥ GitHub</a>
+                <a href="https://github.com/fayjullahhemon-2025/Software-Testing-Tool" target="_blank" class="project-link">⌥ GitHub</a>
+                <button class="btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;margin-left:auto;">Details</button>
               </div>
+            </div>
+            <div class="project-img">
+              <img src="images/project 4.PNG" alt="Software Testing Tool">
             </div>
           </div>
 
-          <div class="project-card fade-in" data-category="ai-ml backend">
-            <div class="project-thumb">
-              <img src="images/system_prototype.jpeg" alt="Smart Cooling Storage">
-              <div class="project-thumb-num">05</div>
-            </div>
-            <div class="project-body">
-              <div class="project-tags"><span class="project-tag">IoT</span><span class="project-tag">Python</span><span
-                  class="project-tag">OpenCV</span></div>
-              <h3 class="project-title">Smart Cooling Storage</h3>
-              <p class="project-desc">Automated system for farmers featuring vegetable classification via YOLO, weight
-                sensing, and a custom dashboard for storage management.</p>
+          <div class="featured-project fade-in" data-category="ai-ml backend">
+            <div>
+              <div class="featured-label">📁 Project 05</div>
+              <div class="project-tags"><span class="project-tag">IoT</span><span class="project-tag">Python</span><span class="project-tag">OpenCV</span></div>
+              <h3 class="project-title" style="font-size:1.5rem;margin-bottom:0.6rem;">Smart Cooling Storage</h3>
+              <p class="project-desc">Automated system for farmers featuring vegetable classification via YOLO, weight sensing, and a custom dashboard for storage management.</p>
               <div class="project-links">
                 <a href="https://cropcell.vercel.app/" target="_blank" class="project-link">↗ Live Demo</a>
                 <a href="https://github.com/Fayjullahh/FYDP" target="_blank" class="project-link">⌥ Code</a>
+                <button class="btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;margin-left:auto;">Details</button>
               </div>
+            </div>
+            <div class="project-img">
+              <img src="images/system_prototype.jpeg" alt="Smart Cooling Storage">
             </div>
           </div>
 
-          <div class="project-card fade-in" data-category="figma">
-            <div class="project-thumb">
-              <img src="images/figma story verse.png" alt="Story Verse">
-              <div class="project-thumb-num">06</div>
-            </div>
-            <div class="project-body">
+          <div class="featured-project fade-in" data-category="figma">
+            <div>
+              <div class="featured-label">📁 Project 06</div>
               <div class="project-tags"><span class="project-tag">Figma</span><span class="project-tag">UI/UX</span></div>
-              <h3 class="project-title">Story Verse</h3>
+              <h3 class="project-title" style="font-size:1.5rem;margin-bottom:0.6rem;">Story Verse</h3>
               <p class="project-desc">A professional UI/UX design for a story-telling platform created in Figma.</p>
               <div class="project-links">
                 <a href="https://www.figma.com/proto/ldaHDShNnYbWoeIuoK9BO0/Untitled?node-id=71-110&starting-point-node-id=71%3A110&t=vJ9H7HlMr4pjdcAA-1" target="_blank" class="project-link">↗ Live Demo</a>
+                <button class="btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;margin-left:auto;">Details</button>
               </div>
+            </div>
+            <div class="project-img">
+              <img src="images/figma story verse.png" alt="Story Verse">
             </div>
           </div>
 
-          <div class="project-card fade-in" data-category="figma">
-            <div class="project-thumb">
-              <img src="images/figma shelf to tales.png" alt="Shelf To Tales (Figma)">
-              <div class="project-thumb-num">07</div>
-            </div>
-            <div class="project-body">
+          <div class="featured-project fade-in" data-category="figma">
+            <div>
+              <div class="featured-label">📁 Project 07</div>
               <div class="project-tags"><span class="project-tag">Figma</span><span class="project-tag">UI/UX</span></div>
-              <h3 class="project-title">Shelf To Tales (Figma)</h3>
+              <h3 class="project-title" style="font-size:1.5rem;margin-bottom:0.6rem;">Shelf To Tales (Figma)</h3>
               <p class="project-desc">The interactive UI prototype for the Shelf To Tales platform.</p>
               <div class="project-links">
                 <a href="https://www.figma.com/proto/nlwd1npiJRsDZv6Fk1OIqU/Shelf-TO-Tales?node-id=4-39955&starting-point-node-id=4%3A39955&t=3XSYZeCkp79Qd4DX-1" target="_blank" class="project-link">↗ Live Demo</a>
+                <button class="btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;margin-left:auto;">Details</button>
               </div>
+            </div>
+            <div class="project-img">
+              <img src="images/figma shelf to tales.png" alt="Shelf To Tales (Figma)">
             </div>
           </div>
 
-          <div class="project-card fade-in" data-category="figma">
-            <div class="project-thumb">
-              <img src="images/figma virtual bookshelf.png" alt="Virtual Bookshelf">
-              <div class="project-thumb-num">08</div>
-            </div>
-            <div class="project-body">
+          <div class="featured-project fade-in" data-category="figma">
+            <div>
+              <div class="featured-label">📁 Project 08</div>
               <div class="project-tags"><span class="project-tag">Figma</span><span class="project-tag">UI/UX</span></div>
-              <h3 class="project-title">Virtual Bookshelf</h3>
+              <h3 class="project-title" style="font-size:1.5rem;margin-bottom:0.6rem;">Virtual Bookshelf</h3>
               <p class="project-desc">A complete design mockup for an immersive 3D virtual bookshelf experience.</p>
               <div class="project-links">
                 <a href="https://www.figma.com/proto/Tk2lkLspNjlcmooGTzqLyz/Untitled?node-id=1-2&starting-point-node-id=1%3A2&t=0eWnVV2DuG0Cr7C1-1" target="_blank" class="project-link">↗ Live Demo</a>
+                <button class="btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;margin-left:auto;">Details</button>
               </div>
+            </div>
+            <div class="project-img">
+              <img src="images/figma virtual bookshelf.png" alt="Virtual Bookshelf">
             </div>
           </div>
         </div>
