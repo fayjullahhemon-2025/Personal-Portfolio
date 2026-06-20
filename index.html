@@ -983,6 +983,36 @@
       transform: scale(1.05);
     }
 
+    .project-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.5rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--accent);
+      background: rgba(74, 158, 255, 0.05);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
     /* ─── GITHUB ACTIVITY ─── */
     #activity {
       background: var(--bg);
@@ -2939,8 +2969,17 @@
         <h2 class="section-title fade-in">Things I've Built</h2>
         <p class="section-sub fade-in">A collection of research projects, open-source tools, and experiments.</p>
 
+        <div class="project-filter fade-in">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="frontend">Frontend</button>
+          <button class="filter-btn" data-filter="backend">Backend</button>
+          <button class="filter-btn" data-filter="figma">Figma Design</button>
+          <button class="filter-btn" data-filter="framer">Framer Design</button>
+          <button class="filter-btn" data-filter="ai-ml">AI/ML Model</button>
+        </div>
+
         <div class="projects-grid">
-          <div class="featured-project fade-in">
+          <div class="featured-project fade-in" data-category="frontend backend">
             <div>
               <div class="featured-label">⭐ Featured Project</div>
               <div class="project-tags"><span class="project-tag">Full Stack</span><span
@@ -2957,7 +2996,7 @@
             </div>
           </div>
 
-          <div class="project-card fade-in">
+          <div class="project-card fade-in" data-category="frontend backend">
             <div class="project-thumb">
               <img src="images/shelf to tales.PNG" alt="Shelf To Tales">
               <div class="project-thumb-num">02</div>
@@ -2975,7 +3014,7 @@
             </div>
           </div>
 
-          <div class="project-card fade-in">
+          <div class="project-card fade-in" data-category="ai-ml">
             <div class="project-thumb">
               <img src="images/Denoise.PNG" alt="Denoising Audio">
               <div class="project-thumb-num">03</div>
@@ -2993,7 +3032,7 @@
             </div>
           </div>
 
-          <div class="project-card fade-in">
+          <div class="project-card fade-in" data-category="backend">
             <div class="project-thumb">
               <img src="images/project 4.PNG" alt="Software Testing Tool">
               <div class="project-thumb-num">04</div>
@@ -3010,7 +3049,7 @@
             </div>
           </div>
 
-          <div class="project-card fade-in">
+          <div class="project-card fade-in" data-category="ai-ml backend">
             <div class="project-thumb">
               <img src="images/system_prototype.jpeg" alt="Smart Cooling Storage">
               <div class="project-thumb-num">05</div>
@@ -3024,6 +3063,51 @@
               <div class="project-links">
                 <a href="https://cropcell.vercel.app/" target="_blank" class="project-link">↗ Live Demo</a>
                 <a href="https://github.com/Fayjullahh/FYDP" target="_blank" class="project-link">⌥ Code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card fade-in" data-category="figma">
+            <div class="project-thumb">
+              <img src="images/figma story verse.png" alt="Story Verse">
+              <div class="project-thumb-num">06</div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags"><span class="project-tag">Figma</span><span class="project-tag">UI/UX</span></div>
+              <h3 class="project-title">Story Verse</h3>
+              <p class="project-desc">A professional UI/UX design for a story-telling platform created in Figma.</p>
+              <div class="project-links">
+                <a href="https://www.figma.com/proto/ldaHDShNnYbWoeIuoK9BO0/Untitled?node-id=71-110&starting-point-node-id=71%3A110&t=vJ9H7HlMr4pjdcAA-1" target="_blank" class="project-link">↗ Live Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card fade-in" data-category="figma">
+            <div class="project-thumb">
+              <img src="images/figma shelf to tales.png" alt="Shelf To Tales (Figma)">
+              <div class="project-thumb-num">07</div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags"><span class="project-tag">Figma</span><span class="project-tag">UI/UX</span></div>
+              <h3 class="project-title">Shelf To Tales (Figma)</h3>
+              <p class="project-desc">The interactive UI prototype for the Shelf To Tales platform.</p>
+              <div class="project-links">
+                <a href="https://www.figma.com/proto/nlwd1npiJRsDZv6Fk1OIqU/Shelf-TO-Tales?node-id=4-39955&starting-point-node-id=4%3A39955&t=3XSYZeCkp79Qd4DX-1" target="_blank" class="project-link">↗ Live Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card fade-in" data-category="figma">
+            <div class="project-thumb">
+              <img src="images/figma virtual bookshelf.png" alt="Virtual Bookshelf">
+              <div class="project-thumb-num">08</div>
+            </div>
+            <div class="project-body">
+              <div class="project-tags"><span class="project-tag">Figma</span><span class="project-tag">UI/UX</span></div>
+              <h3 class="project-title">Virtual Bookshelf</h3>
+              <p class="project-desc">A complete design mockup for an immersive 3D virtual bookshelf experience.</p>
+              <div class="project-links">
+                <a href="https://www.figma.com/proto/Tk2lkLspNjlcmooGTzqLyz/Untitled?node-id=1-2&starting-point-node-id=1%3A2&t=0eWnVV2DuG0Cr7C1-1" target="_blank" class="project-link">↗ Live Demo</a>
               </div>
             </div>
           </div>
@@ -3911,6 +3995,30 @@
       }
       return "That's a great question! Emon is a CSE developer specializing in <strong>Java / Spring Boot</strong>, <strong>React.js</strong>, <strong>PHP / Laravel</strong>, and <strong>SQA Automation</strong>. Feel free to explore his resume or email him at <strong>fayjullahhaqueemon@gmail.com</strong>!";
     }
+
+    // ─── PROJECTS FILTER ───
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projects = document.querySelectorAll('.project-card, .featured-project');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filterValue = btn.getAttribute('data-filter');
+
+          projects.forEach(project => {
+            const categories = project.getAttribute('data-category');
+            if (filterValue === 'all' || (categories && categories.includes(filterValue))) {
+              project.style.display = '';
+            } else {
+              project.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
 
     // ─── EXPERIENCE TIMELINE PROGRESS ───
     document.addEventListener('DOMContentLoaded', () => {
