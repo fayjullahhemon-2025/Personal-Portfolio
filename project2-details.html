@@ -123,6 +123,40 @@
       width: 100%;
       height: 100%;
       border: none;
+    .content-section {
+      margin-top: 3rem;
+      color: var(--text);
+    }
+    .content-section h2 {
+      font-family: var(--font-head);
+      color: var(--accent);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .content-section p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+    .content-section ul {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+    .content-section li {
+      margin-bottom: 0.5rem;
+    }
+    .mermaid-container {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      display: flex;
+      justify-content: center;
     }
   </style>
 </head>
@@ -142,7 +176,393 @@
     <div class="video-container">
       <iframe src="https://www.youtube.com/embed/criHrG6Ry7o?autoplay=1" title="Shelf To Tales Project Details" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
-  </div>
-</body>
+    <div class="content-section">
+      <h2>Project Description</h2>
+      <p>ShelfToTales is a full-stack bookstore and reader-community platform where commerce meets community. It goes beyond a normal online bookstore — it's a digital home for readers where book discovery, community, sustainability, and reading progress work together.</p>
 
+      <h2>Problem Statement & Motivation</h2>
+      <p>Traditional online bookstores often operate as isolated marketplaces, lacking the social connection and community aspects that make reading enjoyable. Readers struggle to find a single platform that integrates book discovery, peer-to-peer exchange, reading progress tracking, and interactive community features in one cohesive ecosystem.</p>
+
+      <h2>Our Solution</h2>
+      <p>We built ShelfToTales to bridge this gap. Our solution provides a comprehensive ecosystem featuring:</p>
+      <ul>
+        <li><strong>Community & Connection:</strong> Virtual reading rooms, smart annotations, and peer book exchange.</li>
+        <li><strong>Commerce:</strong> Full product catalog, shopping cart, checkout system, and mood-based suggestions.</li>
+        <li><strong>Personalization:</strong> Virtual bookshelves, reading challenges, and an analytics dashboard.</li>
+      </ul>
+
+      <h2>System Architecture</h2>
+      <div class="mermaid-container">
+        <div class="mermaid">
+        graph TB
+            subgraph Client["🖥️ Frontend — Next.js 15"]
+                UI[App Router Pages]
+                API_CLIENT[Axios HTTP Client]
+                AUTH_STORE[JWT Token Storage]
+            end
+
+            subgraph Server["⚙️ Backend — Spring Boot 3.4"]
+                subgraph Security["🔒 Security Layer"]
+                    RATE[Rate Limiting Filter]
+                    JWT_FILTER[JWT Authentication Filter]
+                    CORS[CORS Configuration]
+                end
+
+                subgraph API["🌐 REST Controllers"]
+                    AUTH_C[AuthController]
+                    BOOK_C[BookController]
+                    SHELF_C[BookshelfController]
+                    CART_C[CartController]
+                    WISH_C[WishlistController]
+                    DASH_C[DashboardController]
+                    PROF_C[ProfileController]
+                    ADMIN_C[Admin Controllers]
+                end
+
+                subgraph Services["📦 Service Layer"]
+                    AUTH_S[AuthService]
+                    GOOGLE_S[GoogleAuthService]
+                    BOOK_S[BookService]
+                    SHELF_S[BookshelfService]
+                    CART_S[CartService]
+                    WISH_S[WishlistService]
+                    DASH_S[DashboardService]
+                    PROF_S[ProfileService]
+                end
+
+                subgraph Data["💾 Data Layer"]
+                    REPOS[JPA Repositories]
+                    FLYWAY[Flyway Migrations]
+                end
+            end
+
+            subgraph Database["🗄️ Database"]
+                H2[(H2 — Tests)]
+                PG[(PostgreSQL — Prod)]
+            end
+
+            UI --> API_CLIENT
+            API_CLIENT -->|HTTP + Bearer Token| RATE
+            RATE --> JWT_FILTER
+            JWT_FILTER --> API
+            API --> Services
+            Services --> REPOS
+            REPOS --> PG
+            FLYWAY --> PG
+            H2 -.test scope.-> TESTS
+            subgraph Tests[Test resources only]
+              H2
+            end
+        </div>
+      </div>
+
+      <h2>Authentication Flow</h2>
+      <div class="mermaid-container">
+        <div class="mermaid">
+        sequenceDiagram
+            participant U as User/Browser
+            participant F as Next.js Frontend
+            participant B as Spring Boot API
+            participant G as Google OAuth2
+            participant DB as Database
+
+            Note over U,DB: Local Registration & Login
+            U->>F: Fill register form
+            F->>B: POST /api/auth/register
+            B->>DB: Save user (bcrypt password)
+            B-->>F: { token, email, role }
+            F->>F: Store JWT in localStorage
+
+            Note over U,DB: Google OAuth2 Login
+            U->>F: Click "Sign in with Google"
+            F->>G: OAuth2 consent flow
+            G-->>F: Google ID token
+            F->>B: POST /api/auth/google { idToken }
+            B->>G: Verify token with Google API
+            G-->>B: User info (email, name, picture)
+            B->>DB: Find or create user (AuthProvider.GOOGLE)
+            B-->>F: { token, email, role }
+
+            Note over U,DB: Authenticated Request
+            U->>F: Navigate to protected page
+            F->>B: GET /api/books (Authorization: Bearer <token>)
+            B->>B: JwtAuthFilter validates token
+            B->>B: Check TokenBlacklist
+            B-->>F: 200 OK + data
+
+            Note over U,DB: Logout
+            U->>F: Click logout
+            F->>B: POST /api/auth/logout
+            B->>B: Add token to TokenBlacklist
+            B-->>F: 200 OK
+        </div>
+      </div>
+
+      <h2>Backend Architecture (Layered)</h2>
+      <div class="mermaid-container">
+        <div class="mermaid">
+        graph LR
+            subgraph Presentation["Controller Layer"]
+                C1[AuthController]
+                C2[BookController]
+                C3[BookshelfController]
+                C4[CartController]
+                C5[WishlistController]
+                C6[DashboardController]
+                C7[ProfileController]
+                C8[ShelfBookController]
+                C9[CategoryController]
+                C10[BookAdminController]
+                C11[CategoryAdminController]
+            end
+
+            subgraph Business["Service Layer"]
+                S1[AuthService]
+                S2[BookService]
+                S3[BookshelfService]
+                S4[CartService]
+                S5[WishlistService]
+                S6[DashboardService]
+                S7[ProfileService]
+                S8[ShelfBookService]
+                S9[CategoryService]
+                S10[GoogleAuthService]
+            end
+
+            subgraph Persistence["Repository Layer"]
+                R1[UserRepository]
+                R2[BookRepository]
+                R3[BookshelfRepository]
+                R4[CartItemRepository]
+                R5[WishlistRepository]
+                R6[ShelfBookRepository]
+                R7[CategoryRepository]
+                R8[OrderRepository]
+                R9[ReadingActivityRepository]
+            end
+
+            Presentation --> Business
+            Business --> Persistence
+        </div>
+      </div>
+
+      <h2>Database Entity Relationship</h2>
+      <div class="mermaid-container">
+        <div class="mermaid">
+        erDiagram
+            USER ||--o{ BOOKSHELF : owns
+            USER ||--o{ CART_ITEM : has
+            USER ||--o{ WISHLIST_ITEM : has
+            USER ||--o{ ORDER : places
+            USER ||--o{ READING_ACTIVITY : logs
+
+            BOOKSHELF ||--o{ SHELF_BOOK : contains
+            BOOK ||--o{ SHELF_BOOK : "added to"
+            BOOK ||--o{ CART_ITEM : "in cart"
+            BOOK ||--o{ WISHLIST_ITEM : "wishlisted"
+            BOOK }o--|| CATEGORY : "belongs to"
+
+            ORDER ||--o{ ORDER_ITEM : contains
+            BOOK ||--o{ ORDER_ITEM : purchased
+
+            USER {
+                Long id PK
+                String email UK
+                String password
+                String fullName
+                Role role
+                AuthProvider authProvider
+                String googleId
+                String bio
+                String profileImageUrl
+                LocalDateTime createdAt
+            }
+
+            BOOK {
+                Long id PK
+                String title
+                String author
+                String isbn
+                Double price
+                String description
+                String imageUrl
+                Long categoryId FK
+            }
+
+            BOOKSHELF {
+                Long id PK
+                String name
+                String description
+                Long userId FK
+            }
+
+            SHELF_BOOK {
+                Long id PK
+                Long bookshelfId FK
+                Long bookId FK
+                String status
+                Integer progress
+            }
+
+            CATEGORY {
+                Long id PK
+                String name
+                String description
+                String imageUrl
+            }
+
+            ORDER {
+                Long id PK
+                Long userId FK
+                String status
+                Double totalAmount
+                LocalDateTime createdAt
+            }
+
+            READING_ACTIVITY {
+                Long id PK
+                Long userId FK
+                Long bookId FK
+                String activityType
+                Integer pagesRead
+                LocalDateTime createdAt
+            }
+        </div>
+      </div>
+
+      <h2>Request Lifecycle</h2>
+      <div class="mermaid-container">
+        <div class="mermaid">
+        flowchart TD
+            A[Client HTTP Request] --> B{Rate Limiter}
+            B -->|Allowed| C[CORS Filter]
+            B -->|429 Too Many Requests| Z[Error Response]
+            C --> D{JWT Filter}
+            D -->|Public endpoint| E[Controller]
+            D -->|Has token| F{Validate JWT}
+            F -->|Valid & not blacklisted| G[Set SecurityContext]
+            F -->|Invalid/Expired| H[401 Unauthorized]
+            G --> E
+            E --> I[Service Layer]
+            I --> J[Repository / DB]
+            J --> K[Entity → DTO Mapping]
+            K --> L[JSON Response]
+            H --> Z
+            Z --> M[GlobalExceptionHandler]
+            M --> N[Structured Error JSON]
+        </div>
+      </div>
+
+      <h2>Frontend Page Architecture</h2>
+      <div class="mermaid-container">
+        <div class="mermaid">
+        graph TD
+            subgraph Layout["Root Layout - app/layout.js"]
+                HEADER["Header Component"]
+                FOOTER["Footer Component"]
+            end
+
+            subgraph Pages["App Router Pages"]
+                HOME["Home - /"]
+                HOME2["Home Alt - /index-2"]
+                
+                subgraph Books["Books"]
+                    BGL["books-grid-view"]
+                    BGLS["books-grid-view-sidebar"]
+                    BLL["books-list-view-sidebar"]
+                    BL["book-list"]
+                    BD["books-detail/id"]
+                    RB["read-book/bookId"]
+                end
+
+                subgraph Shop["Shop"]
+                    SL["shop-list"]
+                    SD["shop-detail/id"]
+                    SC["shop-cart"]
+                    SCO["shop-checkout"]
+                    LOGIN["shop-login"]
+                    REG["shop-registration"]
+                end
+
+                subgraph Community["Community"]
+                    VB["virtual-bookshelf"]
+                    RR["reading-room"]
+                    RN["reader-network"]
+                    RD["reading-dashboard"]
+                end
+
+                subgraph User["User"]
+                    DASH["dashboard"]
+                    PROF["my-profile"]
+                    WISH["wishlist"]
+                    PH["purchase-history"]
+                end
+
+                subgraph Content["Content"]
+                    BG["blog-grid"]
+                    BLS["blog-list-sidebar"]
+                    BLGS["blog-large-sidebar"]
+                    BDET["blog-detail"]
+                end
+            end
+
+            Layout --> Pages
+        </div>
+      </div>
+
+      <h2>Security Architecture</h2>
+      <div class="mermaid-container">
+        <div class="mermaid">
+        flowchart LR
+            subgraph Filters["Security Filter Chain"]
+                direction TB
+                RF[RateLimitingFilter<br/>Token Bucket per IP]
+                JF[JwtAuthenticationFilter<br/>Token Validation]
+                TB[TokenBlacklist<br/>Logout Invalidation]
+            end
+
+            subgraph Access["Access Control"]
+                PUB[Public: /api/auth/**, /api/books, /api/categories]
+                AUTH[Authenticated: /api/wishlist, /api/cart, /api/profile]
+                ADMIN[Admin Only: /api/admin/**]
+            end
+
+            subgraph Crypto["Cryptography"]
+                BCRYPT[BCrypt Password Hashing]
+                HS256[HMAC-SHA256 JWT Signing]
+            end
+
+            RF --> JF
+            JF --> TB
+            TB --> Access
+            Access --> Crypto
+        </div>
+      </div>
+
+      <h2>Tech Stack</h2>
+      <ul>
+        <li><strong>Frontend:</strong> Next.js 15.5, React 19, Bootstrap 5, Chart.js, Swiper, Axios</li>
+        <li><strong>Backend:</strong> Java 17, Spring Boot 3.4, Spring Security, Spring Data JPA</li>
+        <li><strong>Auth:</strong> JWT (HMAC-SHA256), Google OAuth2, BCrypt</li>
+        <li><strong>Database:</strong> PostgreSQL (default, all profiles), H2 (test scope only)</li>
+        <li><strong>API Docs:</strong> Springdoc OpenAPI / Swagger UI</li>
+        <li><strong>Testing:</strong> Vitest + Testing Library (frontend), JUnit + Mockito (backend)</li>
+      </ul>
+
+      <h2>Team Members</h2>
+      <ul>
+        <li>Rushdania Bushra (0112230039)</li>
+        <li>Habiba Khatun (011221085)</li>
+        <li>Fayjullah Haque (011221072)</li>
+        <li>Ashikur Rahman Puspo (0112310304)</li>
+        <li>Mst. Sumia Khatun (011221563)</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+  </script>
+</body>
 </html>
