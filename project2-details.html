@@ -286,7 +286,7 @@
 
             Note over U,DB: Authenticated Request
             U->>F: Navigate to protected page
-            F->>B: GET /api/books (Authorization: Bearer <token>)
+            F->>B: GET /api/books (Authorization: Bearer &lt;token&gt;)
             B->>B: JwtAuthFilter validates token
             B->>B: Check TokenBlacklist
             B-->>F: 200 OK + data
