@@ -1,3 +1,7 @@
 # Ignore large executables
 images/Antigravity IDE.exe
 *.exe
+# Antigravity Context Cache
+skill.md
+# Antigravity Context Cache
+.agents
